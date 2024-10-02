@@ -1,3 +1,95 @@
-<footer>
-  <p>Footer</p>
+{% load i18n %}
+<footer class="page-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-description">
+        <h3>{% translate "Register rabe UI v slovenskem javnem sektorju" %}</h3>
+        {% blocktranslate %}
+        <p>
+          Register predstavlja prvo organizirano zbirko podatkov o uporabi
+          umetnointeligenčnih sistemov v slovenskem javnem sektorju. Podatke smo
+          pridobili z raziskavo javno dostopnih virov ter s prošnjami za dostop
+          do informacij javnega značaja javnim organom.
+        </p>
+        <p>Zbirka podatkov ni končna in jo bomo redno posodabljali.</p>
+        <hr />
+        <p>
+          Prizadevamo si za točnost in preverljivost objavljenih informacij, a
+          netransparentno delovanje javnih organov predstavlja ključno omejitev
+          pri zbiranju podatkov, zato v podatkih obstajajo vrzeli in tudi
+          pomankljivosti.
+        </p>
+        <p>
+          Prepričani smo, da obstaja veliko več orodij, za katera še ne vemo, da
+          so v uporabi. Če imaš kakršne koli pomembne informacije, ki trenutno
+          niso vključene v register, ali pa so naše informacije napačne, se javi
+          na <a href="mailto:registerUI@djnd.si">registerUI@djnd.si</a>.
+        </p>
+        {% endblocktranslate %}
+      </div>
+      <div class="footer-support">
+        {% blocktranslate %}
+        <p>
+          Za Register rabe UI skrbi<br />
+          <a
+            href="https://danesjenovdan.si"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="about-link"
+            >Danes je nov dan, Inštitut za druga vprašanja</a
+          >
+        </p>
+        {% endblocktranslate %}
+        <hr />
+        <p>
+          {% translate "Podpri naše delo." %}
+          <a
+            href="https://danesjenovdan.si/podpri-nas/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-link"
+          >
+            <span>{% translate "DONIRAJ" %}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#000"
+              viewBox="0 0 10 10"
+            >
+              <path
+                d="M8.457 2.532v1.974H7.47V2.532h.987v-.987h-.986V.558h-.987v.987h-.988v.987H4.51v-.987h-.987V.558h-.987v.987h-.989v.987H.56v1.974H.558v.987h.987v.988h.988v.987h.987v.987h.988v.987h.987v-.987h.987v-.987h.987V6.48h.987v-.988h.987v-2.96h-.986ZM6.482 5.493v-.987h.987v.987h-.987Z"
+              />
+            </svg>
+          </a>
+        </p>
+        <hr />
+        <p>{% translate "Te zanima, kaj delamo? Naroči se na Občasnik!" %}</p>
+        <form class="newsletter-form">
+          <div class="form-group">
+            <label>
+              {% translate "VPIŠI SVOJ E-NASLOV" %}
+              <input type="email" required id="newsletter-email" />
+            </label>
+          </div>
+          <div class="form-group">
+            <div class="checkbox">
+              <input type="checkbox" required id="newsletter-checkbox" />
+              <label for="newsletter-checkbox">
+                {% blocktranslate %}
+                <span>
+                  Strinjam se, da mi Danes je nov dan po e-pošti pošilja
+                  Občasnik in druga obvestila.
+                </span>
+                {% endblocktranslate %}
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="button-link">
+              {% translate "NAROČI SE" %}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </footer>

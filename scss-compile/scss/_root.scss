@@ -1,0 +1,13 @@
+:root {
+  --font-main: system-ui;
+  --font-mono: monospace;
+
+  --bg-color: #f3f8f3;
+  --bg-color-alt: #dfeadf;
+  --border-color: #a2a5a2;
+  --border-color-alt: #545454;
+  --accent-color: #b8ffb8;
+
+  --page-width: 80rem;
+  --footer-width: calc(var(--page-width) - 9rem);
+}

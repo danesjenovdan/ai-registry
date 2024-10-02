@@ -1,12 +1,4 @@
+@import "root";
 @import "reset";
-
-$ff: system-ui;
-
-html {
-  font-family: $ff;
-}
-
-h1 {
-  outline: 1px solid red;
-  user-select: none;
-}
+@import "page";
+@import "footer";

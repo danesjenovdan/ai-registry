@@ -1,0 +1,33 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main.page-content {
+    flex: 1;
+    background: var(--bg-color);
+  }
+
+  footer.page-footer {
+    background: var(--bg-color-alt);
+    padding-block: 4.5rem 3.5rem;
+  }
+}
+
+.container {
+  max-width: var(--page-width);
+  margin-inline: auto;
+}
+
+hr {
+  border-top: 1px dashed var(--border-color);
+}
+
+a {
+  font-weight: 700;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

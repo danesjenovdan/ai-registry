@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="{% static 'home/css/bundle.css' %}" />
 </head>
 <body>
-  {% block content %}
-    <div>No content</div>
-  {% endblock content %}
-  {% block footer %}
-    {% include "home/partials/footer.html" %}
-  {% endblock footer %}
+  <div class="page-wrapper">
+    {% block content %}
+      <main class="page-content">No content</main>
+    {% endblock content %}
+    {% block footer %}
+      {% include "home/partials/footer.html" %}
+    {% endblock footer %}
+  </div>
 </body>
 </html>
