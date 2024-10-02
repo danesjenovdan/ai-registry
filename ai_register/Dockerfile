@@ -50,7 +50,7 @@ USER django
 RUN python manage.py collectstatic --noinput --clear
 
 # Compile locale files.
-#RUN python manage.py compilemessages
+RUN python manage.py compilemessages
 
 # Runtime command that executes when "docker run" is called, it does the
 # following:
