@@ -15,10 +15,10 @@ services:
       POSTGRES_PASSWORD: changeme
 
   django:
-    build: ./ai_register
+    build: ./ai_registry
     command: ./manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./ai_register:/app:delegated,rw
+      - ./ai_registry:/app:delegated,rw
     ports:
       - "8000:8000"
     environment:
@@ -33,7 +33,7 @@ services:
     build: ./scss-compile
     command: yarn dev
     volumes:
-      - ./ai_register/home/static/home/css:/app/static/css:delegated,rw
+      - ./ai_registry/home/static/home/css:/app/static/css:delegated,rw
       - ./scss-compile/scss:/app/scss:delegated,rw
     depends_on:
       - django
