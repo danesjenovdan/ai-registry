@@ -1,0 +1,41 @@
+volumes:
+  postgres-data:
+
+
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_DB: django
+      POSTGRES_USER: django
+      POSTGRES_PASSWORD: changeme
+
+  django:
+    build: ./ai_register
+    command: ./manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./ai_register:/app:delegated,rw
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_DATABASE_HOST: db
+      DJANGO_DATABASE_NAME: django
+      DJANGO_DATABASE_USER: django
+      DJANGO_DATABASE_PASSWORD: changeme
+    depends_on:
+      - db
+  # css-compile:
+  #   build: ./css-compile
+  #   working_dir: /app
+  #   command: yarn dev
+  #   volumes:
+  #     - ./djnd:/app/djnd:delegated,rw
+  #     - ./css-compile/src:/app/src:delegated,rw
+  #     - ./css-compile/postcss.config.js:/app/postcss.config.js:delegated,rw
+  #     - ./css-compile/tailwind.config.js:/app/tailwind.config.js:delegated,rw
+  #   depends_on:
+  #     - db
