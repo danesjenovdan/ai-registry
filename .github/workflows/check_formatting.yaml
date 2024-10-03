@@ -20,6 +20,10 @@ jobs:
         run: |
           pip install black isort
 
-      - name: Check formatting with black and isort
+      - name: Check formatting with black
         run: |
-          black . --check --diff; isort . --check --diff --profile black
+          black . --check --diff
+
+      - name: Check formatting with isort
+        run: |
+          isort . --check --diff --profile black
