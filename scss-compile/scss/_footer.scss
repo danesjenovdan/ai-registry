@@ -48,6 +48,11 @@ footer.page-footer {
       font-weight: 300;
       text-decoration: none;
 
+      &:hover {
+        background: var(--bg-color-dark);
+        color: var(--bg-color-light);
+      }
+
       svg {
         width: 1em;
         height: 1em;

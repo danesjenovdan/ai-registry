@@ -22,6 +22,11 @@
       font-weight: 700;
     }
 
+    &:hover {
+      background: var(--bg-color-dark);
+      color: var(--bg-color-light);
+    }
+
     svg {
       width: auto;
       height: 45%;
