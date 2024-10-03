@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate "Register rabe UI" %}</title>
+  <title>{% translate 'Register rabe UI' %}</title>
   <link rel="stylesheet" href="{% static 'home/fonts/selfhosted.css' %}" />
   <link rel="stylesheet" href="{% static 'home/css/bundle.css' %}" />
 </head>
@@ -16,5 +16,6 @@
       {% include "home/partials/footer.html" %}
     {% endblock footer %}
   </div>
+  <script type="module" src="{% static 'home/js/main.js' %}"></script>
 </body>
 </html>

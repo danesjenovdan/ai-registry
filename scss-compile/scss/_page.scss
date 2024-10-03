@@ -31,3 +31,13 @@ a {
     text-decoration: none;
   }
 }
+
+.registry-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.paginator-container {
+  margin-block: 2.5rem 5.2rem;
+}
