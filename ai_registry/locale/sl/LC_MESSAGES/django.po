@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-02 15:31+0200\n"
+"POT-Creation-Date: 2024-10-04 11:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,137 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
 
-#: home/templates/home/home_view.html:9
-msgid "hello world"
+#: home/templates/home/base.html:6
+msgid "Register rabe UI"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:6
+msgid "Register rabe UI v slovenskem javnem sektorju"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:7
+msgid ""
+"\n"
+"        <p>\n"
+"          Register predstavlja prvo organizirano zbirko podatkov o uporabi\n"
+"          umetnointeligenčnih sistemov v slovenskem javnem sektorju. Podatke "
+"smo\n"
+"          pridobili z raziskavo javno dostopnih virov ter s prošnjami za "
+"dostop\n"
+"          do informacij javnega značaja javnim organom.\n"
+"        </p>\n"
+"        <p>Zbirka podatkov ni končna in jo bomo redno posodabljali.</p>\n"
+"        <hr />\n"
+"        <p>\n"
+"          Prizadevamo si za točnost in preverljivost objavljenih informacij, "
+"a\n"
+"          netransparentno delovanje javnih organov predstavlja ključno "
+"omejitev\n"
+"          pri zbiranju podatkov, zato v podatkih obstajajo vrzeli in tudi\n"
+"          pomankljivosti.\n"
+"        </p>\n"
+"        <p>\n"
+"          Prepričani smo, da obstaja veliko več orodij, za katera še ne "
+"vemo, da\n"
+"          so v uporabi. Če imaš kakršne koli pomembne informacije, ki "
+"trenutno\n"
+"          niso vključene v register, ali pa so naše informacije napačne, se "
+"javi\n"
+"          na <a href=\"mailto:registerUI@djnd.si\">registerUI@djnd.si</a>.\n"
+"        </p>\n"
+"        "
+msgstr ""
+
+#: home/templates/home/partials/footer.html:31
+msgid ""
+"\n"
+"        <p>\n"
+"          Za Register rabe UI skrbi<br />\n"
+"          <a\n"
+"            href=\"https://danesjenovdan.si\"\n"
+"            target=\"_blank\"\n"
+"            rel=\"noopener noreferrer\"\n"
+"            class=\"about-link\"\n"
+"            >Danes je nov dan, Inštitut za druga vprašanja</a\n"
+"          >\n"
+"        </p>\n"
+"        "
+msgstr ""
+
+#: home/templates/home/partials/footer.html:45
+msgid "Podpri naše delo."
+msgstr ""
+
+#: home/templates/home/partials/footer.html:52
+msgid "DONIRAJ"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:65
+msgid "Te zanima, kaj delamo? Naroči se na Občasnik!"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:69
+msgid "VPIŠI SVOJ E-NASLOV"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:77
+msgid ""
+"\n"
+"                <span>\n"
+"                  Strinjam se, da mi Danes je nov dan po e-pošti pošilja\n"
+"                  Občasnik in druga obvestila.\n"
+"                </span>\n"
+"                "
+msgstr ""
+
+#: home/templates/home/partials/footer.html:88
+msgid "NAROČI SE"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:32
+msgid "Viri:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:51
+msgid "Institucija:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:59
+msgid "Področje:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:65
+msgid "Oznake:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:72
+msgid "Razvijalci:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:78
+msgid "Cena:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:91
+msgid "ZAPRI -"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:93
+msgid "VEČ INFORMACIJ +"
+msgstr ""
+
+#: home/templates/home/partials/registry_filters.html:6
+msgid "FILTRIRAJ"
+msgstr ""
+
+#: home/templates/home/partials/registry_filters.html:17
+#, python-format
+msgid ""
+"\n"
+"      <span>Register trenutno vsebuje <em>%(amount)s</em> sistemov.</span>\n"
+"      "
+msgstr ""
+
+#: home/templates/home/partials/registry_filters.html:23
+msgid "RAZVRSTI PO:"
 msgstr ""
