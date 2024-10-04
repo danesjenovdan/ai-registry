@@ -1,0 +1,29 @@
+{% load i18n %}
+<div class="registry-filters">
+  <div class="filters-row">
+    <div class="filters">
+      <button type="button" class="filter-button">
+        <span>{% translate "FILTRIRAJ" %}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 6 8"
+        >
+          <path d="M6 4 .75 7.464V.536L6 4Z" />
+        </svg>
+      </button>
+    </div>
+    <div class="info">
+      {% blocktranslate with amount="8" %}
+      <span>Register trenutno vsebuje <em>{{ amount }}</em> sistemov.</span>
+      {% endblocktranslate %}
+    </div>
+    <div class="sort">
+      <button type="button" class="filter-button">
+        <span>{% translate "RAZVRSTI PO:" %}</span>
+        <strong>obdobju rabe</strong>
+      </button>
+    </div>
+  </div>
+  <hr />
+</div>

@@ -5,11 +5,13 @@
     <div class="container">
       home_view.html
 
+      <div class="registry-filters">
+        {% include "home/partials/registry_filters.html" %}
+      </div>
       <div class="registry-entries">
         {% include "home/partials/registry_entry.html" %}
         {% include "home/partials/registry_entry.html" %}
       </div>
-
       <div class="paginator-container">
         {% include "home/partials/paginator.html" %}
       </div>
