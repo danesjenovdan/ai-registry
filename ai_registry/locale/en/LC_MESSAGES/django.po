@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-04 11:31+0200\n"
+"POT-Creation-Date: 2024-10-04 14:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: home/templates/home/base.html:6
+#: home/templates/home/partials/home_header.html:4
 msgid "Register rabe UI"
 msgstr ""
 
@@ -103,6 +104,42 @@ msgstr ""
 
 #: home/templates/home/partials/footer.html:88
 msgid "NAROČI SE"
+msgstr ""
+
+#: home/templates/home/partials/home_header.html:6
+msgid ""
+"\n"
+"      <span>\n"
+"        Zbiramo podatke o uporabi umetnointeligenčnih sistemov v slovenskem\n"
+"        javnem sektorju. Zahtevamo več transparentnosti.\n"
+"      </span>\n"
+"      "
+msgstr ""
+
+#: home/templates/home/partials/home_header.html:15
+msgid "IŠČI PO REGISTRU"
+msgstr ""
+
+#: home/templates/home/partials/home_header.html:24
+msgid ""
+"\n"
+"      <p>\n"
+"        Če želimo zaupati, da javni avtomatizirani sistemi delujejo "
+"pošteno,\n"
+"        zanesljivo in zakonito, potrebujemo preglednost in razložljivost;\n"
+"        javnost bi morala biti sposobna razumeti, kako sistem deluje in kako "
+"se\n"
+"        sprejemajo odločitve, ki vplivajo na njihova življenja.\n"
+"      </p>\n"
+"      <p>\n"
+"        Do sedaj ni bilo na voljo sistematično zbranih informacij o tem, "
+"kako in\n"
+"        zakaj javni organi uporabljajo umetnointeligenčne sisteme ali "
+"kakšen\n"
+"        vpliv imajo na družbo in posameznike.\n"
+"      </p>\n"
+"      <p>Z Registrom rabe UI nameravamo premostiti to vrzel.</p>\n"
+"      "
 msgstr ""
 
 #: home/templates/home/partials/registry_entry.html:32
