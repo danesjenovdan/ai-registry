@@ -9,8 +9,9 @@
         {% include "home/partials/registry_filters.html" %}
       </div>
       <div class="registry-entries">
+      {% for entry in entries %}
         {% include "home/partials/registry_entry.html" %}
-        {% include "home/partials/registry_entry.html" %}
+      {% endfor %}
       </div>
       <div class="paginator-container">
         {% include "home/partials/paginator.html" %}

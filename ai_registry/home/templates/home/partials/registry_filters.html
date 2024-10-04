@@ -14,7 +14,9 @@
       </button>
     </div>
     <div class="info-col">
-      {% blocktranslate with amount="8" %}
+      {% blocktranslate count amount=entries|length %}
+      <span>Register trenutno vsebuje <em>{{ amount }}</em> sistem.</span>
+      {% plural %}
       <span>Register trenutno vsebuje <em>{{ amount }}</em> sistemov.</span>
       {% endblocktranslate %}
     </div>
