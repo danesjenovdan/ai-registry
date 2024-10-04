@@ -39,16 +39,16 @@
       }
     }
 
-    .filters,
-    .sort {
+    .filters-col,
+    .sort-col {
       flex: 1;
     }
 
-    .sort {
+    .sort-col {
       text-align: right;
     }
 
-    .info {
+    .info-col {
       flex: 3;
       text-align: center;
       font-family: var(--font-main);

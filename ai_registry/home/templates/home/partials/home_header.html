@@ -1,0 +1,40 @@
+{% load static i18n %}
+<header class="home-header">
+  <div class="title-col">
+    <h1 class="header-title">{% translate "Register rabe UI" %}</h1>
+    <p class="header-subtitle">
+      {% blocktranslate %}
+      <span>
+        Zbiramo podatke o uporabi umetnointeligenčnih sistemov v slovenskem
+        javnem sektorju. Zahtevamo več transparentnosti.
+      </span>
+      {% endblocktranslate %}
+    </p>
+    <hr />
+    <label class="header-search">
+      <span>{% translate "IŠČI PO REGISTRU" %}</span>
+      <input type="text" />
+    </label>
+  </div>
+  <div class="info-col">
+    <div class="header-image">
+      <img src="{% static "home/img/cube.png" %}" alt="">
+    </div>
+    <div class="header-description">
+      {% blocktranslate %}
+      <p>
+        Če želimo zaupati, da javni avtomatizirani sistemi delujejo pošteno,
+        zanesljivo in zakonito, potrebujemo preglednost in razložljivost;
+        javnost bi morala biti sposobna razumeti, kako sistem deluje in kako se
+        sprejemajo odločitve, ki vplivajo na njihova življenja.
+      </p>
+      <p>
+        Do sedaj ni bilo na voljo sistematično zbranih informacij o tem, kako in
+        zakaj javni organi uporabljajo umetnointeligenčne sisteme ali kakšen
+        vpliv imajo na družbo in posameznike.
+      </p>
+      <p>Z Registrom rabe UI nameravamo premostiti to vrzel.</p>
+      {% endblocktranslate %}
+    </div>
+  </div>
+</header>

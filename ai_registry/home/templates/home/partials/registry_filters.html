@@ -1,7 +1,7 @@
 {% load i18n %}
 <div class="registry-filters">
   <div class="filters-row">
-    <div class="filters">
+    <div class="filters-col">
       <button type="button" class="filter-button">
         <span>{% translate "FILTRIRAJ" %}</span>
         <svg
@@ -13,12 +13,12 @@
         </svg>
       </button>
     </div>
-    <div class="info">
+    <div class="info-col">
       {% blocktranslate with amount="8" %}
       <span>Register trenutno vsebuje <em>{{ amount }}</em> sistemov.</span>
       {% endblocktranslate %}
     </div>
-    <div class="sort">
+    <div class="sort-col">
       <button type="button" class="filter-button">
         <span>{% translate "RAZVRSTI PO:" %}</span>
         <strong>obdobju rabe</strong>
