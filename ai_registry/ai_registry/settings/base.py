@@ -108,6 +108,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "sl"
 
+LANGUAGES = [
+    ("sl", "Slovenian"),
+    ("en", "English"),
+]
+
 TIME_ZONE = "Europe/Ljubljana"
 
 USE_I18N = True

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-registry
+spec:
+  selector:
+    app: ai-registry
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-registry-nginx
+spec:
+  selector:
+    app: ai-registry
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
