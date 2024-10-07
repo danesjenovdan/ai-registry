@@ -67,7 +67,7 @@ RUN chown django:django /app
 COPY --chown=django:django ./ai_registry .
 
 # Copy the compiled CSS from the previous image.
-COPY --chown=django:django --from=scss-compile /app/static/css ./home/static/css
+COPY --chown=django:django --from=scss-compile /app/static/css ./home/static/home/css
 
 # Use user "django" to run the build commands below and the server itself.
 USER django
