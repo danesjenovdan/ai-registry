@@ -1,3 +1,26 @@
+# ---------------------------------- WARNING ----------------------------------
+# This file is primarily for production use with k8s
+# See Dockerfile in subdirectories for dev use with docker-compose
+# ---------------------------------- WARNING ----------------------------------
+
+# ---
+# build scss in separate image
+# ---
+FROM node:22-alpine as css-compile
+
+WORKDIR /app
+
+COPY ./scss-compile/package.json ./scss-compile/yarn.lock ./
+RUN yarn
+
+COPY ./scss-compile/scss ./scss
+COPY ./scss-compile/.browserslistrc ./
+
+RUN yarn build
+
+# ---
+# django image
+# ---
 # Use an official Python runtime based on Debian 12 "bookworm" as a parent image.
 FROM python:3.12-slim-bookworm
 
@@ -31,7 +54,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
 RUN pip install "gunicorn==23.0.0"
 
 # Install the project requirements.
-COPY requirements.txt /
+COPY ./ai_registry/requirements.txt /
 RUN pip install -r /requirements.txt
 
 # Use /app folder as a directory where the source code is stored.
@@ -41,7 +64,10 @@ WORKDIR /app
 RUN chown django:django /app
 
 # Copy the source code of the project into the container.
-COPY --chown=django:django . .
+COPY --chown=django:django ./ai_registry .
+
+# Copy the compiled CSS from the previous image.
+COPY --chown=django:django --from=scss-compile /app/static/css ./home/static/css
 
 # Use user "django" to run the build commands below and the server itself.
 USER django
@@ -49,13 +75,4 @@ USER django
 # Compile locale files.
 RUN python manage.py compilemessages
 
-# Runtime command that executes when "docker run" is called, it does the
-# following:
-#   1. Migrate the database.
-#   2. Start the application server.
-# WARNING:
-#   Migrating database at the same time as starting the server IS NOT THE BEST
-#   PRACTICE. The database should be migrated manually or using the release
-#   phase facilities of your hosting platform. This is used only so the
-#   Django instance can be started with a simple "docker run" command.
-CMD set -xe; python manage.py migrate --noinput; gunicorn ai_registry.wsgi:application
+CMD gunicorn ai_registry.wsgi:application -b 0.0.0.0:8000 --log-level DEBUG
