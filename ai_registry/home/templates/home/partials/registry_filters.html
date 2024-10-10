@@ -14,7 +14,7 @@
       </button>
     </div>
     <div class="info-col">
-      {% blocktranslate count amount=entries|length %}
+      {% blocktranslate count amount=entries.paginator.count %}
       <span>Register trenutno vsebuje <em>{{ amount }}</em> sistem.</span>
       {% plural %}
       <span>Register trenutno vsebuje <em>{{ amount }}</em> sistemov.</span>

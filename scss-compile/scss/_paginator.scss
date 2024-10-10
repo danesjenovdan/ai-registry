@@ -16,20 +16,28 @@
     font-size: 0.75rem;
     line-height: 1;
     text-decoration: none;
+    opacity: 0.5;
+    cursor: default;
 
     &.active {
       background: var(--accent-color);
       font-weight: 700;
-    }
-
-    &:hover {
-      background: var(--bg-color-dark);
-      color: var(--bg-color-light);
+      opacity: 1;
     }
 
     svg {
       width: auto;
       height: 45%;
+    }
+  }
+
+  a.page-link {
+    opacity: 1;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--bg-color-dark);
+      color: var(--bg-color-light);
     }
   }
 
