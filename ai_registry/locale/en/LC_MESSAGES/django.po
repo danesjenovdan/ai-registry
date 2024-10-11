@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 00:01+0200\n"
+"POT-Creation-Date: 2024-10-11 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,43 +90,39 @@ msgstr ""
 msgid "Komentarji o ceni"
 msgstr ""
 
-#: home/models.py:76
-msgid "Viri podatkov, ki jih uporablja"
-msgstr ""
-
-#: home/models.py:81
+#: home/models.py:77
 msgid "Trajanje licence (če kupljeno)"
 msgstr ""
 
-#: home/models.py:85
+#: home/models.py:81
 msgid "Analiza učinka na človekove pravice opravljena"
 msgstr ""
 
-#: home/models.py:89
+#: home/models.py:85
 msgid "Komentarji analize učinka na človekove pravice"
 msgstr ""
 
-#: home/models.py:93
+#: home/models.py:89
 msgid "Analiza učinka na osebne podatke opravljena"
 msgstr ""
 
-#: home/models.py:97
+#: home/models.py:93
 msgid "Komentarji analize učinka na osebne podatke"
 msgstr ""
 
-#: home/models.py:101
+#: home/models.py:97
 msgid "Dodatni komentarji"
 msgstr ""
 
-#: home/models.py:102
+#: home/models.py:98
 msgid "Interno"
 msgstr ""
 
-#: home/models.py:109
+#: home/models.py:105
 msgid "Vnos v register"
 msgstr ""
 
-#: home/models.py:110
+#: home/models.py:106
 msgid "Vnosi v register"
 msgstr ""
 
@@ -182,7 +178,7 @@ msgid ""
 "        "
 msgstr ""
 
-#: home/templates/home/partials/footer.html:35
+#: home/templates/home/partials/footer.html:38
 msgid ""
 "\n"
 "        <p>\n"
@@ -198,23 +194,23 @@ msgid ""
 "        "
 msgstr ""
 
-#: home/templates/home/partials/footer.html:49
+#: home/templates/home/partials/footer.html:52
 msgid "Podpri naše delo."
 msgstr ""
 
-#: home/templates/home/partials/footer.html:56
+#: home/templates/home/partials/footer.html:59
 msgid "DONIRAJ"
 msgstr ""
 
-#: home/templates/home/partials/footer.html:69
+#: home/templates/home/partials/footer.html:72
 msgid "Te zanima, kaj delamo? Naroči se na Občasnik!"
 msgstr ""
 
-#: home/templates/home/partials/footer.html:73
+#: home/templates/home/partials/footer.html:76
 msgid "VPIŠI SVOJ E-NASLOV"
 msgstr ""
 
-#: home/templates/home/partials/footer.html:81
+#: home/templates/home/partials/footer.html:84
 msgid ""
 "\n"
 "                <span>\n"
@@ -224,7 +220,7 @@ msgid ""
 "                "
 msgstr ""
 
-#: home/templates/home/partials/footer.html:92
+#: home/templates/home/partials/footer.html:95
 msgid "NAROČI SE"
 msgstr ""
 
@@ -271,53 +267,53 @@ msgid ""
 msgstr ""
 
 #: home/templates/home/partials/registry_entry.html:16
-msgid "Viri:"
-msgstr ""
-
-#: home/templates/home/partials/registry_entry.html:33
 msgid "Institucija:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:40
+#: home/templates/home/partials/registry_entry.html:23
 msgid "Področje:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:47
+#: home/templates/home/partials/registry_entry.html:30
 msgid "Oznake:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:56
+#: home/templates/home/partials/registry_entry.html:39
 msgid "Razvijalci:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:63
+#: home/templates/home/partials/registry_entry.html:46
 msgid "Cena:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:70
+#: home/templates/home/partials/registry_entry.html:53
 msgid "Vir podatkov:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:77
+#: home/templates/home/partials/registry_entry.html:60
 msgid "Trajanje licence:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:85
+#: home/templates/home/partials/registry_entry.html:68
 msgid "Analiza učinka na človekove pravice opravljena:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:89
-#: home/templates/home/partials/registry_entry.html:100
+#: home/templates/home/partials/registry_entry.html:72
+#: home/templates/home/partials/registry_entry.html:83
 msgid "Da"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:90
-#: home/templates/home/partials/registry_entry.html:101
+#: home/templates/home/partials/registry_entry.html:73
+#: home/templates/home/partials/registry_entry.html:84
 msgid "Ne"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:96
+#: home/templates/home/partials/registry_entry.html:79
 msgid "Analiza učinka na osebne podatke opravljena:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:94
+msgid "Viri:"
 msgstr ""
 
 #: home/templates/home/partials/registry_entry.html:113

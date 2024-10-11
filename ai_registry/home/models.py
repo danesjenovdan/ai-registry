@@ -71,10 +71,6 @@ class RegistryEntry(Timestamped):
         blank=True,
         verbose_name=_("Komentarji o ceni"),
     )
-    data_sources = models.TextField(
-        blank=True,
-        verbose_name=_("Viri podatkov, ki jih uporablja"),
-    )
     license_duration = models.CharField(
         max_length=50,
         blank=True,
