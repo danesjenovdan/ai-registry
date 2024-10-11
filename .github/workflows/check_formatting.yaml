@@ -22,8 +22,8 @@ jobs:
 
       - name: Check formatting with black
         run: |
-          black . --check --diff
+          (cd ./ai_registry && black . --check --diff)
 
       - name: Check formatting with isort
         run: |
-          isort . --check --diff --profile black
+          (cd ./ai_registry && isort . --check --diff --profile black)
