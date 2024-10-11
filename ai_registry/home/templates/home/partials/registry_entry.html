@@ -18,11 +18,13 @@
               <div class="pill">{{ entry.institution }}</div>
             </td>
           </tr>
-          {% endif %} {% if entry.area %}
+          {% endif %} {% if entry.areas.all|length %}
           <tr>
-            <td>{% translate 'Področje:' %}</td>
+            <td>{% translate 'Področja:' %}</td>
             <td>
-              <div class="pill">{{ entry.area }}</div>
+              {% for area in entry.areas.all %}
+              <div class="pill">{{ area.name }}</div>
+              {% endfor %}
             </td>
           </tr>
           {% endif %} {% if entry.tags.all|length %}
