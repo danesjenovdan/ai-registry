@@ -9,24 +9,7 @@
   <hr />
   <div class="entry-collapsible">
     <div class="entry-content">
-      <div>
-        <div class="entry-description">{{ entry.description|linebreaks }}</div>
-        {% if entry.links.all|length %}
-        <div class="entry-sources">
-          <div class="entry-sources-title">{% translate 'Viri:' %}</div>
-          <ul>
-            {% for link in entry.links.all %}
-            <li>
-              <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
-                >{{ link.description }}</a
-              >
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-      </div>
-      <div>
+      <div class="entry-table-col">
         <table>
           {% if entry.institution %}
           <tr>
@@ -103,6 +86,23 @@
             </td>
           </tr>
         </table>
+      </div>
+      <div class="entry-text-col">
+        <div class="entry-description">{{ entry.description|linebreaks }}</div>
+        {% if entry.links.all|length %}
+        <div class="entry-sources">
+          <div class="entry-sources-title">{% translate 'Viri:' %}</div>
+          <ul>
+            {% for link in entry.links.all %}
+            <li>
+              <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+                >{{ link.description }}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>

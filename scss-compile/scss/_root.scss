@@ -10,6 +10,11 @@
   --border-color-alt: #545454;
   --accent-color: #b8ffb8;
 
+  --page-gutter: 1rem;
   --page-width: 80rem;
   --footer-width: calc(var(--page-width) - 9rem);
+
+  @include media-breakpoint-up(md) {
+    --page-gutter: 2.5rem;
+  }
 }
