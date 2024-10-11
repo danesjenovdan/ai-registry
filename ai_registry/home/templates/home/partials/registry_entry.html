@@ -9,24 +9,7 @@
   <hr />
   <div class="entry-collapsible">
     <div class="entry-content">
-      <div>
-        <div class="entry-description">{{ entry.description|linebreaks }}</div>
-        {% if entry.links.all|length %}
-        <div class="entry-sources">
-          <div class="entry-sources-title">{% translate 'Viri:' %}</div>
-          <ul>
-            {% for link in entry.links.all %}
-            <li>
-              <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
-                >{{ link.description }}</a
-              >
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-      </div>
-      <div>
+      <div class="entry-table-col">
         <table>
           {% if entry.institution %}
           <tr>
@@ -35,11 +18,13 @@
               <div class="pill">{{ entry.institution }}</div>
             </td>
           </tr>
-          {% endif %} {% if entry.area %}
+          {% endif %} {% if entry.areas.all|length %}
           <tr>
-            <td>{% translate 'Področje:' %}</td>
+            <td>{% translate 'Področja:' %}</td>
             <td>
-              <div class="pill">{{ entry.area }}</div>
+              {% for area in entry.areas.all %}
+              <div class="pill">{{ area.name }}</div>
+              {% endfor %}
             </td>
           </tr>
           {% endif %} {% if entry.tags.all|length %}
@@ -63,13 +48,6 @@
             <td>{% translate 'Cena:' %}</td>
             <td>
               <div class="pill">{{ entry.cost }}</div>
-            </td>
-          </tr>
-          {% endif %} {% if entry.data_sources %}
-          <tr>
-            <td>{% translate 'Vir podatkov:' %}</td>
-            <td>
-              <div class="pill">{{ entry.data_sources }}</div>
             </td>
           </tr>
           {% endif %} {% if entry.license_duration %}
@@ -103,6 +81,23 @@
             </td>
           </tr>
         </table>
+      </div>
+      <div class="entry-text-col">
+        <div class="entry-description">{{ entry.description|linebreaks }}</div>
+        {% if entry.links.all|length %}
+        <div class="entry-sources">
+          <div class="entry-sources-title">{% translate 'Viri:' %}</div>
+          <ul>
+            {% for link in entry.links.all %}
+            <li>
+              <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+                >{{ link.description }}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>

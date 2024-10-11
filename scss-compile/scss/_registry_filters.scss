@@ -1,9 +1,20 @@
 .registry-filters {
-  margin-block: 2rem;
+  margin-block: 1.5rem;
+
+  @include media-breakpoint-up(md) {
+    margin-block: 2rem;
+  }
 
   .filters-row {
-    display: flex;
-    align-items: center;
+    display: grid;
+    row-gap: 0.5rem;
+    grid-template-columns: auto auto;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
 
     .filter-button {
       padding: 0.1em 0.4em 0.2em;
@@ -41,7 +52,9 @@
 
     .filters-col,
     .sort-col {
-      flex: 1;
+      @include media-breakpoint-up(md) {
+        flex: 1;
+      }
     }
 
     .sort-col {
@@ -49,11 +62,16 @@
     }
 
     .info-col {
-      flex: 3;
+      grid-row: 1;
+      grid-column: 1 / -1;
       text-align: center;
       font-family: var(--font-main);
       font-size: 1.3rem;
       line-height: 1.1;
+
+      @include media-breakpoint-up(md) {
+        flex: 3;
+      }
 
       em {
         padding: 0.08em 0.16em;

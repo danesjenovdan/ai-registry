@@ -5,14 +5,23 @@ footer.page-footer {
 
   .footer-content {
     display: flex;
-    gap: 4.5rem;
+    flex-direction: column;
 
-    .footer-description {
-      flex: 2;
-    }
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      gap: 4.5rem;
 
-    .footer-support {
-      flex: 1;
+      .footer-description {
+        flex: 2;
+      }
+
+      .footer-support {
+        flex: 1;
+      }
+
+      .footer-separator {
+        display: none;
+      }
     }
 
     h3 {

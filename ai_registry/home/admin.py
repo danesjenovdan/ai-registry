@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
-from .models import Link, RegistryEntry
+from .models import AreaTag, Link, RegistryEntry
 
 
 class LinkAdmin(admin.TabularInline):
@@ -22,10 +22,9 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                     # "links",
                     "time_in_use",
                     "institution",
-                    "area",
+                    "areas",
                     "tags",
                     "developers",
-                    "data_sources",
                     "license_duration",
                 ]
             },
@@ -62,3 +61,4 @@ class RegistryEntryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(RegistryEntry, RegistryEntryAdmin)
+admin.site.register(AreaTag)

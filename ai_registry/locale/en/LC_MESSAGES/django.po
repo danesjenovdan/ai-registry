@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-04 15:30+0200\n"
+"POT-Creation-Date: 2024-10-11 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,49 +90,51 @@ msgstr ""
 msgid "Komentarji o ceni"
 msgstr ""
 
-#: home/models.py:76
-msgid "Viri podatkov, ki jih uporablja"
-msgstr ""
-
-#: home/models.py:81
+#: home/models.py:77
 msgid "Trajanje licence (če kupljeno)"
 msgstr ""
 
-#: home/models.py:85
+#: home/models.py:81
 msgid "Analiza učinka na človekove pravice opravljena"
 msgstr ""
 
-#: home/models.py:89
+#: home/models.py:85
 msgid "Komentarji analize učinka na človekove pravice"
 msgstr ""
 
-#: home/models.py:93
+#: home/models.py:89
 msgid "Analiza učinka na osebne podatke opravljena"
 msgstr ""
 
-#: home/models.py:97
+#: home/models.py:93
 msgid "Komentarji analize učinka na osebne podatke"
 msgstr ""
 
-#: home/models.py:101
+#: home/models.py:97
 msgid "Dodatni komentarji"
 msgstr ""
 
-#: home/models.py:102
+#: home/models.py:98
 msgid "Interno"
 msgstr ""
 
-#: home/models.py:109
+#: home/models.py:105
 msgid "Vnos v register"
 msgstr ""
 
-#: home/models.py:110
+#: home/models.py:106
 msgid "Vnosi v register"
 msgstr ""
 
-#: home/templates/home/base.html:6
+#: home/templates/home/base.html:10 home/templates/home/base.html:11
+#: home/templates/home/base.html:12
 #: home/templates/home/partials/home_header.html:4
 msgid "Register rabe UI"
+msgstr ""
+
+#: home/templates/home/base.html:14 home/templates/home/base.html:15
+#: home/templates/home/base.html:16
+msgid "TODO: og description"
 msgstr ""
 
 #: home/templates/home/partials/footer.html:6
@@ -143,36 +145,40 @@ msgstr ""
 msgid ""
 "\n"
 "        <p>\n"
-"          Register predstavlja prvo organizirano zbirko podatkov o uporabi\n"
+"          Register je prva organizirana zbirka podatkov o uporabi\n"
 "          umetnointeligenčnih sistemov v slovenskem javnem sektorju. Podatke "
 "smo\n"
-"          pridobili z raziskavo javno dostopnih virov ter s prošnjami za "
+"          pridobili s preučevanjem javno dostopnih virov in prošnjami za "
 "dostop\n"
-"          do informacij javnega značaja javnim organom.\n"
+"          do informacij javnega značaja, naslovljenimi na javne organe.\n"
 "        </p>\n"
-"        <p>Zbirka podatkov ni končna in jo bomo redno posodabljali.</p>\n"
+"        <p>\n"
+"          Zbirka podatkov ni dokončna, redno jo bomo posodabljali in\n"
+"          dopolnjevali.\n"
+"        </p>\n"
 "        <hr />\n"
 "        <p>\n"
-"          Prizadevamo si za točnost in preverljivost objavljenih informacij, "
-"a\n"
-"          netransparentno delovanje javnih organov predstavlja ključno "
-"omejitev\n"
-"          pri zbiranju podatkov, zato v podatkih obstajajo vrzeli in tudi\n"
-"          pomankljivosti.\n"
+"          Prizadevamo si objavljati točne in preverljive informacije. Vrzeli "
+"ali\n"
+"          napake v registru so posledica netransparentnega delovanja in\n"
+"          pomanjkljivega komuniciranja javnih organov, kar ovira zbiranje\n"
+"          podatkov.\n"
 "        </p>\n"
 "        <p>\n"
-"          Prepričani smo, da obstaja veliko več orodij, za katera še ne "
-"vemo, da\n"
-"          so v uporabi. Če imaš kakršne koli pomembne informacije, ki "
-"trenutno\n"
-"          niso vključene v register, ali pa so naše informacije napačne, se "
-"javi\n"
-"          na <a href=\"mailto:registerUI@djnd.si\">registerUI@djnd.si</a>.\n"
+"          Verjamemo, da slovenski državni organi in institucije uporabljajo "
+"še\n"
+"          druga umetnointeligenčna orodja, o katerih javnost ni obveščena. "
+"Če\n"
+"          imaš kakršnekoli informacije, ki bi morale biti vključene v "
+"register,\n"
+"          ali pa podatke, ki kažejo na morebitne netočnosti v njem, nam piši "
+"na\n"
+"          <a href=\"mailto:registerUI@djnd.si\">registerUI@djnd.si</a>.\n"
 "        </p>\n"
 "        "
 msgstr ""
 
-#: home/templates/home/partials/footer.html:31
+#: home/templates/home/partials/footer.html:38
 msgid ""
 "\n"
 "        <p>\n"
@@ -188,23 +194,23 @@ msgid ""
 "        "
 msgstr ""
 
-#: home/templates/home/partials/footer.html:45
+#: home/templates/home/partials/footer.html:52
 msgid "Podpri naše delo."
 msgstr ""
 
-#: home/templates/home/partials/footer.html:52
+#: home/templates/home/partials/footer.html:59
 msgid "DONIRAJ"
 msgstr ""
 
-#: home/templates/home/partials/footer.html:65
+#: home/templates/home/partials/footer.html:72
 msgid "Te zanima, kaj delamo? Naroči se na Občasnik!"
 msgstr ""
 
-#: home/templates/home/partials/footer.html:69
+#: home/templates/home/partials/footer.html:76
 msgid "VPIŠI SVOJ E-NASLOV"
 msgstr ""
 
-#: home/templates/home/partials/footer.html:77
+#: home/templates/home/partials/footer.html:84
 msgid ""
 "\n"
 "                <span>\n"
@@ -214,7 +220,7 @@ msgid ""
 "                "
 msgstr ""
 
-#: home/templates/home/partials/footer.html:88
+#: home/templates/home/partials/footer.html:95
 msgid "NAROČI SE"
 msgstr ""
 
@@ -223,85 +229,91 @@ msgid ""
 "\n"
 "      <span>\n"
 "        Zbiramo podatke o uporabi umetnointeligenčnih sistemov v slovenskem\n"
-"        javnem sektorju. Zahtevamo več transparentnosti.\n"
+"        javnem sektorju ter na njihovi podlagi ustvarjamo celovit in vsem\n"
+"        dostopen register. Zahtevamo popolno odgovornost in transparentnost "
+"pri\n"
+"        uporabi UI v javnem sektorju.\n"
 "      </span>\n"
 "      "
 msgstr ""
 
-#: home/templates/home/partials/home_header.html:15
+#: home/templates/home/partials/home_header.html:17
 msgid "IŠČI PO REGISTRU"
 msgstr ""
 
-#: home/templates/home/partials/home_header.html:24
+#: home/templates/home/partials/home_header.html:26
 msgid ""
 "\n"
 "      <p>\n"
-"        Če želimo zaupati, da javni avtomatizirani sistemi delujejo "
-"pošteno,\n"
-"        zanesljivo in zakonito, potrebujemo preglednost in razložljivost;\n"
-"        javnost bi morala biti sposobna razumeti, kako sistem deluje in kako "
-"se\n"
-"        sprejemajo odločitve, ki vplivajo na njihova življenja.\n"
+"        Edina pot do vzpostavljanja javnega zaupanja v poštenost, "
+"zanesljivost\n"
+"        in zakonitost avtomatiziranih sistemov, ki so v uporabi v javnem\n"
+"        sektorju, je njihova popolna transparentnost.\n"
 "      </p>\n"
 "      <p>\n"
-"        Do sedaj ni bilo na voljo sistematično zbranih informacij o tem, "
-"kako in\n"
-"        zakaj javni organi uporabljajo umetnointeligenčne sisteme ali "
-"kakšen\n"
-"        vpliv imajo na družbo in posameznike.\n"
+"        Javnost ima pravico do razumljivih in celovitih informacij o "
+"delovanju\n"
+"        teh sistemov ter o načinih, kako organi sprejemajo odločitve, ki\n"
+"        vplivajo na življenja posameznikov.\n"
 "      </p>\n"
-"      <p>Z Registrom rabe UI nameravamo premostiti to vrzel.</p>\n"
+"      <p>\n"
+"        Slovenska javnost doslej ni imela dostopa do sistematično zbranih\n"
+"        informacij o načinih in razlogih za uporabo umetnointeligenčnih "
+"sistemov\n"
+"        v javnem sektorju ter o njihovem vplivu na družbo in posameznike.\n"
+"        Register rabe UI premošča to vrzel.\n"
+"      </p>\n"
 "      "
 msgstr ""
 
 #: home/templates/home/partials/registry_entry.html:16
-msgid "Viri:"
-msgstr ""
-
-#: home/templates/home/partials/registry_entry.html:33
 msgid "Institucija:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:40
+#: home/templates/home/partials/registry_entry.html:23
 msgid "Področje:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:47
+#: home/templates/home/partials/registry_entry.html:30
 msgid "Oznake:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:56
+#: home/templates/home/partials/registry_entry.html:39
 msgid "Razvijalci:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:63
+#: home/templates/home/partials/registry_entry.html:46
 msgid "Cena:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:70
+#: home/templates/home/partials/registry_entry.html:53
 msgid "Vir podatkov:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:77
+#: home/templates/home/partials/registry_entry.html:60
 msgid "Trajanje licence:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:85
+#: home/templates/home/partials/registry_entry.html:68
 msgid "Analiza učinka na človekove pravice opravljena:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:89
-#: home/templates/home/partials/registry_entry.html:100
+#: home/templates/home/partials/registry_entry.html:72
+#: home/templates/home/partials/registry_entry.html:83
 msgid "Da"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:90
-#: home/templates/home/partials/registry_entry.html:101
+#: home/templates/home/partials/registry_entry.html:73
+#: home/templates/home/partials/registry_entry.html:84
 msgid "Ne"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:96
+#: home/templates/home/partials/registry_entry.html:79
 msgid "Analiza učinka na osebne podatke opravljena:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:94
+msgid "Viri:"
 msgstr ""
 
 #: home/templates/home/partials/registry_entry.html:113
