@@ -46,7 +46,23 @@ function toggleRegistryEntries() {
   });
 }
 
+function togglePillTooltips() {
+  const pills = document.querySelectorAll(".pill");
+  pills.forEach((pill) => {
+    pill.addEventListener("mouseenter", () => {
+      const tooltip = pill.querySelector(".pill-tooltip-container");
+      tooltip.style.display = "";
+    });
+
+    pill.addEventListener("mouseleave", () => {
+      const tooltip = pill.querySelector(".pill-tooltip-container");
+      tooltip.style.display = "none";
+    });
+  });
+}
+
 (function main() {
   toggleSortDropdown();
   toggleRegistryEntries();
+  togglePillTooltips();
 })();

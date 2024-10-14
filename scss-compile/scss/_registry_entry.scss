@@ -137,6 +137,7 @@
               }
 
               .pill {
+                position: relative;
                 display: inline-block;
                 margin-block: 0.4rem;
                 padding: 0.3em 0.7em;
@@ -146,6 +147,38 @@
                 font-size: 0.75rem;
                 line-height: 1.2;
                 font-weight: 500;
+
+                &.has-tooltip {
+                  cursor: pointer;
+
+                  &:hover {
+                    background: var(--bg-color-dark);
+                    color: var(--bg-color-light);
+                  }
+
+                  .pill-tooltip-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform: translateY(calc(-100% - 0.25rem));
+                    z-index: 2;
+                    width: 300px;
+                    max-width: 82vw;
+                    pointer-events: none;
+
+                    .pill-tooltip {
+                      display: inline-block;
+                      padding: 0.3em 0.7em;
+                      background: var(--bg-color);
+                      border: 0.5px solid var(--border-color-alt);
+                      border-radius: 1em;
+                      color: var(--bg-color-dark);
+                      text-align: left;
+                      cursor: auto;
+                      pointer-events: auto;
+                    }
+                  }
+                }
               }
             }
           }

@@ -48,6 +48,16 @@
             <td>{% translate 'Cena:' %}</td>
             <td>
               <div class="pill">{{ entry.cost }}</div>
+              {% if entry.cost_comment %}
+              <div class="pill has-tooltip">
+                <span>?</span>
+                <div class="pill-tooltip-container" style="display: none;">
+                  <div class="pill-tooltip">
+                    {{ entry.cost_comment }}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
             </td>
           </tr>
           {% endif %} {% if entry.license_duration %}
@@ -69,6 +79,16 @@
                 {% if entry.human_rights_analysis_done %} {% translate "Da" %}
                 {% else %} {% translate "Ne" %} {% endif %}
               </div>
+              {% if entry.human_rights_analysis_comments %}
+              <div class="pill has-tooltip">
+                <span>?</span>
+                <div class="pill-tooltip-container" style="display: none;">
+                  <div class="pill-tooltip">
+                    {{ entry.human_rights_analysis_comments }}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
             </td>
           </tr>
           <tr>
@@ -80,6 +100,16 @@
                 {% if entry.personal_data_analysis_done %} {% translate "Da" %}
                 {% else %} {% translate "Ne" %} {% endif %}
               </div>
+              {% if entry.personal_data_analysis_comments %}
+              <div class="pill has-tooltip">
+                <span>?</span>
+                <div class="pill-tooltip-container" style="display: none;">
+                  <div class="pill-tooltip">
+                    {{ entry.personal_data_analysis_comments }}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
             </td>
           </tr>
         </table>
