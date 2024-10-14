@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 
-from .models import RegistryEntry
+from .models.registry_entry import RegistryEntry
 
 SORT_OPTIONS = [
     ("time_in_use", _("obdobju rabe")),

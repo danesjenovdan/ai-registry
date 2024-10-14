@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
+from taggit.admin import Tag
 
-from .models import AreaTag, Link, RegistryEntry
+from .models.registry_entry import Link, RegistryEntry
+from .models.tags import AreaTag, GenericTag
+
+# remove the default taggit.Tag model from the admin
+admin.site.unregister(Tag)
 
 
 class LinkAdmin(admin.TabularInline):
@@ -61,4 +66,5 @@ class RegistryEntryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(RegistryEntry, RegistryEntryAdmin)
+admin.site.register(GenericTag)
 admin.site.register(AreaTag)
