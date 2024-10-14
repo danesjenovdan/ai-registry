@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n pagination_tags %}
 <div class="registry-filters">
   <div class="filters-row">
     <div class="filters-col">
@@ -21,10 +21,21 @@
       {% endblocktranslate %}
     </div>
     <div class="sort-col">
-      <button type="button" class="filter-button">
+      <button type="button" class="filter-button sort-button">
         <span>{% translate "RAZVRSTI PO:" %}</span>
-        <strong>obdobju rabe</strong>
+        {% for sort_option in sort_options %}
+          {% if sort_option.0 == sort_query %}
+          <strong>{{ sort_option.1 }}</strong>
+          {% endif %}
+        {% endfor %}
       </button>
+      <div class="sort-options" style="display: none;">
+        {% for sort_option in sort_options %}
+          {% if sort_option.0 != sort_query %}
+          <a href="?{% query_string_replace request sort=sort_option.0 page=1 %}#entries" class="sort-link">{{ sort_option.1 }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
   <hr />
