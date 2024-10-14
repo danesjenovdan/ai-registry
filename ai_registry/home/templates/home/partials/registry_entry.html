@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n pagination_tags %}
 <div class="registry-entry collapsed">
   <div class="entry-header">
     <h2 class="entry-title">
@@ -11,11 +11,17 @@
     <div class="entry-content">
       <div class="entry-table-col">
         <table>
-          {% if entry.institution %}
+          {% if entry.institutions.all|length %}
           <tr>
             <td>{% translate 'Institucija:' %}</td>
             <td>
-              <div class="pill">{{ entry.institution }}</div>
+              {% for institution in entry.institutions.all %}
+              <a
+                href="?{% query_string_replace request institution=institution.slug page=1 %}#entries"
+                class="pill has-link"
+                >{{ institution.name }}</a
+              >
+              {% endfor %}
             </td>
           </tr>
           {% endif %} {% if entry.areas.all|length %}
@@ -23,7 +29,11 @@
             <td>{% translate 'Področja:' %}</td>
             <td>
               {% for area in entry.areas.all %}
-              <div class="pill">{{ area.name }}</div>
+              <a
+                href="?{% query_string_replace request area=area.slug page=1 %}#entries"
+                class="pill has-link"
+                >{{ area.name }}</a
+              >
               {% endfor %}
             </td>
           </tr>
@@ -32,7 +42,11 @@
             <td>{% translate 'Oznake:' %}</td>
             <td>
               {% for tag in entry.tags.all %}
-              <div class="pill">{{ tag.name }}</div>
+              <a
+                href="?{% query_string_replace request tag=tag.slug page=1 %}#entries"
+                class="pill has-link"
+                >{{ tag.name }}</a
+              >
               {% endfor %}
             </td>
           </tr>
@@ -48,6 +62,14 @@
             <td>{% translate 'Cena:' %}</td>
             <td>
               <div class="pill">{{ entry.cost }}</div>
+              {% if entry.cost_comment %}
+              <div class="pill has-tooltip">
+                <span>?</span>
+                <div class="pill-tooltip-container" style="display: none">
+                  <div class="pill-tooltip">{{ entry.cost_comment }}</div>
+                </div>
+              </div>
+              {% endif %}
             </td>
           </tr>
           {% endif %} {% if entry.license_duration %}
@@ -58,6 +80,8 @@
             </td>
           </tr>
           {% endif %}
+        </table>
+        <table>
           <tr>
             <td>
               {% translate 'Analiza učinka na človekove pravice opravljena:' %}
@@ -67,6 +91,16 @@
                 {% if entry.human_rights_analysis_done %} {% translate "Da" %}
                 {% else %} {% translate "Ne" %} {% endif %}
               </div>
+              {% if entry.human_rights_analysis_comments %}
+              <div class="pill has-tooltip">
+                <span>?</span>
+                <div class="pill-tooltip-container" style="display: none">
+                  <div class="pill-tooltip">
+                    {{ entry.human_rights_analysis_comments }}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
             </td>
           </tr>
           <tr>
@@ -78,11 +112,24 @@
                 {% if entry.personal_data_analysis_done %} {% translate "Da" %}
                 {% else %} {% translate "Ne" %} {% endif %}
               </div>
+              {% if entry.personal_data_analysis_comments %}
+              <div class="pill has-tooltip">
+                <span>?</span>
+                <div class="pill-tooltip-container" style="display: none">
+                  <div class="pill-tooltip">
+                    {{ entry.personal_data_analysis_comments }}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
             </td>
           </tr>
         </table>
       </div>
       <div class="entry-text-col">
+        <div class="entry-updated-at">
+          {% translate 'Posodobljeno:' %} {{ entry.updated_at|date:"j. F Y" }}
+        </div>
         <div class="entry-description">{{ entry.description|linebreaks }}</div>
         {% if entry.links.all|length %}
         <div class="entry-sources">

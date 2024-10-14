@@ -1,15 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
-from taggit.models import GenericTaggedItemBase, TagBase, TaggedItemBase
 
-
-class Timestamped(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
+from .base import Timestamped
 
 
 class Link(models.Model):
@@ -29,24 +22,6 @@ class Link(models.Model):
         verbose_name_plural = _("Povezave")
 
 
-class AreaTag(TagBase):
-    class Meta:
-        verbose_name = _("Področje")
-        verbose_name_plural = _("Področja")
-
-
-class TaggedArea(GenericTaggedItemBase):
-    tag = models.ForeignKey(
-        "AreaTag",
-        on_delete=models.CASCADE,
-        related_name="%(app_label)s_%(class)s_items",
-    )
-
-    class Meta:
-        verbose_name = _("Oznaka področja")
-        verbose_name_plural = _("Oznake področij")
-
-
 class RegistryEntry(Timestamped):
     name = models.CharField(max_length=100, verbose_name=_("Ime orodja"))
     purpose = models.CharField(max_length=255, verbose_name=_("Namen orodja"))
@@ -62,18 +37,20 @@ class RegistryEntry(Timestamped):
         blank=True,
         verbose_name=_("Obdobje rabe"),
     )
-    institution = models.CharField(
-        max_length=255,
+    institutions = TaggableManager(
+        through="home.TaggedInstitution",
         blank=True,
-        verbose_name=_("Institucija"),
+        verbose_name=_("Institucije"),
+        help_text=_("Ločene z vejico"),
     )
     areas = TaggableManager(
-        through="TaggedArea",
+        through="home.TaggedArea",
         blank=True,
         verbose_name=_("Področja"),
         help_text=_("Ločena z vejico"),
     )
     tags = TaggableManager(
+        through="home.TaggedGeneric",
         blank=True,
         verbose_name=_("Oznake"),
         help_text=_("Ločene z vejico"),

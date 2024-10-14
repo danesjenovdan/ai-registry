@@ -4,7 +4,11 @@ register = template.Library()
 
 
 @register.simple_tag
-def query_string_replace(request, field, value):
+def query_string_replace(request, **kwargs):
     copied_get = request.GET.copy()
-    copied_get[field] = value
+    for k, v in kwargs.items():
+        if v is None and k in copied_get:
+            del copied_get[k]
+        else:
+            copied_get[k] = v
     return copied_get.urlencode()

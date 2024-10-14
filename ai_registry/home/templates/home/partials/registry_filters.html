@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n pagination_tags %}
 <div class="registry-filters">
   <div class="filters-row">
     <div class="filters-col">
@@ -12,6 +12,50 @@
           <path d="M6 4 .75 7.464V.536L6 4Z" />
         </svg>
       </button>
+      {% if filters.selected_area %}
+      <a href="?{% query_string_replace request area=None page=1 %}#entries" class="filter-button remove-filter-link">
+        <span>{{ filters.selected_area.1 }}</span>
+        <i>&times;</i>
+      </a>
+      {% endif %}
+      {% if filters.selected_tag %}
+      <a href="?{% query_string_replace request tag=None page=1 %}#entries" class="filter-button remove-filter-link">
+        <span>{{ filters.selected_tag.1 }}</span>
+        <i>&times;</i>
+      </a>
+      {% endif %}
+      {% if filters.selected_institution %}
+      <a href="?{% query_string_replace request institution=None page=1 %}#entries" class="filter-button remove-filter-link">
+        <span>{{ filters.selected_institution.1 }}</span>
+        <i>&times;</i>
+      </a>
+      {% endif %}
+      <div class="filter-options" style="display: none;">
+        [todo]areas:
+        {% for area in filters.areas %}
+        <div>
+          <a href="?{% query_string_replace request area=area.0 page=1 %}#entries" class="filter-button filter-link">
+            <span>{{ area.1 }}</span>
+          </a>
+        </div>
+        {% endfor %}
+        [todo]tags:
+        {% for tag in filters.tags %}
+        <div>
+          <a href="?{% query_string_replace request tag=tag.0 page=1 %}#entries" class="filter-button filter-link">
+            <span>{{ tag.1 }}</span>
+          </a>
+        </div>
+        {% endfor %}
+        [todo]institutions:
+        {% for institution in filters.institutions %}
+        <div>
+          <a href="?{% query_string_replace request institution=institution.0 page=1 %}#entries" class="filter-button filter-link">
+            <span>{{ institution.1 }}</span>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
     </div>
     <div class="info-col">
       {% blocktranslate count amount=entries.paginator.count %}
@@ -21,10 +65,21 @@
       {% endblocktranslate %}
     </div>
     <div class="sort-col">
-      <button type="button" class="filter-button">
+      <button type="button" class="filter-button sort-button">
         <span>{% translate "RAZVRSTI PO:" %}</span>
-        <strong>obdobju rabe</strong>
+        {% for sort_option in sort_options %}
+          {% if sort_option.0 == sort_query %}
+          <strong>{{ sort_option.1 }}</strong>
+          {% endif %}
+        {% endfor %}
       </button>
+      <div class="sort-options" style="display: none;">
+        {% for sort_option in sort_options %}
+          {% if sort_option.0 != sort_query %}
+          <a href="?{% query_string_replace request sort=sort_option.0 page=1 %}#entries" class="sort-link">{{ sort_option.1 }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
   <hr />
