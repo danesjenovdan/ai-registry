@@ -3,7 +3,7 @@
 {% if entries.has_other_pages %}
 <div class="paginator">
   {% if entries.has_previous %}
-  <a href="?{% query_string_replace request "page" 1 %}#entries"
+  <a href="?{% query_string_replace request page=1 %}#entries"
   {% else %}
   <span
   {% endif %}
@@ -23,7 +23,7 @@
   {% endif %}
 
   {% if entries.has_previous %}
-  <a href="?{% query_string_replace request "page" entries.previous_page_number %}#entries"
+  <a href="?{% query_string_replace request page=entries.previous_page_number %}#entries"
   {% else %}
   <span
   {% endif %}
@@ -48,13 +48,13 @@
     {% elif page == entries.number %}
       <span class="page-link page-number active">{{ page }}</span>
     {% else %}
-      <a href="?{% query_string_replace request "page" page %}#entries" class="page-link page-number">{{ page }}</a>
+      <a href="?{% query_string_replace request page=page %}#entries" class="page-link page-number">{{ page }}</a>
     {% endif %}
   {% endfor %}
   </div>
 
   {% if entries.has_next %}
-  <a href="?{% query_string_replace request "page" entries.next_page_number %}#entries"
+  <a href="?{% query_string_replace request page=entries.next_page_number %}#entries"
   {% else %}
   <span
   {% endif %}
@@ -73,7 +73,7 @@
   {% endif %}
 
   {% if entries.has_next %}
-  <a href="?{% query_string_replace request "page" entries.paginator.num_pages %}#entries"
+  <a href="?{% query_string_replace request page=entries.paginator.num_pages %}#entries"
   {% else %}
   <span
   {% endif %}
