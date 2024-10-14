@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from taggit.admin import Tag
 
 from .models.registry_entry import Link, RegistryEntry
-from .models.tags import AreaTag, GenericTag
+from .models.tags import AreaTag, GenericTag, InstitutionTag
 
 # remove the default taggit.Tag model from the admin
 admin.site.unregister(Tag)
@@ -26,7 +26,7 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                     "description",
                     # "links",
                     "time_in_use",
-                    "institution",
+                    "institutions",
                     "areas",
                     "tags",
                     "developers",
@@ -68,3 +68,4 @@ class RegistryEntryAdmin(admin.ModelAdmin):
 admin.site.register(RegistryEntry, RegistryEntryAdmin)
 admin.site.register(GenericTag)
 admin.site.register(AreaTag)
+admin.site.register(InstitutionTag)

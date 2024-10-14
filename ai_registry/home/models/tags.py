@@ -13,6 +13,12 @@ class GenericTag(TagBase):
         verbose_name_plural = _("Oznake")
 
 
+class InstitutionTag(TagBase):
+    class Meta:
+        verbose_name = _("Institucija")
+        verbose_name_plural = _("Institucije")
+
+
 class AreaTag(TagBase):
     class Meta:
         verbose_name = _("Področje")
@@ -29,6 +35,18 @@ class TaggedGeneric(GenericTaggedItemBase):
     class Meta:
         verbose_name = _("Oznaka")
         verbose_name_plural = _("Oznake")
+
+
+class TaggedInstitution(GenericTaggedItemBase):
+    tag = models.ForeignKey(
+        InstitutionTag,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_items",
+    )
+
+    class Meta:
+        verbose_name = _("Oznaka institucije")
+        verbose_name_plural = _("Oznake institucij")
 
 
 class TaggedArea(GenericTaggedItemBase):

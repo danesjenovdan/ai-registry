@@ -1,3 +1,14 @@
+function toggleFilterDropdown() {
+  const filters = document.querySelector(".registry-filters");
+  const button = filters.querySelector(".filter-button");
+  const options = filters.querySelector(".filter-options");
+
+  button.addEventListener("click", () => {
+    const isHidden = window.getComputedStyle(options).display === "none";
+    options.style.display = isHidden ? "" : "none";
+  });
+}
+
 function toggleSortDropdown() {
   const filters = document.querySelector(".registry-filters");
   const button = filters.querySelector(".sort-button");
@@ -62,6 +73,7 @@ function togglePillTooltips() {
 }
 
 (function main() {
+  toggleFilterDropdown();
   toggleSortDropdown();
   toggleRegistryEntries();
   togglePillTooltips();

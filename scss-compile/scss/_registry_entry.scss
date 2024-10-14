@@ -148,7 +148,9 @@
                 line-height: 1.2;
                 font-weight: 500;
 
-                &.has-tooltip {
+                &.has-tooltip,
+                &.has-link {
+                  text-decoration: none;
                   cursor: pointer;
 
                   &:hover {

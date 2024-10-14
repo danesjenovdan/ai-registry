@@ -37,10 +37,11 @@ class RegistryEntry(Timestamped):
         blank=True,
         verbose_name=_("Obdobje rabe"),
     )
-    institution = models.CharField(
-        max_length=255,
+    institutions = TaggableManager(
+        through="home.TaggedInstitution",
         blank=True,
-        verbose_name=_("Institucija"),
+        verbose_name=_("Institucije"),
+        help_text=_("Ločene z vejico"),
     )
     areas = TaggableManager(
         through="home.TaggedArea",
