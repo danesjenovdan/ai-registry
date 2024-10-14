@@ -58,6 +58,8 @@
             </td>
           </tr>
           {% endif %}
+        </table>
+        <table>
           <tr>
             <td>
               {% translate 'Analiza učinka na človekove pravice opravljena:' %}
@@ -83,6 +85,9 @@
         </table>
       </div>
       <div class="entry-text-col">
+        <div class="entry-updated-at">
+          {% translate 'Posodobljeno:' %} {{ entry.updated_at|date:"j. F Y" }}
+        </div>
         <div class="entry-description">{{ entry.description|linebreaks }}</div>
         {% if entry.links.all|length %}
         <div class="entry-sources">
