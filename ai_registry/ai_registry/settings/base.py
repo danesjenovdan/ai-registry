@@ -147,3 +147,6 @@ MEDIA_URL = "media/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Use custom tag string parser for Taggit tags that only splits on commas
+TAGGIT_TAGS_FROM_STRING = "home.models.tags.custom_tag_string_parser"

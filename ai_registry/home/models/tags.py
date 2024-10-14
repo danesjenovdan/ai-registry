@@ -3,6 +3,10 @@ from django.utils.translation import gettext_lazy as _
 from taggit.models import GenericTaggedItemBase, TagBase
 
 
+def custom_tag_string_parser(tag_string):
+    return [t.strip(' "') for t in tag_string.split(",") if t.strip(' "')]
+
+
 class GenericTag(TagBase):
     class Meta:
         verbose_name = _("Oznaka")
