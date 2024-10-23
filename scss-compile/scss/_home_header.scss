@@ -18,12 +18,32 @@ header.home-header {
     .header-title {
       margin-bottom: 0.5rem;
       font-family: var(--font-main);
-      font-size: 3rem;
+      font-size: 2.5rem;
       line-height: 1.2;
       font-weight: 500;
 
+      @include media-breakpoint-up(sm) {
+        font-size: 3.1rem;
+      }
+
       @include media-breakpoint-up(md) {
-        font-size: 5rem;
+        font-size: 3.1rem;
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: 3.3rem;
+      }
+
+      @include media-breakpoint-up(xl) {
+        font-size: 4.25rem;
+      }
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
 
