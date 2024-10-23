@@ -5,12 +5,10 @@ DEBUG = bool(os.getenv("DJANGO_DEBUG", False))
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "<TODO>")
 
 ALLOWED_HOSTS = [
-    "ai-registry.lb.djnd.si",
     "registerui.djnd.si",
     "registerui.danesjenovdan.si",
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "https://ai-registry.lb.djnd.si",
     "https://registerui.djnd.si",
     "https://registerui.danesjenovdan.si",
 ]
