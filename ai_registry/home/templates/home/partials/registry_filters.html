@@ -31,7 +31,7 @@
       </a>
       {% endif %}
       <div class="filter-options" style="display: none;">
-        [todo]areas:
+        {% translate 'Področja:' %}
         {% for area in filters.areas %}
         <div>
           <a href="?{% query_string_replace request area=area.0 page=1 %}#entries" class="filter-button filter-link">
@@ -39,7 +39,7 @@
           </a>
         </div>
         {% endfor %}
-        [todo]tags:
+        {% translate 'Oznake:' %}
         {% for tag in filters.tags %}
         <div>
           <a href="?{% query_string_replace request tag=tag.0 page=1 %}#entries" class="filter-button filter-link">
@@ -47,7 +47,7 @@
           </a>
         </div>
         {% endfor %}
-        [todo]institutions:
+        {% translate 'Institucije:' %}
         {% for institution in filters.institutions %}
         <div>
           <a href="?{% query_string_replace request institution=institution.0 page=1 %}#entries" class="filter-button filter-link">
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="info-col">
-      {% blocktranslate count amount=entries.paginator.count %}
+      {% blocktranslate count amount=all_entries_count %}
       <span>Register trenutno vsebuje <em>{{ amount }}</em> sistem.</span>
       {% plural %}
       <span>Register trenutno vsebuje <em>{{ amount }}</em> sistemov.</span>

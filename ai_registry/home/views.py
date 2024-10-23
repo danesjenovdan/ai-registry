@@ -38,6 +38,7 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         entries = RegistryEntry.objects.all()
+        all_entries_count = entries.count()
 
         areas, selected_area = _get_tags(self.request, AreaTag, "area", entries)
         tags, selected_tag = _get_tags(self.request, GenericTag, "tag", entries)
@@ -76,6 +77,7 @@ class HomeView(TemplateView):
             on_ends=0,
         )
 
+        context["all_entries_count"] = all_entries_count
         context["entries"] = page_obj
         context["sort_query"] = sort_query
         context["sort_options"] = SORT_OPTIONS
