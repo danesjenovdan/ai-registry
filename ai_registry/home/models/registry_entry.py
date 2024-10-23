@@ -53,19 +53,19 @@ class RegistryEntry(Timestamped):
         through="home.TaggedInstitution",
         blank=True,
         verbose_name=_("Institucije"),
-        help_text=_("Ločene z vejico"),
+        help_text=_("Ločene s podpičjem"),
     )
     areas = TaggableManager(
         through="home.TaggedArea",
         blank=True,
         verbose_name=_("Področja"),
-        help_text=_("Ločena z vejico"),
+        help_text=_("Ločena s podpičjem"),
     )
     tags = TaggableManager(
         through="home.TaggedGeneric",
         blank=True,
         verbose_name=_("Oznake"),
-        help_text=_("Ločene z vejico"),
+        help_text=_("Ločene s podpičjem"),
     )
     developers = models.CharField(
         max_length=255,
