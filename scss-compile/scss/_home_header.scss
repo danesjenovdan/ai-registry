@@ -2,11 +2,11 @@ header.home-header {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-block: 2rem 4rem;
+  padding-block: 2rem 4rem;
 
   @include media-breakpoint-up(md) {
     flex-direction: row;
-    margin-block: 4.5rem 8.5rem;
+    padding-block: 4.5rem 8.5rem;
   }
 
   .title-col,
