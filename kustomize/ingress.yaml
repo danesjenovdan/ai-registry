@@ -10,9 +10,31 @@ spec:
   tls:
     - hosts:
         - ai-registry.lb.djnd.si
+        - registerui.djnd.si
+        - registerui.danesjenovdan.si
       secretName: ai-registry-tls
   rules:
     - host: ai-registry.lb.djnd.si
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ai-registry
+                port:
+                  number: 8000
+    - host: registerui.djnd.si
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ai-registry
+                port:
+                  number: 8000
+    - host: registerui.danesjenovdan.si
       http:
         paths:
           - path: /
