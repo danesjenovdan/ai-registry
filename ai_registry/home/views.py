@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 
@@ -57,6 +58,15 @@ class HomeView(TemplateView):
 
         entries = entries.order_by(f"-{sort_query}", "id")
 
+        search = self.request.GET.get("search", "")
+        if search:
+            entries = entries.filter(
+                Q(name__icontains=search)
+                | Q(purpose__icontains=search)
+                | Q(description__icontains=search)
+                | Q(developers__icontains=search)
+            )
+
         page_query = self.request.GET.get("page", "1")
         paginator = Paginator(entries, 10)
         page_obj = paginator.get_page(page_query)
@@ -77,5 +87,6 @@ class HomeView(TemplateView):
             "selected_tag": selected_tag,
             "selected_institution": selected_institution,
         }
+        context["search"] = search
 
         return context

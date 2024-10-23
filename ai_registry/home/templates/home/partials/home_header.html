@@ -15,10 +15,12 @@
       {% endblocktranslate %}
     </p>
     <hr />
-    <label class="header-search">
-      <span>{% translate "IŠČI PO REGISTRU" %}</span>
-      <input type="text" />
-    </label>
+    <form method="get" action="#entries">
+      <label class="header-search">
+        <span>{% translate "IŠČI PO REGISTRU" %}</span>
+        <input type="text" name="search" id="search" value="{{ search }}" />
+      </label>
+    </form>
   </div>
   <div class="info-col">
     <div class="header-image">
