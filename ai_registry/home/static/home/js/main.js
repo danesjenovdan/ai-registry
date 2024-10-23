@@ -17,7 +17,13 @@ function toggleFilterDropdown() {
 
   button.addEventListener("click", () => {
     const isHidden = window.getComputedStyle(options).display === "none";
-    options.style.display = isHidden ? "" : "none";
+    if (isHidden) {
+      options.style.display = "";
+      button.classList.add("active");
+    } else {
+      options.style.display = "none";
+      button.classList.remove("active");
+    }
   });
 }
 

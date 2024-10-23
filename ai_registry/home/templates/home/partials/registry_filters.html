@@ -31,30 +31,32 @@
       </a>
       {% endif %}
       <div class="filter-options" style="display: none;">
-        {% translate 'Področja:' %}
-        {% for area in filters.areas %}
-        <div>
-          <a href="?{% query_string_replace request area=area.0 page=1 %}#entries" class="filter-button filter-link">
-            <span>{{ area.1 }}</span>
-          </a>
+        <div class="limit-height">
+          {% translate 'Področja:' %}
+          {% for area in filters.areas %}
+          <div>
+            <a href="?{% query_string_replace request area=area.0 page=1 %}#entries" class="filter-button filter-link">
+              <span>{{ area.1 }}</span>
+            </a>
+          </div>
+          {% endfor %}
+          {% translate 'Oznake:' %}
+          {% for tag in filters.tags %}
+          <div>
+            <a href="?{% query_string_replace request tag=tag.0 page=1 %}#entries" class="filter-button filter-link">
+              <span>{{ tag.1 }}</span>
+            </a>
+          </div>
+          {% endfor %}
+          {% translate 'Institucije:' %}
+          {% for institution in filters.institutions %}
+          <div>
+            <a href="?{% query_string_replace request institution=institution.0 page=1 %}#entries" class="filter-button filter-link">
+              <span>{{ institution.1 }}</span>
+            </a>
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-        {% translate 'Oznake:' %}
-        {% for tag in filters.tags %}
-        <div>
-          <a href="?{% query_string_replace request tag=tag.0 page=1 %}#entries" class="filter-button filter-link">
-            <span>{{ tag.1 }}</span>
-          </a>
-        </div>
-        {% endfor %}
-        {% translate 'Institucije:' %}
-        {% for institution in filters.institutions %}
-        <div>
-          <a href="?{% query_string_replace request institution=institution.0 page=1 %}#entries" class="filter-button filter-link">
-            <span>{{ institution.1 }}</span>
-          </a>
-        </div>
-        {% endfor %}
       </div>
     </div>
     <div class="info-col">
