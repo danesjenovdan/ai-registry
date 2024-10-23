@@ -137,7 +137,10 @@
           <ul>
             {% for link in entry.links.all %}
             <li>
-              <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+              <a
+                href="{% if link.url %}{{ link.url }}{% elif link.file %}{{ link.file.url }}{% else %}#{% endif %}"
+                target="_blank"
+                rel="noopener noreferrer"
                 >{{ link.description }}</a
               >
             </li>

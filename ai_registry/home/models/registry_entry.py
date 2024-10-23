@@ -6,8 +6,20 @@ from .base import Timestamped
 
 
 class Link(models.Model):
-    url = models.URLField(verbose_name=_("Povezava"))
-    description = models.CharField(max_length=255, verbose_name=_("Opis povezave"))
+    url = models.URLField(
+        null=True,
+        blank=True,
+        verbose_name=_("Povezava"),
+    )
+    file = models.FileField(
+        null=True,
+        blank=True,
+        verbose_name=_("Datoteka"),
+    )
+    description = models.CharField(
+        max_length=255,
+        verbose_name=_("Opis povezave"),
+    )
     registy_entry = models.ForeignKey(
         "RegistryEntry",
         on_delete=models.CASCADE,
