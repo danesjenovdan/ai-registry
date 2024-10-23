@@ -76,3 +76,11 @@ a {
     padding-block: 2.5rem 5.2rem;
   }
 }
+
+.bottom-container {
+  padding-bottom: 1.25rem;
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
