@@ -4,8 +4,14 @@ DEBUG = bool(os.getenv("DJANGO_DEBUG", False))
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "<TODO>")
 
-ALLOWED_HOSTS = ["ai-registry.lb.djnd.si"]
-CSRF_TRUSTED_ORIGINS = ["https://ai-registry.lb.djnd.si"]
+ALLOWED_HOSTS = [
+    "registerui.djnd.si",
+    "registerui.danesjenovdan.si",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://registerui.djnd.si",
+    "https://registerui.danesjenovdan.si",
+]
 
 STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", BASE_DIR / "staticfiles")
 STATIC_URL = os.getenv("DJANGO_STATIC_URL_BASE", "static/")

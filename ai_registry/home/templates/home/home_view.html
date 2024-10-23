@@ -2,20 +2,23 @@
 
 {% block content %}
   <main class="page-content">
-    <div class="container">
-      {% include "home/partials/home_header.html" %}
-
-      <a name="entries" class="named-anchor"></a>
-      <div class="registry-filters">
+    <div class="page-bg-gradient">
+      <div class="container">
+        {% include "home/partials/home_header.html" %}
+      </div>
+    </div>
+    <div class="page-bg-solid">
+      <div class="container">
+        <a name="entries" class="named-anchor"></a>
         {% include "home/partials/registry_filters.html" %}
-      </div>
-      <div class="registry-entries">
-      {% for entry in entries %}
-        {% include "home/partials/registry_entry.html" %}
-      {% endfor %}
-      </div>
-      <div class="paginator-container">
-        {% include "home/partials/paginator.html" %}
+        <div class="registry-entries">
+        {% for entry in entries %}
+          {% include "home/partials/registry_entry.html" %}
+        {% endfor %}
+        </div>
+        <div class="paginator-container">
+          {% include "home/partials/paginator.html" %}
+        </div>
       </div>
     </div>
   </main>

@@ -1,7 +1,9 @@
 {% load static i18n %}
 <header class="home-header">
   <div class="title-col">
-    <h1 class="header-title">{% translate "Register rabe UI" %}</h1>
+    <h1 class="header-title">
+      <a href="/">{% translate "Register rabe UI" %}</a>
+    </h1>
     <p class="header-subtitle">
       {% blocktranslate %}
       <span>
@@ -13,10 +15,12 @@
       {% endblocktranslate %}
     </p>
     <hr />
-    <label class="header-search">
-      <span>{% translate "IŠČI PO REGISTRU" %}</span>
-      <input type="text" />
-    </label>
+    <form method="get" action="#entries">
+      <label class="header-search">
+        <span>{% translate "IŠČI PO REGISTRU" %}</span>
+        <input type="text" name="search" id="search" value="{{ search }}" />
+      </label>
+    </form>
   </div>
   <div class="info-col">
     <div class="header-image">

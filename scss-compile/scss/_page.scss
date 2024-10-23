@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(
     to bottom,
-    var(--bg-color) 0%,
-    var(--bg-color) 50%,
+    var(--bg-color-light) 0%,
+    var(--bg-color-light) 50%,
     var(--bg-color-alt) 50%,
     var(--bg-color-alt) 100%
   );
@@ -16,7 +16,18 @@ body {
 
   main.page-content {
     flex: 1;
-    background: var(--bg-color);
+
+    .page-bg-gradient {
+      background: linear-gradient(
+        to bottom,
+        var(--bg-color-light) 0%,
+        var(--bg-color) 100%
+      );
+    }
+
+    .page-bg-solid {
+      background: var(--bg-color);
+    }
   }
 
   footer.page-footer {
@@ -59,9 +70,9 @@ a {
 }
 
 .paginator-container {
-  margin-block: 1.5rem 2.5rem;
+  padding-block: 1.5rem 2.5rem;
 
   @include media-breakpoint-up(md) {
-    margin-block: 2.5rem 5.2rem;
+    padding-block: 2.5rem 5.2rem;
   }
 }

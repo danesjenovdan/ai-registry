@@ -6,8 +6,20 @@ from .base import Timestamped
 
 
 class Link(models.Model):
-    url = models.URLField(verbose_name=_("Povezava"))
-    description = models.CharField(max_length=255, verbose_name=_("Opis povezave"))
+    url = models.URLField(
+        null=True,
+        blank=True,
+        verbose_name=_("Povezava"),
+    )
+    file = models.FileField(
+        null=True,
+        blank=True,
+        verbose_name=_("Datoteka"),
+    )
+    description = models.CharField(
+        max_length=255,
+        verbose_name=_("Opis povezave"),
+    )
     registy_entry = models.ForeignKey(
         "RegistryEntry",
         on_delete=models.CASCADE,
@@ -41,19 +53,19 @@ class RegistryEntry(Timestamped):
         through="home.TaggedInstitution",
         blank=True,
         verbose_name=_("Institucije"),
-        help_text=_("Ločene z vejico"),
+        help_text=_("Ločene s podpičjem"),
     )
     areas = TaggableManager(
         through="home.TaggedArea",
         blank=True,
         verbose_name=_("Področja"),
-        help_text=_("Ločena z vejico"),
+        help_text=_("Ločena s podpičjem"),
     )
     tags = TaggableManager(
         through="home.TaggedGeneric",
         blank=True,
         verbose_name=_("Oznake"),
-        help_text=_("Ločene z vejico"),
+        help_text=_("Ločene s podpičjem"),
     )
     developers = models.CharField(
         max_length=255,

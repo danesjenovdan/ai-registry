@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 13:06+0200\n"
+"POT-Creation-Date: 2024-10-23 18:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,117 +19,154 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
 
-#: home/admin.py:34
+#: home/admin.py:38
 msgid "CENA"
 msgstr ""
 
-#: home/admin.py:43
+#: home/admin.py:47
 msgid "ANALIZE"
 msgstr ""
 
-#: home/admin.py:54
+#: home/admin.py:58
 msgid "INTERNO"
 msgstr ""
 
-#: home/models.py:15 home/models.py:27
+#: home/models/registry_entry.py:12 home/models/registry_entry.py:33
 msgid "Povezava"
 msgstr ""
 
-#: home/models.py:16
+#: home/models/registry_entry.py:17
+msgid "Datoteka"
+msgstr ""
+
+#: home/models/registry_entry.py:21
 msgid "Opis povezave"
 msgstr ""
 
-#: home/models.py:28
+#: home/models/registry_entry.py:34
 msgid "Povezave"
 msgstr ""
 
-#: home/models.py:32
+#: home/models/registry_entry.py:38
 msgid "Ime orodja"
 msgstr ""
 
-#: home/models.py:33
+#: home/models/registry_entry.py:39
 msgid "Namen orodja"
 msgstr ""
 
-#: home/models.py:36
+#: home/models/registry_entry.py:42
 msgid "Opis"
 msgstr ""
 
-#: home/models.py:37
+#: home/models/registry_entry.py:43
 msgid "Kakšne odločitve se sprejemajo, kaj dela ta algoritem"
 msgstr ""
 
-#: home/models.py:44
+#: home/models/registry_entry.py:50
 msgid "Obdobje rabe"
 msgstr ""
 
-#: home/models.py:49
-msgid "Institucija"
+#: home/models/registry_entry.py:55 home/models/tags.py:19
+msgid "Institucije"
 msgstr ""
 
-#: home/models.py:53
-msgid "Področje rabe"
+#: home/models/registry_entry.py:56 home/models/registry_entry.py:68
+msgid "Ločene s podpičjem"
 msgstr ""
 
-#: home/models.py:57
+#: home/models/registry_entry.py:61 home/models/tags.py:25
+msgid "Področja"
+msgstr ""
+
+#: home/models/registry_entry.py:62
+msgid "Ločena s podpičjem"
+msgstr ""
+
+#: home/models/registry_entry.py:67 home/models/tags.py:13
+#: home/models/tags.py:37
 msgid "Oznake"
 msgstr ""
 
-#: home/models.py:58
-msgid "Ločene z vejico"
-msgstr ""
-
-#: home/models.py:63
+#: home/models/registry_entry.py:73
 msgid "Razvijalci"
 msgstr ""
 
-#: home/models.py:68
+#: home/models/registry_entry.py:78
 msgid "Cena"
 msgstr ""
 
-#: home/models.py:72
+#: home/models/registry_entry.py:82
 msgid "Komentarji o ceni"
 msgstr ""
 
-#: home/models.py:77
+#: home/models/registry_entry.py:87
 msgid "Trajanje licence (če kupljeno)"
 msgstr ""
 
-#: home/models.py:81
+#: home/models/registry_entry.py:91
 msgid "Analiza učinka na človekove pravice opravljena"
 msgstr ""
 
-#: home/models.py:85
+#: home/models/registry_entry.py:95
 msgid "Komentarji analize učinka na človekove pravice"
 msgstr ""
 
-#: home/models.py:89
+#: home/models/registry_entry.py:99
 msgid "Analiza učinka na osebne podatke opravljena"
 msgstr ""
 
-#: home/models.py:93
+#: home/models/registry_entry.py:103
 msgid "Komentarji analize učinka na osebne podatke"
 msgstr ""
 
-#: home/models.py:97
+#: home/models/registry_entry.py:107
 msgid "Dodatni komentarji"
 msgstr ""
 
-#: home/models.py:98
+#: home/models/registry_entry.py:108
 msgid "Interno"
 msgstr ""
 
-#: home/models.py:105
+#: home/models/registry_entry.py:115
 msgid "Vnos v register"
 msgstr ""
 
-#: home/models.py:106
+#: home/models/registry_entry.py:116
 msgid "Vnosi v register"
+msgstr ""
+
+#: home/models/tags.py:12 home/models/tags.py:36
+msgid "Oznaka"
+msgstr ""
+
+#: home/models/tags.py:18
+msgid "Institucija"
+msgstr ""
+
+#: home/models/tags.py:24
+msgid "Področje"
+msgstr ""
+
+#: home/models/tags.py:48
+msgid "Oznaka institucije"
+msgstr ""
+
+#: home/models/tags.py:49
+msgid "Oznake institucij"
+msgstr ""
+
+#: home/models/tags.py:60
+msgid "Oznaka področja"
+msgstr ""
+
+#: home/models/tags.py:61
+msgid "Oznake področij"
 msgstr ""
 
 #: home/templates/home/base.html:10 home/templates/home/base.html:11
 #: home/templates/home/base.html:12
-#: home/templates/home/partials/home_header.html:4
+#: home/templates/home/partials/home_header.html:5
 msgid "Register rabe UI"
 msgstr ""
 
@@ -225,7 +262,7 @@ msgstr ""
 msgid "NAROČI SE"
 msgstr ""
 
-#: home/templates/home/partials/home_header.html:6
+#: home/templates/home/partials/home_header.html:8
 msgid ""
 "\n"
 "      <span>\n"
@@ -238,11 +275,11 @@ msgid ""
 "      "
 msgstr ""
 
-#: home/templates/home/partials/home_header.html:17
+#: home/templates/home/partials/home_header.html:20
 msgid "IŠČI PO REGISTRU"
 msgstr ""
 
-#: home/templates/home/partials/home_header.html:26
+#: home/templates/home/partials/home_header.html:30
 msgid ""
 "\n"
 "      <p>\n"
@@ -271,57 +308,59 @@ msgstr ""
 msgid "Institucija:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:23
-msgid "Področje:"
+#: home/templates/home/partials/registry_entry.html:29
+#: home/templates/home/partials/registry_filters.html:35
+msgid "Področja:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:30
+#: home/templates/home/partials/registry_entry.html:42
+#: home/templates/home/partials/registry_filters.html:43
 msgid "Oznake:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:39
+#: home/templates/home/partials/registry_entry.html:55
 msgid "Razvijalci:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:46
+#: home/templates/home/partials/registry_entry.html:62
 msgid "Cena:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:53
-msgid "Vir podatkov:"
-msgstr ""
-
-#: home/templates/home/partials/registry_entry.html:60
+#: home/templates/home/partials/registry_entry.html:77
 msgid "Trajanje licence:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:68
+#: home/templates/home/partials/registry_entry.html:87
 msgid "Analiza učinka na človekove pravice opravljena:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:72
-#: home/templates/home/partials/registry_entry.html:83
+#: home/templates/home/partials/registry_entry.html:91
+#: home/templates/home/partials/registry_entry.html:112
 msgid "Da"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:73
-#: home/templates/home/partials/registry_entry.html:84
+#: home/templates/home/partials/registry_entry.html:92
+#: home/templates/home/partials/registry_entry.html:113
 msgid "Ne"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:79
+#: home/templates/home/partials/registry_entry.html:108
 msgid "Analiza učinka na osebne podatke opravljena:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:94
+#: home/templates/home/partials/registry_entry.html:131
+msgid "Posodobljeno:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:136
 msgid "Viri:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:113
+#: home/templates/home/partials/registry_entry.html:158
 msgid "ZAPRI -"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:115
+#: home/templates/home/partials/registry_entry.html:160
 msgid "VEČ INFORMACIJ +"
 msgstr ""
 
@@ -329,7 +368,11 @@ msgstr ""
 msgid "FILTRIRAJ"
 msgstr ""
 
-#: home/templates/home/partials/registry_filters.html:17
+#: home/templates/home/partials/registry_filters.html:51
+msgid "Institucije:"
+msgstr ""
+
+#: home/templates/home/partials/registry_filters.html:63
 #, python-format
 msgid ""
 "\n"
@@ -356,6 +399,14 @@ msgstr[3] ""
 "      <span>Register trenutno vsebuje <em>%(amount)s</em> sistemov.</span>\n"
 "      "
 
-#: home/templates/home/partials/registry_filters.html:25
+#: home/templates/home/partials/registry_filters.html:71
 msgid "RAZVRSTI PO:"
+msgstr ""
+
+#: home/views.py:10
+msgid "obdobju rabe"
+msgstr ""
+
+#: home/views.py:11
+msgid "zadnjem vnosu"
 msgstr ""

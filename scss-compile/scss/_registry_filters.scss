@@ -1,8 +1,8 @@
 .registry-filters {
-  margin-block: 1.5rem;
+  padding-bottom: 1.5rem;
 
   @include media-breakpoint-up(md) {
-    margin-block: 2rem;
+    padding-bottom: 2rem;
   }
 
   .filters-row {
@@ -41,6 +41,7 @@
         font-style: normal;
         font-weight: 700;
         line-height: 0.67em;
+        transition: transform 0.2s ease-in-out;
       }
 
       strong {
@@ -52,6 +53,12 @@
       &:hover {
         background: var(--bg-color-dark);
         color: var(--bg-color-light);
+      }
+
+      &.active {
+        svg {
+          transform: rotate(90deg);
+        }
       }
     }
 
@@ -67,11 +74,21 @@
 
       .filter-options {
         position: absolute;
-        bottom: 0;
-        left: 0;
+        bottom: -0.25rem;
+        left: -0.25rem;
         z-index: 2;
         transform: translateY(100%);
-        background: var(--bg-color);
+        padding: 0.875rem;
+        min-width: 180px;
+        background: var(--bg-color-alt2);
+        border: 0.5px solid var(--border-color);
+        border-radius: 10px;
+        box-shadow: 0 0 7px var(--shadow-color);
+
+        .limit-height {
+          max-height: 350px;
+          overflow-y: auto;
+        }
       }
     }
 

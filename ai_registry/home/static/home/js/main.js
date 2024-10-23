@@ -1,3 +1,15 @@
+function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
+//
+
 function toggleFilterDropdown() {
   const filters = document.querySelector(".registry-filters");
   const button = filters.querySelector(".filter-button");
@@ -5,7 +17,13 @@ function toggleFilterDropdown() {
 
   button.addEventListener("click", () => {
     const isHidden = window.getComputedStyle(options).display === "none";
-    options.style.display = isHidden ? "" : "none";
+    if (isHidden) {
+      options.style.display = "";
+      button.classList.add("active");
+    } else {
+      options.style.display = "none";
+      button.classList.remove("active");
+    }
   });
 }
 
@@ -20,7 +38,32 @@ function toggleSortDropdown() {
   });
 }
 
+function checkCollapsibleEntry(entry) {
+  const collapsible = entry.querySelector(".entry-collapsible");
+  const content = entry.querySelector(".entry-content");
+  const actions = entry.querySelector(".entry-actions");
+
+  actions.style.display = "";
+  collapsible.style.height = "";
+  collapsible.offsetHeight; // force reflow
+
+  if (content.offsetHeight < collapsible.offsetHeight) {
+    actions.style.display = "none";
+    collapsible.style.height = "auto";
+  }
+}
+
 function toggleRegistryEntries() {
+  const entries = document.querySelectorAll(".registry-entry");
+  entries.forEach(checkCollapsibleEntry);
+
+  window.addEventListener(
+    "resize",
+    debounce(() => {
+      entries.forEach(checkCollapsibleEntry);
+    })
+  );
+
   // Add event listener to the document and delegate the event to the button.
   // This way we can add new entries to the page without having to add event
   // listeners to each one.
