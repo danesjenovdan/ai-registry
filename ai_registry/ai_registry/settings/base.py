@@ -150,3 +150,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Use custom tag string parser for Taggit tags that only splits on commas
 TAGGIT_TAGS_FROM_STRING = "home.models.tags.custom_tag_string_parser"
+TAGGIT_STRING_FROM_TAGS = "home.models.tags.custom_tag_string_joiner"

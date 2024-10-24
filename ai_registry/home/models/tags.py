@@ -7,6 +7,10 @@ def custom_tag_string_parser(tag_string):
     return [t.strip(' "') for t in tag_string.split(";") if t.strip(' "')]
 
 
+def custom_tag_string_joiner(tags):
+    return "; ".join(t.name for t in tags)
+
+
 class GenericTag(TagBase):
     class Meta:
         verbose_name = _("Oznaka")
