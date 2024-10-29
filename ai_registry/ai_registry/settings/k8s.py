@@ -25,7 +25,7 @@ if os.getenv("DJANGO_ENABLE_S3", False):
     AWS_STORAGE_BUCKET_NAME = os.getenv("DJANGO_AWS_STORAGE_BUCKET_NAME", "djnd")
     AWS_DEFAULT_ACL = "public-read"
     AWS_QUERYSTRING_AUTH = False
-    AWS_LOCATION = os.getenv("DJANGO_AWS_LOCATION", "danesjenovdan")
+    AWS_LOCATION = os.getenv("DJANGO_AWS_LOCATION", "ai-registry")
     AWS_S3_REGION_NAME = os.getenv("DJANGO_AWS_REGION_NAME", "fr-par")
     AWS_S3_ENDPOINT_URL = os.getenv(
         "DJANGO_AWS_S3_ENDPOINT_URL", "https://s3.fr-par.scw.cloud"
