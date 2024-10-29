@@ -101,17 +101,26 @@ function toggleRegistryEntries() {
 }
 
 function togglePillTooltips() {
-  const pills = document.querySelectorAll(".pill");
-  pills.forEach((pill) => {
-    pill.addEventListener("mouseenter", () => {
+  // Add event listener to the document and delegate the event to the element.
+  // This way we can add new entries to the page without having to add event
+  // listeners to each one.
+  document.addEventListener("mouseover", (event) => {
+    const pill = event.target.closest(".pill.has-tooltip");
+    if (pill) {
       const tooltip = pill.querySelector(".pill-tooltip-container");
-      tooltip.style.display = "";
-    });
-
-    pill.addEventListener("mouseleave", () => {
+      if (tooltip) {
+        tooltip.style.display = "";
+      }
+    }
+  });
+  document.addEventListener("mouseout", (event) => {
+    const pill = event.target.closest(".pill.has-tooltip");
+    if (pill) {
       const tooltip = pill.querySelector(".pill-tooltip-container");
-      tooltip.style.display = "none";
-    });
+      if (tooltip) {
+        tooltip.style.display = "none";
+      }
+    }
   });
 }
 
