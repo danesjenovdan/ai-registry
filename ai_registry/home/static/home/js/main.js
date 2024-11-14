@@ -136,6 +136,11 @@ function togglePillTooltips() {
       }
     }
   });
+  document.addEventListener("scroll", () => {
+    if (document.activeElement.matches(".pill.has-tooltip")) {
+      document.activeElement.blur();
+    }
+  });
 }
 
 (function main() {
