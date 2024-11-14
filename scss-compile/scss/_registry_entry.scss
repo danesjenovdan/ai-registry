@@ -213,6 +213,8 @@
         }
 
         .entry-description {
+          margin-bottom: 1rem;
+
           p {
             font-family: var(--font-main);
             font-size: 0.875rem;
@@ -222,7 +224,7 @@
         }
 
         .entry-sources {
-          margin-block: 1rem;
+          margin-bottom: 1rem;
 
           .entry-sources-title {
             font-family: var(--font-mono);

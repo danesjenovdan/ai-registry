@@ -63,7 +63,7 @@
             <td>
               <div class="pill">{{ entry.cost }}</div>
               {% if entry.cost_comment %}
-              <div class="pill has-tooltip">
+              <div class="pill has-tooltip" tabindex="0">
                 <span>?</span>
                 <div class="pill-tooltip-container" style="display: none">
                   <div class="pill-tooltip">{{ entry.cost_comment }}</div>
@@ -77,6 +77,14 @@
             <td>{% translate 'Trajanje licence:' %}</td>
             <td>
               <div class="pill">{{ entry.license_duration }}</div>
+              {% if entry.license_duration_comment %}
+              <div class="pill has-tooltip" tabindex="0">
+                <span>?</span>
+                <div class="pill-tooltip-container" style="display: none">
+                  <div class="pill-tooltip">{{ entry.license_duration_comment }}</div>
+                </div>
+              </div>
+              {% endif %}
             </td>
           </tr>
           {% endif %}
@@ -92,7 +100,7 @@
                 {% else %} {% translate "Ne" %} {% endif %}
               </div>
               {% if entry.human_rights_analysis_comments %}
-              <div class="pill has-tooltip">
+              <div class="pill has-tooltip" tabindex="0">
                 <span>?</span>
                 <div class="pill-tooltip-container" style="display: none">
                   <div class="pill-tooltip">
@@ -113,7 +121,7 @@
                 {% else %} {% translate "Ne" %} {% endif %}
               </div>
               {% if entry.personal_data_analysis_comments %}
-              <div class="pill has-tooltip">
+              <div class="pill has-tooltip" tabindex="0">
                 <span>?</span>
                 <div class="pill-tooltip-container" style="display: none">
                   <div class="pill-tooltip">

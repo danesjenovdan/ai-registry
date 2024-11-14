@@ -86,6 +86,10 @@ class RegistryEntry(Timestamped):
         blank=True,
         verbose_name=_("Trajanje licence (če kupljeno)"),
     )
+    license_duration_comment = models.TextField(
+        blank=True,
+        verbose_name=_("Komentarji o trajanju licence"),
+    )
     human_rights_analysis_done = models.BooleanField(
         default=False,
         verbose_name=_("Analiza učinka na človekove pravice opravljena"),
