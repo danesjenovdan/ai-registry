@@ -11,7 +11,7 @@ SORT_OPTIONS = [
     ("updated_at", _("zadnjem vnosu")),
 ]
 SORT_KEYS = [key for key, _ in SORT_OPTIONS]
-SORT_DEFAULT = "time_in_use"
+SORT_DEFAULT = "updated_at"
 
 
 def _get_tags(request, Model, key, entries):
