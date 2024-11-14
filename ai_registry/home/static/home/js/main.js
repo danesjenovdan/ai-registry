@@ -43,13 +43,17 @@ function checkCollapsibleEntry(entry) {
   const content = entry.querySelector(".entry-content");
   const actions = entry.querySelector(".entry-actions");
 
-  actions.style.display = "";
-  collapsible.style.height = "";
-  collapsible.offsetHeight; // force reflow
+  const isCollapsed = entry.classList.contains("collapsed");
 
-  if (content.offsetHeight < collapsible.offsetHeight) {
-    actions.style.display = "none";
-    collapsible.style.height = "auto";
+  if (isCollapsed) {
+    actions.style.display = "";
+    collapsible.style.height = "";
+    collapsible.offsetHeight; // force reflow
+
+    if (content.offsetHeight < collapsible.offsetHeight) {
+      actions.style.display = "none";
+      collapsible.style.height = "auto";
+    }
   }
 }
 
