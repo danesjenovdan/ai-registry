@@ -30,7 +30,15 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                     "areas",
                     "tags",
                     "developers",
+                ]
+            },
+        ),
+        (
+            _("LICENCA"),
+            {
+                "fields": [
                     "license_duration",
+                    "license_duration_comment",
                 ]
             },
         ),

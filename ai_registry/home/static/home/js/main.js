@@ -108,16 +108,26 @@ function togglePillTooltips() {
   // Add event listener to the document and delegate the event to the element.
   // This way we can add new entries to the page without having to add event
   // listeners to each one.
-  document.addEventListener("mouseover", (event) => {
+  document.addEventListener("focusin", (event) => {
     const pill = event.target.closest(".pill.has-tooltip");
     if (pill) {
       const tooltip = pill.querySelector(".pill-tooltip-container");
       if (tooltip) {
+        // reset visibility and position
         tooltip.style.display = "";
+        tooltip.style.top = "auto";
+        tooltip.style.right = "auto";
+
+        // position tooltip
+        const left = pill.offsetLeft + pill.offsetWidth - tooltip.offsetWidth;
+        const top = pill.offsetTop - window.scrollY;
+        tooltip.style.position = "fixed";
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
       }
     }
   });
-  document.addEventListener("mouseout", (event) => {
+  document.addEventListener("focusout", (event) => {
     const pill = event.target.closest(".pill.has-tooltip");
     if (pill) {
       const tooltip = pill.querySelector(".pill-tooltip-container");
