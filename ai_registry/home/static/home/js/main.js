@@ -10,6 +10,65 @@ function debounce(func, timeout = 300) {
 
 //
 
+function addNewsletterListeners() {
+  const form = document.querySelector(".page-footer .newsletter-form");
+  if (form) {
+    const email = form.querySelector("#newsletter-email");
+    const checkbox = form.querySelector("#newsletter-checkbox");
+    const submit = form.querySelector("button[type=submit]");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.value,
+          segment_id: 21,
+        }),
+      };
+
+      // load start
+      email.disabled = true;
+      checkbox.disabled = true;
+      submit.disabled = true;
+
+      fetch("https://podpri.lb.djnd.si/api/subscribe/", options)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.msg === "mail sent") {
+            email.value = "";
+            checkbox.checked = false;
+            // load end
+            email.disabled = false;
+            checkbox.disabled = false;
+            submit.disabled = false;
+            alert(
+              "Hvala! Poslali smo ti sporočilo s povezavo, na kateri lahko potrdiš prijavo!"
+            );
+          } else {
+            // load end
+            email.disabled = false;
+            checkbox.disabled = false;
+            submit.disabled = false;
+            alert("Prišlo je do napake :(");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          // load end
+          email.disabled = false;
+          checkbox.disabled = false;
+          submit.disabled = false;
+          alert("Prišlo je do napake :(");
+        });
+    });
+  }
+}
+
 function toggleFilterDropdown() {
   const filters = document.querySelector(".registry-filters");
   const button = filters.querySelector(".filter-button");
@@ -144,6 +203,7 @@ function togglePillTooltips() {
 }
 
 (function main() {
+  addNewsletterListeners();
   toggleFilterDropdown();
   toggleSortDropdown();
   toggleRegistryEntries();

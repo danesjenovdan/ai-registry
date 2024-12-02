@@ -57,7 +57,7 @@ footer.page-footer {
       font-weight: 300;
       text-decoration: none;
 
-      &:hover {
+      &:not(:disabled):hover {
         background: var(--bg-color-dark);
         color: var(--bg-color-light);
       }
@@ -124,6 +124,15 @@ footer.page-footer {
                 transform: rotate(45deg);
               }
             }
+          }
+        }
+
+        button[type="submit"],
+        .checkbox,
+        input {
+          &:disabled {
+            cursor: wait;
+            filter: grayscale(1);
           }
         }
       }
