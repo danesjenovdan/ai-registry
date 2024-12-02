@@ -47,7 +47,12 @@ class RegistryEntry(Timestamped):
     time_in_use = models.CharField(
         max_length=30,
         blank=True,
-        verbose_name=_("Obdobje rabe"),
+        verbose_name=_("Obdobje rabe (uporabljeno za prikaz)"),
+    )
+    time_in_use_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name=_("Obdobje rabe (uporabljeno za razvrščanje)"),
     )
     institutions = TaggableManager(
         through="home.TaggedInstitution",

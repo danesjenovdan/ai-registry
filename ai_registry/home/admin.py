@@ -25,11 +25,19 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                     "purpose",
                     "description",
                     # "links",
-                    "time_in_use",
                     "institutions",
                     "areas",
                     "tags",
                     "developers",
+                ]
+            },
+        ),
+        (
+            _("OBDOBJE RABE"),
+            {
+                "fields": [
+                    "time_in_use",
+                    "time_in_use_date",
                 ]
             },
         ),
