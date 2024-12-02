@@ -7,7 +7,7 @@ from .models.registry_entry import RegistryEntry
 from .models.tags import AreaTag, GenericTag, InstitutionTag
 
 SORT_OPTIONS = [
-    ("time_in_use", _("obdobju rabe")),
+    ("time_in_use_date", _("obdobju rabe")),
     ("updated_at", _("zadnjem vnosu")),
 ]
 SORT_KEYS = [key for key, _ in SORT_OPTIONS]
