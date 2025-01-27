@@ -1,7 +1,10 @@
+import csv
+
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 
 from .models.registry_entry import RegistryEntry
 from .models.tags import AreaTag, GenericTag, InstitutionTag
@@ -14,7 +17,7 @@ SORT_KEYS = [key for key, _ in SORT_OPTIONS]
 SORT_DEFAULT = "updated_at"
 
 
-def _get_tags(request, Model, key, entries):
+def _get_tags_many(request, Model, key, entries):
     objects = list(
         Model.objects.filter(registryentry__in=entries)
         .distinct()
@@ -22,13 +25,16 @@ def _get_tags(request, Model, key, entries):
     )
     object_dict = {slug: name for slug, name in objects}
 
+    selected_tuples = []
     query_param = request.GET.get(key, "")
-    try:
-        selected_tuple = (query_param, object_dict[query_param])
-    except KeyError:
-        selected_tuple = None
+    if query_params := query_param.split(","):
+        for param in query_params:
+            try:
+                selected_tuples.append((param, object_dict[param]))
+            except KeyError:
+                pass
 
-    return objects, selected_tuple
+    return objects, selected_tuples
 
 
 class HomeView(TemplateView):
@@ -40,18 +46,21 @@ class HomeView(TemplateView):
         entries = RegistryEntry.objects.all()
         all_entries_count = entries.count()
 
-        areas, selected_area = _get_tags(self.request, AreaTag, "area", entries)
-        tags, selected_tag = _get_tags(self.request, GenericTag, "tag", entries)
-        institutions, selected_institution = _get_tags(
+        areas, selected_areas = _get_tags_many(self.request, AreaTag, "area", entries)
+        tags, selected_tags = _get_tags_many(self.request, GenericTag, "tag", entries)
+        institutions, selected_institutions = _get_tags_many(
             self.request, InstitutionTag, "institution", entries
         )
 
-        if selected_area:
-            entries = entries.filter(areas__slug=selected_area[0])
-        if selected_tag:
-            entries = entries.filter(tags__slug=selected_tag[0])
-        if selected_institution:
-            entries = entries.filter(institutions__slug=selected_institution[0])
+        if selected_areas:
+            selected_area_slugs = [slug for slug, _ in selected_areas]
+            entries = entries.filter(areas__slug__in=selected_area_slugs)
+        if selected_tags:
+            selected_tag_slugs = [slug for slug, _ in selected_tags]
+            entries = entries.filter(tags__slug__in=selected_tag_slugs)
+        if selected_institutions:
+            selected_institution_slugs = [slug for slug, _ in selected_institutions]
+            entries = entries.filter(institutions__slug__in=selected_institution_slugs)
 
         sort_query = self.request.GET.get("sort", SORT_DEFAULT)
         if sort_query not in SORT_KEYS:
@@ -67,6 +76,8 @@ class HomeView(TemplateView):
                 | Q(description__icontains=search)
                 | Q(developers__icontains=search)
             )
+
+        entries = entries.distinct()
 
         page_query = self.request.GET.get("page", "1")
         paginator = Paginator(entries, 10)
@@ -85,10 +96,80 @@ class HomeView(TemplateView):
             "areas": areas,
             "tags": tags,
             "institutions": institutions,
-            "selected_area": selected_area,
-            "selected_tag": selected_tag,
-            "selected_institution": selected_institution,
+            "selected_areas": selected_areas,
+            "selected_tags": selected_tags,
+            "selected_institutions": selected_institutions,
         }
         context["search"] = search
 
         return context
+
+
+class CSVExportView(View):
+    def get(self, request, *args, **kwargs):
+        file_name = _("izvoz-register-ui")
+        latest_updated_entry = RegistryEntry.objects.order_by("-updated_at").first()
+        if latest_updated_entry:
+            file_name += (
+                f"_{latest_updated_entry.updated_at.strftime('%Y-%m-%d_%H-%M-%S')}"
+            )
+
+        response = HttpResponse(
+            content_type="text/csv",
+            headers={"Content-Disposition": f'attachment; filename="{file_name}.csv"'},
+        )
+
+        writer = csv.writer(response)
+        writer.writerow(
+            [
+                _("Ime orodja"),
+                _("Namen orodja"),
+                _("Opis"),
+                _("Obdobje rabe"),
+                _("Institucije"),
+                _("Področja"),
+                _("Oznake"),
+                _("Razvijalci"),
+                _("Cena"),
+                _("Komentarji o ceni"),
+                _("Trajanje licence (če kupljeno)"),
+                _("Komentarji o trajanju licence"),
+                _("Analiza učinka na človekove pravice opravljena"),
+                _("Komentarji analize učinka na človekove pravice"),
+                _("Analiza učinka na osebne podatke opravljena"),
+                _("Komentarji analize učinka na osebne podatke"),
+                _("Povezave"),
+                _("Posodobljeno"),
+            ]
+        )
+
+        entries = RegistryEntry.objects.prefetch_related("links").all()
+        for entry in entries:
+            links = [
+                f"{link.description}: {link.url or link.file}"
+                for link in entry.links.all()
+            ]
+            writer.writerow(
+                [
+                    entry.name,
+                    entry.purpose,
+                    entry.description,
+                    entry.time_in_use,
+                    "; ".join(str(i) for i in entry.institutions.all()),
+                    "; ".join(str(a) for a in entry.areas.all()),
+                    "; ".join(str(t) for t in entry.tags.all()),
+                    entry.developers,
+                    entry.cost,
+                    entry.cost_comment,
+                    entry.license_duration,
+                    entry.license_duration_comment,
+                    _("Da") if entry.human_rights_analysis_done else _("Ne"),
+                    entry.human_rights_analysis_comments,
+                    _("Da") if entry.personal_data_analysis_done else _("Ne"),
+                    entry.personal_data_analysis_comments,
+                    "; ".join(links),
+                    entry.updated_at.strftime("%Y-%m-%dT%H:%M:%S"),
+                ]
+            )
+
+        return response
