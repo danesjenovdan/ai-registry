@@ -4,7 +4,7 @@
     <div class="footer-content">
       <div class="footer-description">
         <h3>{% translate 'Register rabe UI v slovenskem javnem sektorju' %}</h3>
-        {% blocktranslate %}
+        {% url 'csv_export' as export_url %}{% blocktranslate %}
         <p>
           Register je prva organizirana zbirka podatkov o uporabi
           umetnointeligenčnih sistemov v slovenskem javnem sektorju. Podatke smo
@@ -28,6 +28,9 @@
           imaš kakršnekoli informacije, ki bi morale biti vključene v register,
           ali pa podatke, ki kažejo na morebitne netočnosti v njem, nam piši na
           <a href="mailto:registerUI@djnd.si">registerUI@djnd.si</a>.
+        </p>
+        <p>
+          <a href="{{ export_url }}">Prenesi CSV s podatki</a>
         </p>
         {% endblocktranslate %}
       </div>
