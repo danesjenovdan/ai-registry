@@ -14,19 +14,19 @@
       </button>
       {% if filters.selected_area %}
       <a href="?{% query_string_replace request area=None page=1 %}#entries" class="filter-button remove-filter-link">
-        <span>{{ filters.selected_area.1 }}</span>
+        <strong>{{ filters.selected_area.1 }}</strong>
         <i>&times;</i>
       </a>
       {% endif %}
       {% if filters.selected_tag %}
       <a href="?{% query_string_replace request tag=None page=1 %}#entries" class="filter-button remove-filter-link">
-        <span>{{ filters.selected_tag.1 }}</span>
+        <strong>{{ filters.selected_tag.1 }}</strong>
         <i>&times;</i>
       </a>
       {% endif %}
       {% if filters.selected_institution %}
       <a href="?{% query_string_replace request institution=None page=1 %}#entries" class="filter-button remove-filter-link">
-        <span>{{ filters.selected_institution.1 }}</span>
+        <strong>{{ filters.selected_institution.1 }}</strong>
         <i>&times;</i>
       </a>
       {% endif %}
