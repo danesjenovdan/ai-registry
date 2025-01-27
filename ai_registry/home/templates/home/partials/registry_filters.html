@@ -12,48 +12,69 @@
           <path d="M6 4 .75 7.464V.536L6 4Z" />
         </svg>
       </button>
-      {% if filters.selected_area %}
-      <a href="?{% query_string_replace request area=None page=1 %}#entries" class="filter-button remove-filter-link">
-        <strong>{{ filters.selected_area.1 }}</strong>
+      {% for selected_area in filters.selected_areas %}
+      <a href="?{% query_string_remove_comma_entry request area=selected_area.0 %}#entries" class="filter-button remove-filter-link">
+        <strong>{{ selected_area.1 }}</strong>
         <i>&times;</i>
       </a>
-      {% endif %}
-      {% if filters.selected_tag %}
-      <a href="?{% query_string_replace request tag=None page=1 %}#entries" class="filter-button remove-filter-link">
-        <strong>{{ filters.selected_tag.1 }}</strong>
+      {% endfor %}
+      {% for selected_tag in filters.selected_tags %}
+      <a href="?{% query_string_remove_comma_entry request tag=selected_tag.0 %}#entries" class="filter-button remove-filter-link">
+        <strong>{{ selected_tag.1 }}</strong>
         <i>&times;</i>
       </a>
-      {% endif %}
-      {% if filters.selected_institution %}
-      <a href="?{% query_string_replace request institution=None page=1 %}#entries" class="filter-button remove-filter-link">
-        <strong>{{ filters.selected_institution.1 }}</strong>
+      {% endfor %}
+      {% for selected_institution in filters.selected_institutions %}
+      <a href="?{% query_string_remove_comma_entry request institution=selected_institution.0 %}#entries" class="filter-button remove-filter-link">
+        <strong>{{ selected_institution.1 }}</strong>
         <i>&times;</i>
       </a>
-      {% endif %}
+      {% endfor %}
       <div class="filter-options" style="display: none;">
         <div class="limit-height">
           <div class="filter-category">{% translate 'Področja:' %}</div>
           {% for area in filters.areas %}
           <div>
-            <a href="?{% query_string_replace request area=area.0 page=1 %}#entries" class="filter-link">
+            {% if area in filters.selected_areas %}
+            <a href="?{% query_string_remove_comma_entry request area=area.0 %}#entries" class="filter-link">
+              <span>{{ area.1 }}</span>
+              <i>&times;</i>
+            </a>
+            {% else %}
+            <a href="?{% query_string_add_comma_entry request area=area.0 %}#entries" class="filter-link">
               <span>{{ area.1 }}</span>
             </a>
+            {% endif %}
           </div>
           {% endfor %}
           <div class="filter-category">{% translate 'Oznake:' %}</div>
           {% for tag in filters.tags %}
           <div>
-            <a href="?{% query_string_replace request tag=tag.0 page=1 %}#entries" class="filter-link">
+            {% if tag in filters.selected_tags %}
+            <a href="?{% query_string_remove_comma_entry request tag=tag.0 %}#entries" class="filter-link">
+              <span>{{ tag.1 }}</span>
+              <i>&times;</i>
+            </a>
+            {% else %}
+            <a href="?{% query_string_add_comma_entry request tag=tag.0 %}#entries" class="filter-link">
               <span>{{ tag.1 }}</span>
             </a>
+            {% endif %}
           </div>
           {% endfor %}
           <div class="filter-category">{% translate 'Institucije:' %}</div>
           {% for institution in filters.institutions %}
           <div>
-            <a href="?{% query_string_replace request institution=institution.0 page=1 %}#entries" class="filter-link">
+            {% if institution in filters.selected_institutions %}
+            <a href="?{% query_string_remove_comma_entry request institution=institution.0 %}#entries" class="filter-link">
+              <span>{{ institution.1 }}</span>
+              <i>&times;</i>
+            </a>
+            {% else %}
+            <a href="?{% query_string_add_comma_entry request institution=institution.0 %}#entries" class="filter-link">
               <span>{{ institution.1 }}</span>
             </a>
+            {% endif %}
           </div>
           {% endfor %}
         </div>

@@ -14,7 +14,7 @@ SORT_KEYS = [key for key, _ in SORT_OPTIONS]
 SORT_DEFAULT = "updated_at"
 
 
-def _get_tags(request, Model, key, entries):
+def _get_tags_many(request, Model, key, entries):
     objects = list(
         Model.objects.filter(registryentry__in=entries)
         .distinct()
@@ -22,13 +22,16 @@ def _get_tags(request, Model, key, entries):
     )
     object_dict = {slug: name for slug, name in objects}
 
+    selected_tuples = []
     query_param = request.GET.get(key, "")
-    try:
-        selected_tuple = (query_param, object_dict[query_param])
-    except KeyError:
-        selected_tuple = None
+    if query_params := query_param.split(","):
+        for param in query_params:
+            try:
+                selected_tuples.append((param, object_dict[param]))
+            except KeyError:
+                pass
 
-    return objects, selected_tuple
+    return objects, selected_tuples
 
 
 class HomeView(TemplateView):
@@ -40,18 +43,21 @@ class HomeView(TemplateView):
         entries = RegistryEntry.objects.all()
         all_entries_count = entries.count()
 
-        areas, selected_area = _get_tags(self.request, AreaTag, "area", entries)
-        tags, selected_tag = _get_tags(self.request, GenericTag, "tag", entries)
-        institutions, selected_institution = _get_tags(
+        areas, selected_areas = _get_tags_many(self.request, AreaTag, "area", entries)
+        tags, selected_tags = _get_tags_many(self.request, GenericTag, "tag", entries)
+        institutions, selected_institutions = _get_tags_many(
             self.request, InstitutionTag, "institution", entries
         )
 
-        if selected_area:
-            entries = entries.filter(areas__slug=selected_area[0])
-        if selected_tag:
-            entries = entries.filter(tags__slug=selected_tag[0])
-        if selected_institution:
-            entries = entries.filter(institutions__slug=selected_institution[0])
+        if selected_areas:
+            selected_area_slugs = [slug for slug, _ in selected_areas]
+            entries = entries.filter(areas__slug__in=selected_area_slugs)
+        if selected_tags:
+            selected_tag_slugs = [slug for slug, _ in selected_tags]
+            entries = entries.filter(tags__slug__in=selected_tag_slugs)
+        if selected_institutions:
+            selected_institution_slugs = [slug for slug, _ in selected_institutions]
+            entries = entries.filter(institutions__slug__in=selected_institution_slugs)
 
         sort_query = self.request.GET.get("sort", SORT_DEFAULT)
         if sort_query not in SORT_KEYS:
@@ -67,6 +73,8 @@ class HomeView(TemplateView):
                 | Q(description__icontains=search)
                 | Q(developers__icontains=search)
             )
+
+        entries = entries.distinct()
 
         page_query = self.request.GET.get("page", "1")
         paginator = Paginator(entries, 10)
@@ -85,9 +93,9 @@ class HomeView(TemplateView):
             "areas": areas,
             "tags": tags,
             "institutions": institutions,
-            "selected_area": selected_area,
-            "selected_tag": selected_tag,
-            "selected_institution": selected_institution,
+            "selected_areas": selected_areas,
+            "selected_tags": selected_tags,
+            "selected_institutions": selected_institutions,
         }
         context["search"] = search
 

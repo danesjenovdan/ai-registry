@@ -116,7 +116,9 @@
           }
 
           .filter-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
             margin-block: 0.125rem;
             padding: 0.3em 0.7em;
             background: var(--bg-color);
@@ -131,6 +133,13 @@
             &:hover {
               background: var(--bg-color-dark);
               color: var(--bg-color-light);
+            }
+
+            i {
+              font-size: 1rem;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 0.67em;
             }
           }
         }
