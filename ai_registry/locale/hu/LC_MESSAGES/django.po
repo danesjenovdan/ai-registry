@@ -1,0 +1,455 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-24 11:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: home/admin.py:36
+msgid "OBDOBJE RABE"
+msgstr ""
+
+#: home/admin.py:45
+msgid "LICENCA"
+msgstr ""
+
+#: home/admin.py:54
+msgid "CENA"
+msgstr ""
+
+#: home/admin.py:63
+msgid "ANALIZE"
+msgstr ""
+
+#: home/admin.py:74
+msgid "INTERNO"
+msgstr ""
+
+#: home/models/registry_entry.py:12 home/models/registry_entry.py:33
+msgid "Povezava"
+msgstr ""
+
+#: home/models/registry_entry.py:17
+msgid "Datoteka"
+msgstr ""
+
+#: home/models/registry_entry.py:21
+msgid "Opis povezave"
+msgstr ""
+
+#: home/models/registry_entry.py:34 home/views.py:141
+msgid "Povezave"
+msgstr ""
+
+#: home/models/registry_entry.py:38 home/views.py:125
+msgid "Ime orodja"
+msgstr ""
+
+#: home/models/registry_entry.py:39 home/views.py:126
+msgid "Namen orodja"
+msgstr ""
+
+#: home/models/registry_entry.py:42 home/views.py:127
+msgid "Opis"
+msgstr ""
+
+#: home/models/registry_entry.py:43
+msgid "Kakšne odločitve se sprejemajo, kaj dela ta algoritem"
+msgstr ""
+
+#: home/models/registry_entry.py:50
+msgid "Obdobje rabe (uporabljeno za prikaz)"
+msgstr ""
+
+#: home/models/registry_entry.py:55
+msgid "Obdobje rabe (uporabljeno za razvrščanje)"
+msgstr ""
+
+#: home/models/registry_entry.py:60 home/models/tags.py:23 home/views.py:129
+msgid "Institucije"
+msgstr ""
+
+#: home/models/registry_entry.py:61 home/models/registry_entry.py:73
+msgid "Ločene s podpičjem"
+msgstr ""
+
+#: home/models/registry_entry.py:66 home/models/tags.py:29 home/views.py:130
+msgid "Področja"
+msgstr ""
+
+#: home/models/registry_entry.py:67
+msgid "Ločena s podpičjem"
+msgstr ""
+
+#: home/models/registry_entry.py:72 home/models/tags.py:17
+#: home/models/tags.py:41 home/views.py:131
+msgid "Oznake"
+msgstr ""
+
+#: home/models/registry_entry.py:78 home/views.py:132
+msgid "Razvijalci"
+msgstr ""
+
+#: home/models/registry_entry.py:83 home/views.py:133
+msgid "Cena"
+msgstr ""
+
+#: home/models/registry_entry.py:87 home/views.py:134
+msgid "Komentarji o ceni"
+msgstr ""
+
+#: home/models/registry_entry.py:92 home/views.py:135
+msgid "Trajanje licence (če kupljeno)"
+msgstr ""
+
+#: home/models/registry_entry.py:96 home/views.py:136
+msgid "Komentarji o trajanju licence"
+msgstr ""
+
+#: home/models/registry_entry.py:100 home/views.py:137
+msgid "Analiza učinka na človekove pravice opravljena"
+msgstr ""
+
+#: home/models/registry_entry.py:104 home/views.py:138
+msgid "Komentarji analize učinka na človekove pravice"
+msgstr ""
+
+#: home/models/registry_entry.py:108 home/views.py:139
+msgid "Analiza učinka na osebne podatke opravljena"
+msgstr ""
+
+#: home/models/registry_entry.py:112 home/views.py:140
+msgid "Komentarji analize učinka na osebne podatke"
+msgstr ""
+
+#: home/models/registry_entry.py:116
+msgid "Dodatni komentarji"
+msgstr ""
+
+#: home/models/registry_entry.py:117
+msgid "Interno"
+msgstr ""
+
+#: home/models/registry_entry.py:124
+msgid "Vnos v register"
+msgstr ""
+
+#: home/models/registry_entry.py:125
+msgid "Vnosi v register"
+msgstr ""
+
+#: home/models/tags.py:16 home/models/tags.py:40
+msgid "Oznaka"
+msgstr ""
+
+#: home/models/tags.py:22
+msgid "Institucija"
+msgstr ""
+
+#: home/models/tags.py:28
+msgid "Področje"
+msgstr ""
+
+#: home/models/tags.py:52
+msgid "Oznaka institucije"
+msgstr ""
+
+#: home/models/tags.py:53
+msgid "Oznake institucij"
+msgstr ""
+
+#: home/models/tags.py:64
+msgid "Oznaka področja"
+msgstr ""
+
+#: home/models/tags.py:65
+msgid "Oznake področij"
+msgstr ""
+
+#: home/templates/home/base.html:13 home/templates/home/base.html:14
+#: home/templates/home/base.html:15 home/templates/home/partials/footer.html:6
+msgid "Register rabe UI v slovenskem javnem sektorju"
+msgstr ""
+
+#: home/templates/home/base.html:17 home/templates/home/base.html:18
+#: home/templates/home/base.html:19
+msgid ""
+"Prva organizirana zbirka podatkov o uporabi umetnointeligenčnih sistemov v "
+"slovenskem javnem sektorju."
+msgstr ""
+
+#: home/templates/home/partials/bottom_description.html:3
+msgid ""
+"\n"
+"  <p>\n"
+"    Edina pot do vzpostavljanja javnega zaupanja v poštenost, zanesljivost\n"
+"    in zakonitost avtomatiziranih sistemov, ki so v uporabi v javnem\n"
+"    sektorju, je njihova popolna transparentnost.\n"
+"  </p>\n"
+"  <p>\n"
+"    Javnost ima pravico do razumljivih in celovitih informacij o delovanju\n"
+"    teh sistemov ter o načinih, kako organi sprejemajo odločitve, ki\n"
+"    vplivajo na življenja posameznikov.\n"
+"  </p>\n"
+"  <p>\n"
+"    Slovenska javnost doslej ni imela dostopa do sistematično zbranih\n"
+"    informacij o načinih in razlogih za uporabo umetnointeligenčnih "
+"sistemov\n"
+"    v javnem sektorju ter o njihovem vplivu na družbo in posameznike.\n"
+"    Register rabe UI premošča to vrzel.\n"
+"  </p>\n"
+"  "
+msgstr ""
+
+#: home/templates/home/partials/footer.html:7
+#, python-format
+msgid ""
+"\n"
+"        <p>\n"
+"          Register je prva organizirana zbirka podatkov o uporabi\n"
+"          umetnointeligenčnih sistemov v slovenskem javnem sektorju. Podatke "
+"smo\n"
+"          pridobili s preučevanjem javno dostopnih virov in prošnjami za "
+"dostop\n"
+"          do informacij javnega značaja, naslovljenimi na javne organe.\n"
+"        </p>\n"
+"        <p>\n"
+"          Zbirka podatkov ni dokončna, redno jo bomo posodabljali in\n"
+"          dopolnjevali.\n"
+"        </p>\n"
+"        <hr />\n"
+"        <p>\n"
+"          Prizadevamo si objavljati točne in preverljive informacije. Vrzeli "
+"ali\n"
+"          napake v registru so posledica netransparentnega delovanja in\n"
+"          pomanjkljivega komuniciranja javnih organov, kar ovira zbiranje\n"
+"          podatkov.\n"
+"        </p>\n"
+"        <p>\n"
+"          Verjamemo, da slovenski državni organi in institucije uporabljajo "
+"še\n"
+"          druga umetnointeligenčna orodja, o katerih javnost ni obveščena. "
+"Če\n"
+"          imaš kakršnekoli informacije, ki bi morale biti vključene v "
+"register,\n"
+"          ali pa podatke, ki kažejo na morebitne netočnosti v njem, nam piši "
+"na\n"
+"          <a href=\"mailto:registerUI@djnd.si\">registerUI@djnd.si</a>.\n"
+"        </p>\n"
+"        <p>\n"
+"          <a href=\"%(export_url)s\">Prenesi CSV s podatki</a>\n"
+"        </p>\n"
+"        "
+msgstr ""
+
+#: home/templates/home/partials/footer.html:41
+msgid ""
+"\n"
+"        <p>\n"
+"          Za Register rabe UI skrbi<br />\n"
+"          <a\n"
+"            href=\"https://danesjenovdan.si\"\n"
+"            target=\"_blank\"\n"
+"            rel=\"noopener noreferrer\"\n"
+"            class=\"about-link\"\n"
+"            >Danes je nov dan, Inštitut za druga vprašanja</a\n"
+"          >\n"
+"        </p>\n"
+"        "
+msgstr ""
+
+#: home/templates/home/partials/footer.html:55
+msgid "Podpri naše delo."
+msgstr ""
+
+#: home/templates/home/partials/footer.html:62
+msgid "DONIRAJ"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:75
+msgid "Te zanima, kaj delamo? Naroči se na Občasnik!"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:79
+msgid "VPIŠI SVOJ E-NASLOV"
+msgstr ""
+
+#: home/templates/home/partials/footer.html:87
+msgid ""
+"\n"
+"                <span>\n"
+"                  Strinjam se, da mi Danes je nov dan po e-pošti pošilja\n"
+"                  Občasnik in druga obvestila.\n"
+"                </span>\n"
+"                "
+msgstr ""
+
+#: home/templates/home/partials/footer.html:98
+msgid "NAROČI SE"
+msgstr ""
+
+#: home/templates/home/partials/home_header.html:5
+msgid "Register rabe UI"
+msgstr ""
+
+#: home/templates/home/partials/home_header.html:11
+msgid ""
+"\n"
+"      <span>\n"
+"        Zbiramo podatke o uporabi umetnointeligenčnih sistemov v slovenskem\n"
+"        javnem sektorju ter na njihovi podlagi ustvarjamo celovit in vsem\n"
+"        dostopen register. Zahtevamo popolno odgovornost in transparentnost "
+"pri\n"
+"        uporabi UI v javnem sektorju.\n"
+"      </span>\n"
+"      "
+msgstr ""
+
+#: home/templates/home/partials/home_header.html:23
+msgid "IŠČI PO REGISTRU"
+msgstr ""
+
+#: home/templates/home/partials/home_header.html:33
+msgid ""
+"\n"
+"      <p>\n"
+"        Edina pot do vzpostavljanja javnega zaupanja v poštenost, "
+"zanesljivost\n"
+"        in zakonitost avtomatiziranih sistemov, ki so v uporabi v javnem\n"
+"        sektorju, je njihova popolna transparentnost.\n"
+"      </p>\n"
+"      <p>\n"
+"        Javnost ima pravico do razumljivih in celovitih informacij o "
+"delovanju\n"
+"        teh sistemov ter o načinih, kako organi sprejemajo odločitve, ki\n"
+"        vplivajo na življenja posameznikov.\n"
+"      </p>\n"
+"      <p>\n"
+"        Slovenska javnost doslej ni imela dostopa do sistematično zbranih\n"
+"        informacij o načinih in razlogih za uporabo umetnointeligenčnih "
+"sistemov\n"
+"        v javnem sektorju ter o njihovem vplivu na družbo in posameznike.\n"
+"        Register rabe UI premošča to vrzel.\n"
+"      </p>\n"
+"      "
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:16
+msgid "Institucija:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:29
+#: home/templates/home/partials/registry_filters.html:35
+msgid "Področja:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:42
+#: home/templates/home/partials/registry_filters.html:50
+msgid "Oznake:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:55
+msgid "Razvijalci:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:62
+msgid "Cena:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:77
+msgid "Trajanje licence:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:95
+msgid "Analiza učinka na človekove pravice opravljena:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:99
+#: home/templates/home/partials/registry_entry.html:120 home/views.py:166
+#: home/views.py:168
+msgid "Da"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:100
+#: home/templates/home/partials/registry_entry.html:121 home/views.py:166
+#: home/views.py:168
+msgid "Ne"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:116
+msgid "Analiza učinka na osebne podatke opravljena:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:139
+msgid "Posodobljeno:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:144
+msgid "Viri:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:166
+msgid "ZAPRI -"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:168
+msgid "VEČ INFORMACIJ +"
+msgstr ""
+
+#: home/templates/home/partials/registry_filters.html:6
+msgid "FILTRIRAJ"
+msgstr ""
+
+#: home/templates/home/partials/registry_filters.html:65
+msgid "Institucije:"
+msgstr ""
+
+#: home/templates/home/partials/registry_filters.html:84
+#, python-format
+msgid ""
+"\n"
+"      <span>Register trenutno vsebuje <em>%(amount)s</em> sistem.</span>\n"
+"      "
+msgid_plural ""
+"\n"
+"      <span>Register trenutno vsebuje <em>%(amount)s</em> sistemov.</span>\n"
+"      "
+msgstr[0] ""
+msgstr[1] ""
+
+#: home/templates/home/partials/registry_filters.html:93
+msgid "RAZVRSTI PO:"
+msgstr ""
+
+#: home/views.py:13
+msgid "obdobju rabe"
+msgstr ""
+
+#: home/views.py:14
+msgid "zadnjem vnosu"
+msgstr ""
+
+#: home/views.py:110
+msgid "izvoz-register-ui"
+msgstr ""
+
+#: home/views.py:128
+msgid "Obdobje rabe"
+msgstr ""
+
+#: home/views.py:142
+msgid "Posodobljeno"
+msgstr ""

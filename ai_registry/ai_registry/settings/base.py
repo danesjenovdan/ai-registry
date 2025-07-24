@@ -111,6 +111,7 @@ LANGUAGE_CODE = "sl"
 LANGUAGES = [
     ("sl", "Slovenian"),
     ("en", "English"),
+    ("hu", "Hungarian"),
 ]
 
 TIME_ZONE = "Europe/Ljubljana"
