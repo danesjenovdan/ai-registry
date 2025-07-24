@@ -99,7 +99,7 @@ spec:
               cpu: 100m
             limits:
               memory: 400Mi
-              cpu: 200m
+              cpu: 300m
         - name: ai-registry-nginx
           image: nginx:alpine
           volumeMounts:
