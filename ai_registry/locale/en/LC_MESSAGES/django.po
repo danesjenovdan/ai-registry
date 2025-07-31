@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-27 16:49+0100\n"
+"POT-Creation-Date: 2025-07-31 11:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: home/admin.py:36
+#: home/admin.py:37
 msgid "OBDOBJE RABE"
 msgstr "PERIOD OF USE"
 
-#: home/admin.py:45
+#: home/admin.py:46
 msgid "LICENCA"
 msgstr "LICENSE"
 
-#: home/admin.py:54
+#: home/admin.py:55
 msgid "CENA"
 msgstr "PRICE"
 
-#: home/admin.py:63
+#: home/admin.py:64
 msgid "ANALIZE"
 msgstr "ANALYSES"
 
-#: home/admin.py:74
+#: home/admin.py:75
+msgid "JAVNO NAROČILO"
+msgstr ""
+
+#: home/admin.py:86
 msgid "INTERNO"
 msgstr "INTERNAL"
 
@@ -50,104 +54,141 @@ msgstr "File"
 msgid "Opis povezave"
 msgstr "Link description"
 
-#: home/models/registry_entry.py:34 home/views.py:141
+#: home/models/registry_entry.py:34 home/views.py:149
 msgid "Povezave"
 msgstr "Links"
 
-#: home/models/registry_entry.py:38 home/views.py:125
+#: home/models/registry_entry.py:40
+msgid "Objavljeno"
+msgstr ""
+
+#: home/models/registry_entry.py:41
+msgid "Ali je vnos v register objavljen?"
+msgstr ""
+
+#: home/models/registry_entry.py:43 home/views.py:133
 msgid "Ime orodja"
 msgstr "Tool name"
 
-#: home/models/registry_entry.py:39 home/views.py:126
+#: home/models/registry_entry.py:44 home/views.py:134
 msgid "Namen orodja"
 msgstr "Tool purpose"
 
-#: home/models/registry_entry.py:42 home/views.py:127
+#: home/models/registry_entry.py:47 home/views.py:135
 msgid "Opis"
 msgstr "Description"
 
-#: home/models/registry_entry.py:43
+#: home/models/registry_entry.py:48
 msgid "Kakšne odločitve se sprejemajo, kaj dela ta algoritem"
 msgstr "What decisions are made, what this algorithm does"
 
-#: home/models/registry_entry.py:50
+#: home/models/registry_entry.py:55
 msgid "Obdobje rabe (uporabljeno za prikaz)"
 msgstr "Period of use (used for display)"
 
-#: home/models/registry_entry.py:55
+#: home/models/registry_entry.py:60
 msgid "Obdobje rabe (uporabljeno za razvrščanje)"
 msgstr "Period of use (used for sorting)"
 
-#: home/models/registry_entry.py:60 home/models/tags.py:23 home/views.py:129
+#: home/models/registry_entry.py:65 home/models/tags.py:23 home/views.py:137
 msgid "Institucije"
 msgstr "Institutions"
 
-#: home/models/registry_entry.py:61 home/models/registry_entry.py:73
+#: home/models/registry_entry.py:66 home/models/registry_entry.py:79
+#: home/models/registry_entry.py:149
 msgid "Ločene s podpičjem"
 msgstr "Separated by semicolon"
 
-#: home/models/registry_entry.py:66 home/models/tags.py:29 home/views.py:130
+#: home/models/registry_entry.py:72 home/models/tags.py:29 home/views.py:138
 msgid "Področja"
 msgstr "Areas"
 
-#: home/models/registry_entry.py:67
+#: home/models/registry_entry.py:73
 msgid "Ločena s podpičjem"
 msgstr "Separated by semicolon"
 
-#: home/models/registry_entry.py:72 home/models/tags.py:17
-#: home/models/tags.py:41 home/views.py:131
+#: home/models/registry_entry.py:78 home/models/tags.py:17
+#: home/models/tags.py:41 home/views.py:139
 msgid "Oznake"
 msgstr "Tags"
 
-#: home/models/registry_entry.py:78 home/views.py:132
+#: home/models/registry_entry.py:84 home/views.py:140
 msgid "Razvijalci"
 msgstr "Developers"
 
-#: home/models/registry_entry.py:83 home/views.py:133
+#: home/models/registry_entry.py:89 home/views.py:141
 msgid "Cena"
 msgstr "Price"
 
-#: home/models/registry_entry.py:87 home/views.py:134
+#: home/models/registry_entry.py:93 home/views.py:142
 msgid "Komentarji o ceni"
 msgstr "Comments on price"
 
-#: home/models/registry_entry.py:92 home/views.py:135
+#: home/models/registry_entry.py:98 home/views.py:143
 msgid "Trajanje licence (če kupljeno)"
 msgstr "License duration (if purchased)"
 
-#: home/models/registry_entry.py:96 home/views.py:136
+#: home/models/registry_entry.py:102 home/views.py:144
 msgid "Komentarji o trajanju licence"
 msgstr "Comments on license duration"
 
-#: home/models/registry_entry.py:100 home/views.py:137
+#: home/models/registry_entry.py:106 home/views.py:145
 msgid "Analiza učinka na človekove pravice opravljena"
 msgstr "Human rights impact assessment conducted"
 
-#: home/models/registry_entry.py:104 home/views.py:138
+#: home/models/registry_entry.py:110 home/views.py:146
 msgid "Komentarji analize učinka na človekove pravice"
 msgstr "Comments on human rights impact assessment"
 
-#: home/models/registry_entry.py:108 home/views.py:139
+#: home/models/registry_entry.py:114 home/views.py:147
 msgid "Analiza učinka na osebne podatke opravljena"
 msgstr "Personal data impact assessment conducted"
 
-#: home/models/registry_entry.py:112 home/views.py:140
+#: home/models/registry_entry.py:118 home/views.py:148
 msgid "Komentarji analize učinka na osebne podatke"
 msgstr "Comments on personal data impact assessment"
 
-#: home/models/registry_entry.py:116
+#: home/models/registry_entry.py:122
 msgid "Dodatni komentarji"
 msgstr "Additional comments"
 
-#: home/models/registry_entry.py:117
+#: home/models/registry_entry.py:123
 msgid "Interno"
 msgstr "Internal"
 
-#: home/models/registry_entry.py:124
+#: home/models/registry_entry.py:128
+msgid "Javno naročilo"
+msgstr ""
+
+#: home/models/registry_entry.py:129
+msgid "Ali je bil vnos predmet javnega naročila?"
+msgstr ""
+
+#: home/models/registry_entry.py:135
+msgid "Številka javnega naročila"
+msgstr ""
+
+#: home/models/registry_entry.py:136
+msgid "Številka javnega naročila, če je predmet javnega naročila"
+msgstr ""
+
+#: home/models/registry_entry.py:141
+msgid "Datum objave javnega naročila"
+msgstr ""
+
+#: home/models/registry_entry.py:142
+msgid "Datum objave javnega naročila, če je predmet javnega naročila"
+msgstr ""
+
+#: home/models/registry_entry.py:148
+msgid "Naročnik"
+msgstr ""
+
+#: home/models/registry_entry.py:156
 msgid "Vnos v register"
 msgstr "Registry entry"
 
-#: home/models/registry_entry.py:125
+#: home/models/registry_entry.py:157
 msgid "Vnosi v register"
 msgstr "Registry entries"
 
@@ -163,19 +204,19 @@ msgstr "Institution"
 msgid "Področje"
 msgstr "Area"
 
-#: home/models/tags.py:52
+#: home/models/tags.py:52 home/models/tags.py:64
 msgid "Oznaka institucije"
 msgstr "Institution tag"
 
-#: home/models/tags.py:53
+#: home/models/tags.py:53 home/models/tags.py:65
 msgid "Oznake institucij"
 msgstr "Institution tags"
 
-#: home/models/tags.py:64
+#: home/models/tags.py:76
 msgid "Oznaka področja"
 msgstr "Area tag"
 
-#: home/models/tags.py:65
+#: home/models/tags.py:77
 msgid "Oznake področij"
 msgstr "Area tags"
 
@@ -222,13 +263,15 @@ msgstr ""
 "    complete transparency.\n"
 "  </p>\n"
 "  <p>\n"
-"    The public has the right to understandable and comprehensive information\n"
+"    The public has the right to understandable and comprehensive "
+"information\n"
 "    about the operation of these systems and about how authorities make\n"
 "    decisions that affect individuals' lives.\n"
 "  </p>\n"
 "  <p>\n"
 "    Until now, the Slovenian public has not had access to systematically\n"
-"    collected information about the methods and reasons for using artificial\n"
+"    collected information about the methods and reasons for using "
+"artificial\n"
 "    intelligence systems in the public sector and their impact on society\n"
 "    and individuals. The AI Use Register bridges this gap.\n"
 "  </p>\n"
@@ -277,13 +320,15 @@ msgstr ""
 "\n"
 "        <p>\n"
 "          The Register is the first organized collection of data on the use\n"
-"          of artificial intelligence systems in the Slovenian public sector.\n"
+"          of artificial intelligence systems in the Slovenian public "
+"sector.\n"
 "          We obtained the data by studying publicly available sources and\n"
 "          requests for access to public information addressed to public\n"
 "          bodies.\n"
 "        </p>\n"
 "        <p>\n"
-"          The database is not final; we will regularly update and supplement\n"
+"          The database is not final; we will regularly update and "
+"supplement\n"
 "          it.\n"
 "        </p>\n"
 "        <hr />\n"
@@ -297,7 +342,8 @@ msgstr ""
 "          We believe that Slovenian state authorities and institutions use\n"
 "          other artificial intelligence tools of which the public is not\n"
 "          aware. If you have any information that should be included in the\n"
-"          register, or data that indicates possible inaccuracies in it, please\n"
+"          register, or data that indicates possible inaccuracies in it, "
+"please\n"
 "          write to us at\n"
 "          <a href=\"mailto:registerUI@djnd.si\">registerUI@djnd.si</a>.\n"
 "        </p>\n"
@@ -388,8 +434,10 @@ msgid ""
 msgstr ""
 "\n"
 "      <span>\n"
-"        We collect data on the use of artificial intelligence systems in the\n"
-"        Slovenian public sector and, based on this data, create a comprehensive\n"
+"        We collect data on the use of artificial intelligence systems in "
+"the\n"
+"        Slovenian public sector and, based on this data, create a "
+"comprehensive\n"
 "        and publicly accessible register. We demand full accountability and\n"
 "        transparency in the use of AI in the public sector.\n"
 "      </span>\n"
@@ -425,19 +473,25 @@ msgid ""
 msgstr ""
 "\n"
 "      <p>\n"
-"        The only way to establish public trust in the fairness, reliability,\n"
-"        and legality of automated systems used in the public sector is their\n"
+"        The only way to establish public trust in the fairness, "
+"reliability,\n"
+"        and legality of automated systems used in the public sector is "
+"their\n"
 "        complete transparency.\n"
 "      </p>\n"
 "      <p>\n"
-"        The public has the right to understandable and comprehensive information\n"
+"        The public has the right to understandable and comprehensive "
+"information\n"
 "        about the operation of these systems and about how authorities make\n"
 "        decisions that affect individuals' lives.\n"
 "      </p>\n"
 "      <p>\n"
-"        Until now, the Slovenian public has not had access to systematically\n"
-"        collected information about the methods and reasons for using artificial\n"
-"        intelligence systems in the public sector and their impact on society\n"
+"        Until now, the Slovenian public has not had access to "
+"systematically\n"
+"        collected information about the methods and reasons for using "
+"artificial\n"
+"        intelligence systems in the public sector and their impact on "
+"society\n"
 "        and individuals. The AI Use Register bridges this gap.\n"
 "      </p>\n"
 "      "
@@ -473,14 +527,14 @@ msgid "Analiza učinka na človekove pravice opravljena:"
 msgstr "Human rights impact assessment conducted:"
 
 #: home/templates/home/partials/registry_entry.html:99
-#: home/templates/home/partials/registry_entry.html:120 home/views.py:166
-#: home/views.py:168
+#: home/templates/home/partials/registry_entry.html:120 home/views.py:174
+#: home/views.py:176
 msgid "Da"
 msgstr "Yes"
 
 #: home/templates/home/partials/registry_entry.html:100
-#: home/templates/home/partials/registry_entry.html:121 home/views.py:166
-#: home/views.py:168
+#: home/templates/home/partials/registry_entry.html:121 home/views.py:174
+#: home/views.py:176
 msgid "Ne"
 msgstr "No"
 
@@ -524,11 +578,13 @@ msgid_plural ""
 "      "
 msgstr[0] ""
 "\n"
-"      <span>The register currently contains <em>%(amount)s</em> system.</span>\n"
+"      <span>The register currently contains <em>%(amount)s</em> system.</"
+"span>\n"
 "      "
 msgstr[1] ""
 "\n"
-"      <span>The register currently contains <em>%(amount)s</em> systems.</span>\n"
+"      <span>The register currently contains <em>%(amount)s</em> systems.</"
+"span>\n"
 "      "
 
 #: home/templates/home/partials/registry_filters.html:93
@@ -543,14 +599,14 @@ msgstr "period of use"
 msgid "zadnjem vnosu"
 msgstr "latest entry"
 
-#: home/views.py:110
+#: home/views.py:118
 msgid "izvoz-register-ui"
 msgstr "export-ai-register"
 
-#: home/views.py:128
+#: home/views.py:136
 msgid "Obdobje rabe"
 msgstr "Period of use"
 
-#: home/views.py:142
+#: home/views.py:150
 msgid "Posodobljeno"
 msgstr "Updated"

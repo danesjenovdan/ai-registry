@@ -53,6 +53,18 @@ class TaggedInstitution(GenericTaggedItemBase):
         verbose_name_plural = _("Oznake institucij")
 
 
+class TaggedContractingInstitution(GenericTaggedItemBase):
+    tag = models.ForeignKey(
+        InstitutionTag,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_items",
+    )
+
+    class Meta:
+        verbose_name = _("Oznaka institucije")
+        verbose_name_plural = _("Oznake institucij")
+
+
 class TaggedArea(GenericTaggedItemBase):
     tag = models.ForeignKey(
         AreaTag,

@@ -29,6 +29,7 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                     "areas",
                     "tags",
                     "developers",
+                    "published",
                 ]
             },
         ),
@@ -67,6 +68,17 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                     "human_rights_analysis_comments",
                     "personal_data_analysis_done",
                     "personal_data_analysis_comments",
+                ]
+            },
+        ),
+        (
+            _("JAVNO NAROČILO"),
+            {
+                "fields": [
+                    "public_procurement",
+                    "public_procurement_number",
+                    "public_procurement_date",
+                    "contracting_institution",
                 ]
             },
         ),
