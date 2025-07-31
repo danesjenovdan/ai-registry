@@ -35,6 +35,11 @@ class Link(models.Model):
 
 
 class RegistryEntry(Timestamped):
+    published = models.BooleanField(
+        default=True,
+        verbose_name=_("Objavljeno"),
+        help_text=_("Ali je vnos v register objavljen?"),
+    )
     name = models.CharField(max_length=100, verbose_name=_("Ime orodja"))
     purpose = models.CharField(max_length=255, verbose_name=_("Namen orodja"))
     description = models.TextField(
@@ -59,6 +64,7 @@ class RegistryEntry(Timestamped):
         blank=True,
         verbose_name=_("Institucije"),
         help_text=_("Ločene s podpičjem"),
+        related_name="registryentry",
     )
     areas = TaggableManager(
         through="home.TaggedArea",
@@ -115,6 +121,32 @@ class RegistryEntry(Timestamped):
         blank=True,
         verbose_name=_("Dodatni komentarji"),
         help_text=_("Interno"),
+    )
+    # javna naročila
+    public_procurement = models.BooleanField(
+        default=False,
+        verbose_name=_("Javno naročilo"),
+        help_text=_("Ali je bil vnos predmet javnega naročila?"),
+    )
+    public_procurement_number = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+        verbose_name=_("Številka javnega naročila"),
+        help_text=_("Številka javnega naročila, če je predmet javnega naročila"),
+    )
+    public_procurement_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name=_("Datum objave javnega naročila"),
+        help_text=_("Datum objave javnega naročila, če je predmet javnega naročila"),
+    )
+    contracting_institution = TaggableManager(
+        through="home.TaggedContractingInstitution",
+        blank=True,
+        related_name="contract_registryentry",
+        verbose_name=_("Naročnik"),
+        help_text=_("Ločene s podpičjem"),
     )
 
     def __str__(self):

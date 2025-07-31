@@ -43,7 +43,15 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        entries = RegistryEntry.objects.all()
+        entries = RegistryEntry.objects.filter(
+            public_procurement=False,
+            published=True,
+        ).prefetch_related(
+            "institutions",
+            "areas",
+            "tags",
+            "contracting_institution",
+        )
         all_entries_count = entries.count()
 
         areas, selected_areas = _get_tags_many(self.request, AreaTag, "area", entries)
