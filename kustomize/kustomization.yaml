@@ -8,4 +8,4 @@ resources:
 images:
   - name: ai-registry
     newName: rg.fr-par.scw.cloud/djnd/ai-registry
-    newTag: '6f1343ba30ee409c1d361c950a1fef4fb74abf48'
+    newTag: 'a78470323d2a0240829039ead0c61e51b97cb72c'
