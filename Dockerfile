@@ -6,7 +6,7 @@
 # ---
 # build scss in separate image
 # ---
-FROM node:22-alpine as scss-compile
+FROM node:22-alpine AS scss-compile
 
 WORKDIR /app
 
@@ -21,8 +21,8 @@ RUN yarn build
 # ---
 # django image
 # ---
-# Use an official Python runtime based on Debian 12 "bookworm" as a parent image.
-FROM python:3.12-slim-bookworm
+# Use an official Python runtime based on Debian 13 "trixie" as a parent image.
+FROM python:3.14-slim-trixie
 
 # Add user that will be used in the container.
 RUN useradd django
