@@ -1,3 +1,5 @@
+@use "breakpoints";
+
 footer.page-footer {
   .container {
     max-width: var(--footer-width);
@@ -7,7 +9,7 @@ footer.page-footer {
     display: flex;
     flex-direction: column;
 
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
       flex-direction: row;
       gap: 4.5rem;
 

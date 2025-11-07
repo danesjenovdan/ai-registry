@@ -1,3 +1,5 @@
+@use "breakpoints";
+
 :root {
   --font-main: "wf-bricolage-grotesque", system-ui;
   --font-mono: "wf-ibm-plex-mono", monospace;
@@ -16,7 +18,7 @@
   --page-width: 80rem;
   --footer-width: calc(var(--page-width) - 9rem);
 
-  @include media-breakpoint-up(md) {
+  @include breakpoints.media-breakpoint-up(md) {
     --page-gutter: 2.5rem;
   }
 }
