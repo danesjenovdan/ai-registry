@@ -142,14 +142,17 @@ class CSVExportView(View):
         writer = csv.writer(response)
         writer.writerow(
             [
+                # general info
                 _("Ime orodja"),
                 _("Namen orodja"),
                 _("Opis"),
-                _("Obdobje rabe"),
-                _("Institucije"),
                 _("Področja"),
                 _("Oznake"),
                 _("Razvijalci"),
+                # time in use
+                _("Obdobje rabe"),
+                # institution data
+                _("Institucija"),
                 _("Cena"),
                 _("Komentarji o ceni"),
                 _("Trajanje licence (če kupljeno)"),
@@ -158,12 +161,17 @@ class CSVExportView(View):
                 _("Komentarji analize učinka na človekove pravice"),
                 _("Analiza učinka na osebne podatke opravljena"),
                 _("Komentarji analize učinka na osebne podatke"),
+                # related links
                 _("Povezave"),
+                # updated at
                 _("Posodobljeno"),
             ]
         )
 
-        entries = RegistryEntry.objects.prefetch_related("links").all()
+        entries = RegistryEntry.objects.prefetch_related(
+            "links",
+            "registryentryinstitutiondata",
+        ).all()
         for entry in entries:
             links = [
                 f"{link.description}: {link.url or link.file}"
@@ -171,25 +179,59 @@ class CSVExportView(View):
             ]
             writer.writerow(
                 [
+                    # general info
                     entry.name,
                     entry.purpose,
                     entry.description,
-                    entry.time_in_use,
-                    "; ".join(str(i) for i in entry.institutions.all()),
                     "; ".join(str(a) for a in entry.areas.all()),
                     "; ".join(str(t) for t in entry.tags.all()),
                     entry.developers,
-                    entry.cost,
-                    entry.cost_comment,
-                    entry.license_duration,
-                    entry.license_duration_comment,
-                    _("Da") if entry.human_rights_analysis_done else _("Ne"),
-                    entry.human_rights_analysis_comments,
-                    _("Da") if entry.personal_data_analysis_done else _("Ne"),
-                    entry.personal_data_analysis_comments,
+                    # time in use
+                    entry.time_in_use,
+                    # institution data
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    # related links
                     "; ".join(links),
+                    # updated at
                     entry.updated_at.strftime("%Y-%m-%dT%H:%M:%S"),
                 ]
             )
+            inst_entries = entry.registryentryinstitutiondata.all()
+            for inst_entry in inst_entries:
+                writer.writerow(
+                    [
+                        # general info
+                        "↳",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        # time in use
+                        "",
+                        # institution data
+                        "; ".join(str(i) for i in inst_entry.institution.all()),
+                        inst_entry.cost,
+                        inst_entry.cost_comment,
+                        inst_entry.license_duration,
+                        inst_entry.license_duration_comment,
+                        _("Da") if inst_entry.human_rights_analysis_done else _("Ne"),
+                        inst_entry.human_rights_analysis_comments,
+                        _("Da") if inst_entry.personal_data_analysis_done else _("Ne"),
+                        inst_entry.personal_data_analysis_comments,
+                        # related links
+                        "",
+                        # updated at
+                        "",
+                    ]
+                )
 
         return response
