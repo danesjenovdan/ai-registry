@@ -11,20 +11,7 @@
     <div class="entry-content">
       <div class="entry-table-col">
         <table>
-          {% if entry.institutions.all|length %}
-          <tr>
-            <td>{% translate 'Institucija:' %}</td>
-            <td>
-              {% for institution in entry.institutions.all %}
-              <a
-                href="?{% query_string_replace request institution=institution.slug page=1 %}#entries"
-                class="pill has-link"
-                >{{ institution.name }}</a
-              >
-              {% endfor %}
-            </td>
-          </tr>
-          {% endif %} {% if entry.areas.all|length %}
+          {% if entry.areas.all|length %}
           <tr>
             <td>{% translate 'Področja:' %}</td>
             <td>
@@ -55,6 +42,19 @@
             <td>{% translate 'Razvijalci:' %}</td>
             <td>
               <div class="pill">{{ entry.developers }}</div>
+            </td>
+          </tr>
+          {% endif %} {% if entry.institutions.all|length %}
+          <tr>
+            <td>{% translate 'Institucija:' %}</td>
+            <td>
+              {% for institution in entry.institutions.all %}
+              <a
+                href="?{% query_string_replace request institution=institution.slug page=1 %}#entries"
+                class="pill has-link"
+                >{{ institution.name }}</a
+              >
+              {% endfor %}
             </td>
           </tr>
           {% endif %} {% if entry.cost %}
