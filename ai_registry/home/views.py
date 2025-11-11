@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, View
 
-from .models.registry_entry import RegistryEntry
+from .models.registry_entry import RegistryEntry, RegistryEntryInstitutionData
 from .models.tags import AreaTag, GenericTag, InstitutionTag
 
 SORT_OPTIONS = [
@@ -17,9 +17,9 @@ SORT_KEYS = [key for key, _ in SORT_OPTIONS]
 SORT_DEFAULT = "updated_at"
 
 
-def _get_tags_many(request, Model, key, entries):
+def _get_tags_many(request, Model, key, entries, filter_key="registryentry__in"):
     objects = list(
-        Model.objects.filter(registryentry__in=entries)
+        Model.objects.filter(**{filter_key: entries})
         .distinct()
         .values_list("slug", "name")
     )
@@ -44,20 +44,30 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         entries = RegistryEntry.objects.filter(
-            public_procurement=False,
             published=True,
         ).prefetch_related(
-            "institutions",
             "areas",
             "tags",
-            "contracting_institution",
+            "registryentryinstitutiondata",
         )
         all_entries_count = entries.count()
+
+        inst_entries = RegistryEntryInstitutionData.objects.filter(
+            registry_entry__in=entries,
+            public_procurement=False,
+        ).prefetch_related(
+            "institution",
+            "contracting_institution",
+        )
 
         areas, selected_areas = _get_tags_many(self.request, AreaTag, "area", entries)
         tags, selected_tags = _get_tags_many(self.request, GenericTag, "tag", entries)
         institutions, selected_institutions = _get_tags_many(
-            self.request, InstitutionTag, "institution", entries
+            self.request,
+            InstitutionTag,
+            "institution",
+            inst_entries,
+            filter_key="registryentryinstitutiondata_institution__in",
         )
 
         if selected_areas:
@@ -68,7 +78,9 @@ class HomeView(TemplateView):
             entries = entries.filter(tags__slug__in=selected_tag_slugs)
         if selected_institutions:
             selected_institution_slugs = [slug for slug, _ in selected_institutions]
-            entries = entries.filter(institutions__slug__in=selected_institution_slugs)
+            entries = entries.filter(
+                registryentryinstitutiondata__institution__slug__in=selected_institution_slugs
+            )
 
         sort_query = self.request.GET.get("sort", SORT_DEFAULT)
         if sort_query not in SORT_KEYS:
@@ -130,14 +142,17 @@ class CSVExportView(View):
         writer = csv.writer(response)
         writer.writerow(
             [
+                # general info
                 _("Ime orodja"),
                 _("Namen orodja"),
                 _("Opis"),
-                _("Obdobje rabe"),
-                _("Institucije"),
                 _("Področja"),
                 _("Oznake"),
                 _("Razvijalci"),
+                # time in use
+                _("Obdobje rabe"),
+                # institution data
+                _("Institucija"),
                 _("Cena"),
                 _("Komentarji o ceni"),
                 _("Trajanje licence (če kupljeno)"),
@@ -146,12 +161,17 @@ class CSVExportView(View):
                 _("Komentarji analize učinka na človekove pravice"),
                 _("Analiza učinka na osebne podatke opravljena"),
                 _("Komentarji analize učinka na osebne podatke"),
+                # related links
                 _("Povezave"),
+                # updated at
                 _("Posodobljeno"),
             ]
         )
 
-        entries = RegistryEntry.objects.prefetch_related("links").all()
+        entries = RegistryEntry.objects.prefetch_related(
+            "links",
+            "registryentryinstitutiondata",
+        ).all()
         for entry in entries:
             links = [
                 f"{link.description}: {link.url or link.file}"
@@ -159,25 +179,59 @@ class CSVExportView(View):
             ]
             writer.writerow(
                 [
+                    # general info
                     entry.name,
                     entry.purpose,
                     entry.description,
-                    entry.time_in_use,
-                    "; ".join(str(i) for i in entry.institutions.all()),
                     "; ".join(str(a) for a in entry.areas.all()),
                     "; ".join(str(t) for t in entry.tags.all()),
                     entry.developers,
-                    entry.cost,
-                    entry.cost_comment,
-                    entry.license_duration,
-                    entry.license_duration_comment,
-                    _("Da") if entry.human_rights_analysis_done else _("Ne"),
-                    entry.human_rights_analysis_comments,
-                    _("Da") if entry.personal_data_analysis_done else _("Ne"),
-                    entry.personal_data_analysis_comments,
+                    # time in use
+                    entry.time_in_use,
+                    # institution data
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    # related links
                     "; ".join(links),
+                    # updated at
                     entry.updated_at.strftime("%Y-%m-%dT%H:%M:%S"),
                 ]
             )
+            inst_entries = entry.registryentryinstitutiondata.all()
+            for inst_entry in inst_entries:
+                writer.writerow(
+                    [
+                        # general info
+                        "↳",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        # time in use
+                        "",
+                        # institution data
+                        "; ".join(str(i) for i in inst_entry.institution.all()),
+                        inst_entry.cost,
+                        inst_entry.cost_comment,
+                        inst_entry.license_duration,
+                        inst_entry.license_duration_comment,
+                        _("Da") if inst_entry.human_rights_analysis_done else _("Ne"),
+                        inst_entry.human_rights_analysis_comments,
+                        _("Da") if inst_entry.personal_data_analysis_done else _("Ne"),
+                        inst_entry.personal_data_analysis_comments,
+                        # related links
+                        "",
+                        # updated at
+                        "",
+                    ]
+                )
 
         return response

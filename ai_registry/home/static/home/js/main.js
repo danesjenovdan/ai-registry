@@ -202,10 +202,104 @@ function togglePillTooltips() {
   });
 }
 
+function setupTabbedInstitutionData() {
+  document.querySelectorAll(".tab-content-container").forEach((container) => {
+    const entry = container.closest(".registry-entry");
+    const tabLinksContainer = entry.querySelector(".tab-links");
+    const tabLinkScrollerContainer = tabLinksContainer.querySelector(
+      ".tab-link-scroller-container"
+    );
+    const tabLinkScroller =
+      tabLinksContainer.querySelector(".tab-link-scroller");
+
+    // Activate first tab link
+    const firstTabLink = tabLinksContainer.querySelector(".tab-link");
+    firstTabLink.classList.add("active");
+
+    // Set scroller container height to match tab link height
+    tabLinkScroller.style.paddingBottom = "32px"; // account for scrollbar
+    let tabHeight = Number.parseFloat(
+      window.getComputedStyle(firstTabLink).height
+    );
+    tabHeight += Number.parseFloat(
+      window.getComputedStyle(firstTabLink).marginTop
+    );
+    tabHeight += Number.parseFloat(
+      window.getComputedStyle(firstTabLink).marginBottom
+    );
+    tabLinkScrollerContainer.style.height = `${tabHeight}px`;
+
+    // Show scroll arrows if needed
+    if (tabLinkScroller.scrollWidth > tabLinkScrollerContainer.clientWidth) {
+      tabLinkScrollerContainer.insertAdjacentHTML(
+        "afterbegin",
+        `<button class="tab-link-scroller-button left" aria-label="Scroll left">
+          &#9664;
+        </button>`
+      );
+      tabLinkScrollerContainer.insertAdjacentHTML(
+        "beforeend",
+        `<button class="tab-link-scroller-button right" aria-label="Scroll right">
+          &#9654;
+        </button>`
+      );
+
+      const leftButton = tabLinkScrollerContainer.querySelector(
+        ".tab-link-scroller-button.left"
+      );
+      const rightButton = tabLinkScrollerContainer.querySelector(
+        ".tab-link-scroller-button.right"
+      );
+
+      leftButton.addEventListener("click", () => {
+        tabLinkScroller.scrollBy({ left: -100, behavior: "smooth" });
+      });
+      rightButton.addEventListener("click", () => {
+        tabLinkScroller.scrollBy({ left: 100, behavior: "smooth" });
+      });
+    }
+
+    // Hide all tab contents except the first one
+    const tabContents = container.querySelectorAll(".tab-content");
+    Array.from(tabContents)
+      .slice(1)
+      .forEach((content) => {
+        content.classList.add("hidden");
+      });
+  });
+
+  document.querySelectorAll(".tab-link").forEach((tabLink) => {
+    tabLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      const entry = tabLink.closest(".registry-entry");
+      const tabLinks = entry.querySelector(".tab-links");
+      const tabContents = entry.querySelectorAll(".tab-content");
+
+      // Deactivate all tabs
+      const tabs = tabLinks.querySelectorAll(".tab-link");
+      tabs.forEach((t) => t.classList.remove("active"));
+
+      // Activate clicked tab
+      tabLink.classList.add("active");
+
+      // Show corresponding tab content
+      const targetTab = tabLink.dataset.tab;
+      tabContents.forEach((content) => {
+        if (content.dataset.tab === targetTab) {
+          content.classList.remove("hidden");
+        } else {
+          content.classList.add("hidden");
+        }
+      });
+    });
+  });
+}
+
 (function main() {
   addNewsletterListeners();
   toggleFilterDropdown();
   toggleSortDropdown();
   toggleRegistryEntries();
   togglePillTooltips();
+  setupTabbedInstitutionData();
 })();

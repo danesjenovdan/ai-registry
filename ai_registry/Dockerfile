@@ -1,5 +1,5 @@
-# Use an official Python runtime based on Debian 12 "bookworm" as a parent image.
-FROM python:3.12-slim-bookworm
+# Use an official Python runtime based on Debian 13 "trixie" as a parent image.
+FROM python:3.14-slim-trixie
 
 # Add user that will be used in the container.
 RUN useradd django
@@ -25,7 +25,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     gettext \
     libicu-dev \
     pkg-config \
- && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Install the application server.
 RUN pip install "gunicorn==23.0.0"
@@ -45,6 +45,11 @@ COPY --chown=django:django . .
 
 # Use user "django" to run the build commands below and the server itself.
 USER django
+
+# Set the IPython directory to a temporary folder to avoid permission issues and
+# create the default profile directory with the correct user.
+ENV IPYTHONDIR=/tmp/ipython
+RUN mkdir -p $IPYTHONDIR/profile_default
 
 # Compile locale files.
 RUN python manage.py compilemessages

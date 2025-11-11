@@ -1,4 +1,5 @@
-{% load i18n pagination_tags %}
+{% load i18n pagination_tags registry_entry_tags %}
+
 <div class="registry-entry collapsed">
   <div class="entry-header">
     <h2 class="entry-title">
@@ -11,20 +12,7 @@
     <div class="entry-content">
       <div class="entry-table-col">
         <table>
-          {% if entry.institutions.all|length %}
-          <tr>
-            <td>{% translate 'Institucija:' %}</td>
-            <td>
-              {% for institution in entry.institutions.all %}
-              <a
-                href="?{% query_string_replace request institution=institution.slug page=1 %}#entries"
-                class="pill has-link"
-                >{{ institution.name }}</a
-              >
-              {% endfor %}
-            </td>
-          </tr>
-          {% endif %} {% if entry.areas.all|length %}
+          {% if entry.areas.all|length %}
           <tr>
             <td>{% translate 'Področja:' %}</td>
             <td>
@@ -37,7 +25,8 @@
               {% endfor %}
             </td>
           </tr>
-          {% endif %} {% if entry.tags.all|length %}
+          {% endif %}
+          {% if entry.tags.all|length %}
           <tr>
             <td>{% translate 'Oznake:' %}</td>
             <td>
@@ -50,89 +39,121 @@
               {% endfor %}
             </td>
           </tr>
-          {% endif %} {% if entry.developers %}
+          {% endif %}
+          {% if entry.developers %}
           <tr>
             <td>{% translate 'Razvijalci:' %}</td>
             <td>
               <div class="pill">{{ entry.developers }}</div>
             </td>
           </tr>
-          {% endif %} {% if entry.cost %}
-          <tr>
-            <td>{% translate 'Cena:' %}</td>
+          {% endif %}
+          {% if entry.registryentryinstitutiondata.all|length %}
+          <tr class="tab-links">
+            <td>{% translate 'Institucija:' %}</td>
             <td>
-              <div class="pill">{{ entry.cost }}</div>
-              {% if entry.cost_comment %}
-              <div class="pill has-tooltip" tabindex="0">
-                <span>?</span>
-                <div class="pill-tooltip-container" style="display: none">
-                  <div class="pill-tooltip">{{ entry.cost_comment }}</div>
+              <div class="tab-link-scroller-container">
+                <div class="tab-link-scroller">
+                  {% for entryinstitutiondata in entry.registryentryinstitutiondata.all %}
+                  <a
+                    {% comment %} href="?{% query_string_replace request institution=entryinstitutiondata.institution.first.slug page=1 %}#entries" {% endcomment %}
+                    class="pill has-link tab-link"
+                    data-tab="{{ entryinstitutiondata.institution.first.slug }}"
+                    >{{ entryinstitutiondata.institution.first.name }}</a
+                  >
+                  {% endfor %}
                 </div>
               </div>
-              {% endif %}
-            </td>
-          </tr>
-          {% endif %} {% if entry.license_duration %}
-          <tr>
-            <td>{% translate 'Trajanje licence:' %}</td>
-            <td>
-              <div class="pill">{{ entry.license_duration }}</div>
-              {% if entry.license_duration_comment %}
-              <div class="pill has-tooltip" tabindex="0">
-                <span>?</span>
-                <div class="pill-tooltip-container" style="display: none">
-                  <div class="pill-tooltip">{{ entry.license_duration_comment }}</div>
-                </div>
-              </div>
-              {% endif %}
             </td>
           </tr>
           {% endif %}
         </table>
-        <table>
-          <tr>
-            <td>
-              {% translate 'Analiza učinka na človekove pravice opravljena:' %}
-            </td>
-            <td>
-              <div class="pill">
-                {% if entry.human_rights_analysis_done %} {% translate "Da" %}
-                {% else %} {% translate "Ne" %} {% endif %}
-              </div>
-              {% if entry.human_rights_analysis_comments %}
-              <div class="pill has-tooltip" tabindex="0">
-                <span>?</span>
-                <div class="pill-tooltip-container" style="display: none">
-                  <div class="pill-tooltip">
-                    {{ entry.human_rights_analysis_comments }}
+        {% if entry.registryentryinstitutiondata.all|filter_out_public_procurement|length %}
+        <div class="tab-content-container">
+          {% for entryinstitutiondata in entry.registryentryinstitutiondata.all|filter_out_public_procurement %}
+          <div class="tab-content" data-tab="{{ entryinstitutiondata.institution.first.slug}}">
+            <table>
+              {% if entryinstitutiondata.cost %}
+              <tr>
+                <td>{% translate 'Cena:' %}</td>
+                <td>
+                  <div class="pill">{{ entryinstitutiondata.cost }}</div>
+                  {% if entryinstitutiondata.cost_comment %}
+                  <div class="pill has-tooltip" tabindex="0">
+                    <span>?</span>
+                    <div class="pill-tooltip-container" style="display: none">
+                      <div class="pill-tooltip">{{ entryinstitutiondata.cost_comment }}</div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                  {% endif %}
+                </td>
+              </tr>
               {% endif %}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {% translate 'Analiza učinka na osebne podatke opravljena:' %}
-            </td>
-            <td>
-              <div class="pill">
-                {% if entry.personal_data_analysis_done %} {% translate "Da" %}
-                {% else %} {% translate "Ne" %} {% endif %}
-              </div>
-              {% if entry.personal_data_analysis_comments %}
-              <div class="pill has-tooltip" tabindex="0">
-                <span>?</span>
-                <div class="pill-tooltip-container" style="display: none">
-                  <div class="pill-tooltip">
-                    {{ entry.personal_data_analysis_comments }}
+              {% if entryinstitutiondata.license_duration %}
+              <tr>
+                <td>{% translate 'Trajanje licence:' %}</td>
+                <td>
+                  <div class="pill">{{ entryinstitutiondata.license_duration }}</div>
+                  {% if entryinstitutiondata.license_duration_comment %}
+                  <div class="pill has-tooltip" tabindex="0">
+                    <span>?</span>
+                    <div class="pill-tooltip-container" style="display: none">
+                      <div class="pill-tooltip">{{ entryinstitutiondata.license_duration_comment }}</div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                  {% endif %}
+                </td>
+              </tr>
               {% endif %}
-            </td>
-          </tr>
-        </table>
+            </table>
+            <table>
+              <tr>
+                <td>
+                  {% translate 'Analiza učinka na človekove pravice opravljena:' %}
+                </td>
+                <td>
+                  <div class="pill">
+                    {% if entryinstitutiondata.human_rights_analysis_done %} {% translate "Da" %}
+                    {% else %} {% translate "Ne" %} {% endif %}
+                  </div>
+                  {% if entryinstitutiondata.human_rights_analysis_comments %}
+                  <div class="pill has-tooltip" tabindex="0">
+                    <span>?</span>
+                    <div class="pill-tooltip-container" style="display: none">
+                      <div class="pill-tooltip">
+                        {{ entryinstitutiondata.human_rights_analysis_comments }}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {% translate 'Analiza učinka na osebne podatke opravljena:' %}
+                </td>
+                <td>
+                  <div class="pill">
+                    {% if entryinstitutiondata.personal_data_analysis_done %} {% translate "Da" %}
+                    {% else %} {% translate "Ne" %} {% endif %}
+                  </div>
+                  {% if entryinstitutiondata.personal_data_analysis_comments %}
+                  <div class="pill has-tooltip" tabindex="0">
+                    <span>?</span>
+                    <div class="pill-tooltip-container" style="display: none">
+                      <div class="pill-tooltip">
+                        {{ entryinstitutiondata.personal_data_analysis_comments }}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                </td>
+              </tr>
+            </table>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
       </div>
       <div class="entry-text-col">
         <div class="entry-updated-at">

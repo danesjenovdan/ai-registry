@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-31 11:52+0200\n"
+"POT-Creation-Date: 2025-11-11 17:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,177 +17,196 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: home/admin.py:37
-msgid "OBDOBJE RABE"
-msgstr "PERIOD OF USE"
-
-#: home/admin.py:46
-msgid "LICENCA"
-msgstr "LICENSE"
-
-#: home/admin.py:55
+#: home/admin.py:27
 msgid "CENA"
 msgstr "PRICE"
 
-#: home/admin.py:64
+#: home/admin.py:36
+msgid "LICENCA"
+msgstr "LICENSE"
+
+#: home/admin.py:45
 msgid "ANALIZE"
 msgstr "ANALYSES"
 
-#: home/admin.py:75
+#: home/admin.py:56
 msgid "JAVNO NAROČILO"
 msgstr ""
 
-#: home/admin.py:86
+#: home/admin.py:111
+msgid "OBDOBJE RABE"
+msgstr "PERIOD OF USE"
+
+#: home/admin.py:120
 msgid "INTERNO"
 msgstr "INTERNAL"
 
-#: home/models/registry_entry.py:12 home/models/registry_entry.py:33
-msgid "Povezava"
-msgstr "Link"
-
-#: home/models/registry_entry.py:17
-msgid "Datoteka"
-msgstr "File"
-
-#: home/models/registry_entry.py:21
+#: home/models/registry_entry.py:19
 msgid "Opis povezave"
 msgstr "Link description"
 
-#: home/models/registry_entry.py:34 home/views.py:149
+#: home/models/registry_entry.py:24 home/models/registry_entry.py:36
+msgid "Povezava"
+msgstr "Link"
+
+#: home/models/registry_entry.py:29
+msgid "Datoteka"
+msgstr "File"
+
+#: home/models/registry_entry.py:37 home/views.py:165
 msgid "Povezave"
 msgstr "Links"
 
-#: home/models/registry_entry.py:40
-msgid "Objavljeno"
-msgstr ""
+#: home/models/registry_entry.py:52 home/models/tags.py:22 home/views.py:155
+msgid "Institucija"
+msgstr "Institution"
 
-#: home/models/registry_entry.py:41
-msgid "Ali je vnos v register objavljen?"
-msgstr ""
-
-#: home/models/registry_entry.py:43 home/views.py:133
-msgid "Ime orodja"
-msgstr "Tool name"
-
-#: home/models/registry_entry.py:44 home/views.py:134
-msgid "Namen orodja"
-msgstr "Tool purpose"
-
-#: home/models/registry_entry.py:47 home/views.py:135
-msgid "Opis"
-msgstr "Description"
-
-#: home/models/registry_entry.py:48
-msgid "Kakšne odločitve se sprejemajo, kaj dela ta algoritem"
-msgstr "What decisions are made, what this algorithm does"
-
-#: home/models/registry_entry.py:55
-msgid "Obdobje rabe (uporabljeno za prikaz)"
-msgstr "Period of use (used for display)"
-
-#: home/models/registry_entry.py:60
-msgid "Obdobje rabe (uporabljeno za razvrščanje)"
-msgstr "Period of use (used for sorting)"
-
-#: home/models/registry_entry.py:65 home/models/tags.py:23 home/views.py:137
-msgid "Institucije"
-msgstr "Institutions"
-
-#: home/models/registry_entry.py:66 home/models/registry_entry.py:79
-#: home/models/registry_entry.py:149
-msgid "Ločene s podpičjem"
-msgstr "Separated by semicolon"
-
-#: home/models/registry_entry.py:72 home/models/tags.py:29 home/views.py:138
-msgid "Področja"
-msgstr "Areas"
-
-#: home/models/registry_entry.py:73
-msgid "Ločena s podpičjem"
-msgstr "Separated by semicolon"
-
-#: home/models/registry_entry.py:78 home/models/tags.py:17
-#: home/models/tags.py:41 home/views.py:139
-msgid "Oznake"
-msgstr "Tags"
-
-#: home/models/registry_entry.py:84 home/views.py:140
-msgid "Razvijalci"
-msgstr "Developers"
-
-#: home/models/registry_entry.py:89 home/views.py:141
+#: home/models/registry_entry.py:59 home/views.py:156
 msgid "Cena"
 msgstr "Price"
 
-#: home/models/registry_entry.py:93 home/views.py:142
+#: home/models/registry_entry.py:63 home/views.py:157
 msgid "Komentarji o ceni"
 msgstr "Comments on price"
 
-#: home/models/registry_entry.py:98 home/views.py:143
+#: home/models/registry_entry.py:69 home/views.py:158
 msgid "Trajanje licence (če kupljeno)"
 msgstr "License duration (if purchased)"
 
-#: home/models/registry_entry.py:102 home/views.py:144
+#: home/models/registry_entry.py:73 home/views.py:159
 msgid "Komentarji o trajanju licence"
 msgstr "Comments on license duration"
 
-#: home/models/registry_entry.py:106 home/views.py:145
+#: home/models/registry_entry.py:78 home/views.py:160
 msgid "Analiza učinka na človekove pravice opravljena"
 msgstr "Human rights impact assessment conducted"
 
-#: home/models/registry_entry.py:110 home/views.py:146
+#: home/models/registry_entry.py:82 home/views.py:161
 msgid "Komentarji analize učinka na človekove pravice"
 msgstr "Comments on human rights impact assessment"
 
-#: home/models/registry_entry.py:114 home/views.py:147
+#: home/models/registry_entry.py:86 home/views.py:162
 msgid "Analiza učinka na osebne podatke opravljena"
 msgstr "Personal data impact assessment conducted"
 
-#: home/models/registry_entry.py:118 home/views.py:148
+#: home/models/registry_entry.py:90 home/views.py:163
 msgid "Komentarji analize učinka na osebne podatke"
 msgstr "Comments on personal data impact assessment"
 
-#: home/models/registry_entry.py:122
-msgid "Dodatni komentarji"
-msgstr "Additional comments"
-
-#: home/models/registry_entry.py:123
-msgid "Interno"
-msgstr "Internal"
-
-#: home/models/registry_entry.py:128
+#: home/models/registry_entry.py:95
 msgid "Javno naročilo"
 msgstr ""
 
-#: home/models/registry_entry.py:129
+#: home/models/registry_entry.py:96
 msgid "Ali je bil vnos predmet javnega naročila?"
 msgstr ""
 
-#: home/models/registry_entry.py:135
-msgid "Številka javnega naročila"
+#: home/models/registry_entry.py:102
+msgid "Številka objave na PJN"
 msgstr ""
 
-#: home/models/registry_entry.py:136
-msgid "Številka javnega naročila, če je predmet javnega naročila"
+#: home/models/registry_entry.py:104
+msgid ""
+"Številka javnega naročila na portalu javnih naročil (PJN), če je predmet "
+"javnega naročila"
 msgstr ""
 
-#: home/models/registry_entry.py:141
+#: home/models/registry_entry.py:111
+msgid "Številka objave na TED"
+msgstr ""
+
+#: home/models/registry_entry.py:113
+msgid ""
+"Številka javnega naročila na portalu TED (tenders electronic daily), če je "
+"predmet javnega naročila"
+msgstr ""
+
+#: home/models/registry_entry.py:119
 msgid "Datum objave javnega naročila"
 msgstr ""
 
-#: home/models/registry_entry.py:142
+#: home/models/registry_entry.py:120
 msgid "Datum objave javnega naročila, če je predmet javnega naročila"
 msgstr ""
 
-#: home/models/registry_entry.py:148
+#: home/models/registry_entry.py:126
 msgid "Naročnik"
 msgstr ""
 
-#: home/models/registry_entry.py:156
+#: home/models/registry_entry.py:135
+msgid "Podatki institucije pri vnosu"
+msgstr ""
+
+#: home/models/registry_entry.py:136
+msgid "Podatki institucij pri vnosih"
+msgstr ""
+
+#: home/models/registry_entry.py:140 home/views.py:146
+msgid "Ime orodja"
+msgstr "Tool name"
+
+#: home/models/registry_entry.py:141 home/views.py:147
+msgid "Namen orodja"
+msgstr "Tool purpose"
+
+#: home/models/registry_entry.py:144 home/views.py:148
+msgid "Opis"
+msgstr "Description"
+
+#: home/models/registry_entry.py:145
+msgid "Kakšne odločitve se sprejemajo, kaj dela ta algoritem"
+msgstr "What decisions are made, what this algorithm does"
+
+#: home/models/registry_entry.py:150 home/models/tags.py:29 home/views.py:149
+msgid "Področja"
+msgstr "Areas"
+
+#: home/models/registry_entry.py:151
+msgid "Ločena s podpičjem"
+msgstr "Separated by semicolon"
+
+#: home/models/registry_entry.py:156 home/models/tags.py:17
+#: home/models/tags.py:41 home/views.py:150
+msgid "Oznake"
+msgstr "Tags"
+
+#: home/models/registry_entry.py:157
+msgid "Ločene s podpičjem"
+msgstr "Separated by semicolon"
+
+#: home/models/registry_entry.py:162 home/views.py:151
+msgid "Razvijalci"
+msgstr "Developers"
+
+#: home/models/registry_entry.py:166
+msgid "Objavljeno"
+msgstr ""
+
+#: home/models/registry_entry.py:167
+msgid "Ali je vnos v register objavljen?"
+msgstr ""
+
+#: home/models/registry_entry.py:173
+msgid "Obdobje rabe (uporabljeno za prikaz)"
+msgstr "Period of use (used for display)"
+
+#: home/models/registry_entry.py:178
+msgid "Obdobje rabe (uporabljeno za razvrščanje)"
+msgstr "Period of use (used for sorting)"
+
+#: home/models/registry_entry.py:183
+msgid "Dodatni komentarji"
+msgstr "Additional comments"
+
+#: home/models/registry_entry.py:184
+msgid "Interno"
+msgstr "Internal"
+
+#: home/models/registry_entry.py:191
 msgid "Vnos v register"
 msgstr "Registry entry"
 
-#: home/models/registry_entry.py:157
+#: home/models/registry_entry.py:192
 msgid "Vnosi v register"
 msgstr "Registry entries"
 
@@ -196,9 +214,9 @@ msgstr "Registry entries"
 msgid "Oznaka"
 msgstr "Tag"
 
-#: home/models/tags.py:22
-msgid "Institucija"
-msgstr "Institution"
+#: home/models/tags.py:23
+msgid "Institucije"
+msgstr "Institutions"
 
 #: home/models/tags.py:28
 msgid "Področje"
@@ -496,65 +514,65 @@ msgstr ""
 "      </p>\n"
 "      "
 
-#: home/templates/home/partials/registry_entry.html:16
-msgid "Institucija:"
-msgstr "Institution:"
-
-#: home/templates/home/partials/registry_entry.html:29
+#: home/templates/home/partials/registry_entry.html:17
 #: home/templates/home/partials/registry_filters.html:35
 msgid "Področja:"
 msgstr "Areas:"
 
-#: home/templates/home/partials/registry_entry.html:42
+#: home/templates/home/partials/registry_entry.html:31
 #: home/templates/home/partials/registry_filters.html:50
 msgid "Oznake:"
 msgstr "Tags:"
 
-#: home/templates/home/partials/registry_entry.html:55
+#: home/templates/home/partials/registry_entry.html:45
 msgid "Razvijalci:"
 msgstr "Developers:"
 
-#: home/templates/home/partials/registry_entry.html:62
+#: home/templates/home/partials/registry_entry.html:53
+msgid "Institucija:"
+msgstr "Institution:"
+
+#: home/templates/home/partials/registry_entry.html:79
 msgid "Cena:"
 msgstr "Price:"
 
-#: home/templates/home/partials/registry_entry.html:77
+#: home/templates/home/partials/registry_entry.html:95
 msgid "Trajanje licence:"
 msgstr "License duration:"
 
-#: home/templates/home/partials/registry_entry.html:95
+#: home/templates/home/partials/registry_entry.html:113
 msgid "Analiza učinka na človekove pravice opravljena:"
 msgstr "Human rights impact assessment conducted:"
 
-#: home/templates/home/partials/registry_entry.html:99
-#: home/templates/home/partials/registry_entry.html:120 home/views.py:174
-#: home/views.py:176
+#: home/templates/home/partials/registry_entry.html:117
+#: home/templates/home/partials/registry_entry.html:138 home/views.py:226
+#: home/views.py:228
 msgid "Da"
 msgstr "Yes"
 
-#: home/templates/home/partials/registry_entry.html:100
-#: home/templates/home/partials/registry_entry.html:121 home/views.py:174
-#: home/views.py:176
+#: home/templates/home/partials/registry_entry.html:118
+#: home/templates/home/partials/registry_entry.html:139 home/views.py:226
+#: home/views.py:228
 msgid "Ne"
 msgstr "No"
 
-#: home/templates/home/partials/registry_entry.html:116
+#: home/templates/home/partials/registry_entry.html:134
 msgid "Analiza učinka na osebne podatke opravljena:"
 msgstr "Personal data impact assessment conducted:"
 
-#: home/templates/home/partials/registry_entry.html:139
+#: home/templates/home/partials/registry_entry.html:161
 msgid "Posodobljeno:"
 msgstr "Updated:"
 
-#: home/templates/home/partials/registry_entry.html:144
+#: home/templates/home/partials/registry_entry.html:166
 msgid "Viri:"
 msgstr "Sources:"
 
-#: home/templates/home/partials/registry_entry.html:166
+#: home/templates/home/partials/registry_entry.html:188
 msgid "ZAPRI -"
 msgstr "CLOSE -"
 
-#: home/templates/home/partials/registry_entry.html:168
+#: home/templates/home/partials/registry_entry.html:190
 msgid "VEČ INFORMACIJ +"
 msgstr "MORE INFORMATION +"
 
@@ -599,14 +617,14 @@ msgstr "period of use"
 msgid "zadnjem vnosu"
 msgstr "latest entry"
 
-#: home/views.py:118
+#: home/views.py:130
 msgid "izvoz-register-ui"
 msgstr "export-ai-register"
 
-#: home/views.py:136
+#: home/views.py:153
 msgid "Obdobje rabe"
 msgstr "Period of use"
 
-#: home/views.py:150
+#: home/views.py:167
 msgid "Posodobljeno"
 msgstr "Updated"
