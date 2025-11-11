@@ -132,8 +132,19 @@ class RegistryEntry(Timestamped):
         max_length=50,
         null=True,
         blank=True,
-        verbose_name=_("Številka javnega naročila"),
-        help_text=_("Številka javnega naročila, če je predmet javnega naročila"),
+        verbose_name=_("Številka objave na PJN"),
+        help_text=_(
+            "Številka javnega naročila na portalu javnih naročil (PJN), če je predmet javnega naročila"
+        ),
+    )
+    public_procurement_number_eu = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+        verbose_name=_("Številka objave na TED"),
+        help_text=_(
+            "Številka javnega naročila na portalu TED (tenders electronic daily), če je predmet javnega naročila"
+        ),
     )
     public_procurement_date = models.DateField(
         null=True,

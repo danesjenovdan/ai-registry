@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-31 11:52+0200\n"
+"POT-Creation-Date: 2025-11-11 10:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "JAVNO NAROČILO"
 msgstr ""
 
-#: home/admin.py:86
+#: home/admin.py:87
 msgid "INTERNO"
 msgstr ""
 
@@ -96,7 +96,7 @@ msgid "Institucije"
 msgstr ""
 
 #: home/models/registry_entry.py:66 home/models/registry_entry.py:79
-#: home/models/registry_entry.py:149
+#: home/models/registry_entry.py:160
 msgid "Ločene s podpičjem"
 msgstr ""
 
@@ -166,30 +166,42 @@ msgid "Ali je bil vnos predmet javnega naročila?"
 msgstr ""
 
 #: home/models/registry_entry.py:135
-msgid "Številka javnega naročila"
+msgid "Številka objave na PJN"
 msgstr ""
 
-#: home/models/registry_entry.py:136
-msgid "Številka javnega naročila, če je predmet javnega naročila"
+#: home/models/registry_entry.py:137
+msgid ""
+"Številka javnega naročila na portalu javnih naročil (PJN), če je predmet "
+"javnega naročila"
 msgstr ""
 
-#: home/models/registry_entry.py:141
+#: home/models/registry_entry.py:144
+msgid "Številka objave na TED"
+msgstr ""
+
+#: home/models/registry_entry.py:146
+msgid ""
+"Številka javnega naročila na portalu TED (tenders electronic daily), če je "
+"predmet javnega naročila"
+msgstr ""
+
+#: home/models/registry_entry.py:152
 msgid "Datum objave javnega naročila"
 msgstr ""
 
-#: home/models/registry_entry.py:142
+#: home/models/registry_entry.py:153
 msgid "Datum objave javnega naročila, če je predmet javnega naročila"
 msgstr ""
 
-#: home/models/registry_entry.py:148
+#: home/models/registry_entry.py:159
 msgid "Naročnik"
 msgstr ""
 
-#: home/models/registry_entry.py:156
+#: home/models/registry_entry.py:167
 msgid "Vnos v register"
 msgstr ""
 
-#: home/models/registry_entry.py:157
+#: home/models/registry_entry.py:168
 msgid "Vnosi v register"
 msgstr ""
 
@@ -390,21 +402,21 @@ msgid ""
 msgstr ""
 
 #: home/templates/home/partials/registry_entry.html:16
-msgid "Institucija:"
-msgstr ""
-
-#: home/templates/home/partials/registry_entry.html:29
 #: home/templates/home/partials/registry_filters.html:35
 msgid "Področja:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:42
+#: home/templates/home/partials/registry_entry.html:29
 #: home/templates/home/partials/registry_filters.html:50
 msgid "Oznake:"
 msgstr ""
 
-#: home/templates/home/partials/registry_entry.html:55
+#: home/templates/home/partials/registry_entry.html:42
 msgid "Razvijalci:"
+msgstr ""
+
+#: home/templates/home/partials/registry_entry.html:49
+msgid "Institucija:"
 msgstr ""
 
 #: home/templates/home/partials/registry_entry.html:62

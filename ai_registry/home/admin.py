@@ -77,6 +77,7 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                 "fields": [
                     "public_procurement",
                     "public_procurement_number",
+                    "public_procurement_number_eu",
                     "public_procurement_date",
                     "contracting_institution",
                 ]
