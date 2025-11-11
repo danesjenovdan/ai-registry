@@ -20,7 +20,8 @@ class Link(models.Model):
         max_length=255,
         verbose_name=_("Opis povezave"),
     )
-    registy_entry = models.ForeignKey(
+    # related registry entry
+    registry_entry = models.ForeignKey(
         "RegistryEntry",
         on_delete=models.CASCADE,
         related_name="links",
@@ -167,3 +168,104 @@ class RegistryEntry(Timestamped):
         verbose_name = _("Vnos v register")
         verbose_name_plural = _("Vnosi v register")
         ordering = ["-created_at"]
+
+
+class RegistryEntryInstitutionData(Timestamped):
+    institution = TaggableManager(
+        through="home.TaggedInstitution",
+        blank=True,
+        related_name="registryentryinstitutiondata_institution",
+        verbose_name=_("Institucija"),
+        help_text="",
+    )
+    # cost
+    cost = models.CharField(
+        max_length=50,
+        blank=True,
+        verbose_name=_("Cena"),
+    )
+    cost_comment = models.TextField(
+        blank=True,
+        verbose_name=_("Komentarji o ceni"),
+    )
+    # license
+    license_duration = models.CharField(
+        max_length=50,
+        blank=True,
+        verbose_name=_("Trajanje licence (če kupljeno)"),
+    )
+    license_duration_comment = models.TextField(
+        blank=True,
+        verbose_name=_("Komentarji o trajanju licence"),
+    )
+    # analyses
+    human_rights_analysis_done = models.BooleanField(
+        default=False,
+        verbose_name=_("Analiza učinka na človekove pravice opravljena"),
+    )
+    human_rights_analysis_comments = models.TextField(
+        blank=True,
+        verbose_name=_("Komentarji analize učinka na človekove pravice"),
+    )
+    personal_data_analysis_done = models.BooleanField(
+        default=False,
+        verbose_name=_("Analiza učinka na osebne podatke opravljena"),
+    )
+    personal_data_analysis_comments = models.TextField(
+        blank=True,
+        verbose_name=_("Komentarji analize učinka na osebne podatke"),
+    )
+    # public procurements
+    public_procurement = models.BooleanField(
+        default=False,
+        verbose_name=_("Javno naročilo"),
+        help_text=_("Ali je bil vnos predmet javnega naročila?"),
+    )
+    public_procurement_number = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+        verbose_name=_("Številka objave na PJN"),
+        help_text=_(
+            "Številka javnega naročila na portalu javnih naročil (PJN), če je predmet javnega naročila"
+        ),
+    )
+    public_procurement_number_eu = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+        verbose_name=_("Številka objave na TED"),
+        help_text=_(
+            "Številka javnega naročila na portalu TED (tenders electronic daily), če je predmet javnega naročila"
+        ),
+    )
+    public_procurement_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name=_("Datum objave javnega naročila"),
+        help_text=_("Datum objave javnega naročila, če je predmet javnega naročila"),
+    )
+    contracting_institution = TaggableManager(
+        through="home.TaggedContractingInstitution",
+        blank=True,
+        related_name="registryentryinstitutiondata_contracting_institution",
+        verbose_name=_("Naročnik"),
+        help_text="",
+    )
+    # related registry entry
+    registry_entry = models.ForeignKey(
+        "RegistryEntry",
+        on_delete=models.CASCADE,
+        related_name="registryentryinstitutiondata",
+    )
+
+    def __str__(self):
+        return f"{self.registry_entry} - {self.institution}"
+
+    class Meta:
+        verbose_name = _(
+            "Podatki povezani s specifično institucijo pri vnosu v register"
+        )
+        verbose_name_plural = _(
+            "Podatki povezani s specifičnimi institucijami pri vnosih v register"
+        )

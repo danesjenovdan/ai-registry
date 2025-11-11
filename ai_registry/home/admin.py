@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from taggit.admin import Tag
 
-from .models.registry_entry import Link, RegistryEntry
+from .models.registry_entry import Link, RegistryEntry, RegistryEntryInstitutionData
 from .models.tags import AreaTag, GenericTag, InstitutionTag
 
 # remove the default taggit.Tag model from the admin
@@ -14,40 +14,15 @@ class LinkAdmin(admin.TabularInline):
     extra = 0
 
 
-class RegistryEntryAdmin(admin.ModelAdmin):
-    inlines = [LinkAdmin]
+class RegistryEntryInstitutionDataAdmin(admin.StackedInline):
+    model = RegistryEntryInstitutionData
+    extra = 0
     fieldsets = [
         (
             None,
             {
                 "fields": [
-                    "name",
-                    "purpose",
-                    "description",
-                    # "links",
-                    "institutions",
-                    "areas",
-                    "tags",
-                    "developers",
-                    "published",
-                ]
-            },
-        ),
-        (
-            _("OBDOBJE RABE"),
-            {
-                "fields": [
-                    "time_in_use",
-                    "time_in_use_date",
-                ]
-            },
-        ),
-        (
-            _("LICENCA"),
-            {
-                "fields": [
-                    "license_duration",
-                    "license_duration_comment",
+                    "institution",
                 ]
             },
         ),
@@ -57,6 +32,15 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                 "fields": [
                     "cost",
                     "cost_comment",
+                ]
+            },
+        ),
+        (
+            _("LICENCA"),
+            {
+                "fields": [
+                    "license_duration",
+                    "license_duration_comment",
                 ]
             },
         ),
@@ -80,6 +64,36 @@ class RegistryEntryAdmin(admin.ModelAdmin):
                     "public_procurement_number_eu",
                     "public_procurement_date",
                     "contracting_institution",
+                ]
+            },
+        ),
+    ]
+
+
+class RegistryEntryAdmin(admin.ModelAdmin):
+    inlines = [RegistryEntryInstitutionDataAdmin, LinkAdmin]
+    fieldsets = [
+        (
+            None,
+            {
+                "fields": [
+                    "name",
+                    "purpose",
+                    "description",
+                    "institutions",
+                    "areas",
+                    "tags",
+                    "developers",
+                    "published",
+                ]
+            },
+        ),
+        (
+            _("OBDOBJE RABE"),
+            {
+                "fields": [
+                    "time_in_use",
+                    "time_in_use_date",
                 ]
             },
         ),
