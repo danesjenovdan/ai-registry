@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, View
 
-from .models.registry_entry import RegistryEntry
+from .models.registry_entry import RegistryEntry, RegistryEntryInstitutionData
 from .models.tags import AreaTag, GenericTag, InstitutionTag
 
 SORT_OPTIONS = [
@@ -17,9 +17,9 @@ SORT_KEYS = [key for key, _ in SORT_OPTIONS]
 SORT_DEFAULT = "updated_at"
 
 
-def _get_tags_many(request, Model, key, entries):
+def _get_tags_many(request, Model, key, entries, filter_key="registryentry__in"):
     objects = list(
-        Model.objects.filter(registryentry__in=entries)
+        Model.objects.filter(**{filter_key: entries})
         .distinct()
         .values_list("slug", "name")
     )
@@ -44,20 +44,30 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         entries = RegistryEntry.objects.filter(
-            public_procurement=False,
             published=True,
         ).prefetch_related(
-            "institutions",
             "areas",
             "tags",
-            "contracting_institution",
+            "registryentryinstitutiondata",
         )
         all_entries_count = entries.count()
+
+        inst_entries = RegistryEntryInstitutionData.objects.filter(
+            registry_entry__in=entries,
+            public_procurement=False,
+        ).prefetch_related(
+            "institution",
+            "contracting_institution",
+        )
 
         areas, selected_areas = _get_tags_many(self.request, AreaTag, "area", entries)
         tags, selected_tags = _get_tags_many(self.request, GenericTag, "tag", entries)
         institutions, selected_institutions = _get_tags_many(
-            self.request, InstitutionTag, "institution", entries
+            self.request,
+            InstitutionTag,
+            "institution",
+            inst_entries,
+            filter_key="registryentryinstitutiondata_institution__in",
         )
 
         if selected_areas:
@@ -68,7 +78,9 @@ class HomeView(TemplateView):
             entries = entries.filter(tags__slug__in=selected_tag_slugs)
         if selected_institutions:
             selected_institution_slugs = [slug for slug, _ in selected_institutions]
-            entries = entries.filter(institutions__slug__in=selected_institution_slugs)
+            entries = entries.filter(
+                registryentryinstitutiondata__institution__slug__in=selected_institution_slugs
+            )
 
         sort_query = self.request.GET.get("sort", SORT_DEFAULT)
         if sort_query not in SORT_KEYS:

@@ -202,10 +202,56 @@ function togglePillTooltips() {
   });
 }
 
+function setupTabbedInstitutionData() {
+  document.querySelectorAll(".tab-content-container").forEach((container) => {
+    const entry = container.closest(".registry-entry");
+    const tabLinksContainer = entry.querySelector(".tab-links");
+
+    // Activate first tab link
+    const firstTabLink = tabLinksContainer.querySelector(".tab-link");
+    firstTabLink.classList.add("active");
+
+    // Hide all tab contents except the first one
+    const tabContents = container.querySelectorAll(".tab-content");
+    Array.from(tabContents)
+      .slice(1)
+      .forEach((content) => {
+        content.classList.add("hidden");
+      });
+  });
+
+  document.querySelectorAll(".tab-link").forEach((tabLink) => {
+    tabLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      const entry = tabLink.closest(".registry-entry");
+      const tabLinks = entry.querySelector(".tab-links");
+      const tabContents = entry.querySelectorAll(".tab-content");
+
+      // Deactivate all tabs
+      const tabs = tabLinks.querySelectorAll(".tab-link");
+      tabs.forEach((t) => t.classList.remove("active"));
+
+      // Activate clicked tab
+      tabLink.classList.add("active");
+
+      // Show corresponding tab content
+      const targetTab = tabLink.dataset.tab;
+      tabContents.forEach((content) => {
+        if (content.dataset.tab === targetTab) {
+          content.classList.remove("hidden");
+        } else {
+          content.classList.add("hidden");
+        }
+      });
+    });
+  });
+}
+
 (function main() {
   addNewsletterListeners();
   toggleFilterDropdown();
   toggleSortDropdown();
   toggleRegistryEntries();
   togglePillTooltips();
+  setupTabbedInstitutionData();
 })();

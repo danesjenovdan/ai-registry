@@ -185,16 +185,40 @@
                     }
                   }
                 }
+
+                &.tab-link {
+                  margin-bottom: 0;
+                  padding-top: 0.4em;
+                  padding-bottom: 0.6em;
+                  border-bottom: 0;
+                  border-bottom-left-radius: 0;
+                  border-bottom-right-radius: 0;
+
+                  &.active {
+                    background: var(--bg-color-dark);
+                    color: var(--bg-color-light);
+                  }
+                }
               }
             }
           }
+        }
 
-          &:last-child {
+        .tab-content-container {
+          .tab-content {
+            border-left: 0.5px solid var(--border-color);
+            border-right: 0.5px solid var(--border-color);
             margin-bottom: 1rem;
 
-            td {
-              &:first-child {
-                width: 75%;
+            &.hidden {
+              display: none;
+            }
+
+            table:last-child {
+              td {
+                &:first-child {
+                  width: 75%;
+                }
               }
             }
           }
