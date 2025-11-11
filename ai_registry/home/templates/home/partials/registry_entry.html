@@ -52,14 +52,18 @@
           <tr class="tab-links">
             <td>{% translate 'Institucija:' %}</td>
             <td>
-              {% for entryinstitutiondata in entry.registryentryinstitutiondata.all %}
-              <a
-                {% comment %} href="?{% query_string_replace request institution=entryinstitutiondata.institution.first.slug page=1 %}#entries" {% endcomment %}
-                class="pill has-link tab-link"
-                data-tab="{{ entryinstitutiondata.institution.first.slug }}"
-                >{{ entryinstitutiondata.institution.first.name }}</a
-              >
-              {% endfor %}
+              <div class="tab-link-scroller-container">
+                <div class="tab-link-scroller">
+                  {% for entryinstitutiondata in entry.registryentryinstitutiondata.all %}
+                  <a
+                    {% comment %} href="?{% query_string_replace request institution=entryinstitutiondata.institution.first.slug page=1 %}#entries" {% endcomment %}
+                    class="pill has-link tab-link"
+                    data-tab="{{ entryinstitutiondata.institution.first.slug }}"
+                    >{{ entryinstitutiondata.institution.first.name }}</a
+                  >
+                  {% endfor %}
+                </div>
+              </div>
             </td>
           </tr>
           {% endif %}

@@ -138,6 +138,10 @@
                 padding-right: 0.375rem;
               }
 
+              &:has(.tab-link-scroller-button) {
+                padding-right: 0;
+              }
+
               .pill {
                 position: relative;
                 display: inline-block;
@@ -199,6 +203,52 @@
                     color: var(--bg-color-light);
                   }
                 }
+              }
+            }
+
+            .tab-link-scroller-container {
+              position: relative;
+              overflow: hidden;
+
+              &:has(.tab-link-scroller-button) {
+                padding-inline: 1.5rem;
+              }
+
+              .tab-link-scroller-button {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--bg-color-light);
+                border: 0.5px solid var(--border-color);
+                border-width: 0 0.5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                font-size: 0.75rem;
+                cursor: pointer;
+                z-index: 1;
+
+                &.left {
+                  left: 0;
+                }
+
+                &.right {
+                  right: 0;
+                }
+
+                &:hover {
+                  background: var(--bg-color-dark);
+                  color: var(--bg-color-light);
+                }
+              }
+
+              .tab-link-scroller {
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+                padding-inline: 0.25rem;
               }
             }
           }
