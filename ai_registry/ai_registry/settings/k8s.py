@@ -32,3 +32,22 @@ if os.getenv("DJANGO_ENABLE_S3", False):
     )
     AWS_S3_SIGNATURE_VERSION = os.getenv("DJANGO_AWS_S3_SIGNATURE_VERSION", "s3v4")
     AWS_S3_FILE_OVERWRITE = False
+
+if sentry_url := os.getenv("DJANGO_SENTRY_URL", False):
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn=sentry_url,
+        integrations=[
+            DjangoIntegration(),
+        ],
+        environment=os.getenv("SENTRY_ENV", "production"),
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", 0.001)),
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True,
+    )
