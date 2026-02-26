@@ -25,6 +25,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     gettext \
     libicu-dev \
     pkg-config \
+    libmemcached-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the application server.
@@ -33,6 +34,9 @@ RUN pip install "gunicorn==23.0.0"
 # Install the project requirements.
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
+
+# install pylibmc without precompiled binaries so it uses system installed memcached
+RUN pip install pylibmc==1.6.3 --no-binary=:all:
 
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
