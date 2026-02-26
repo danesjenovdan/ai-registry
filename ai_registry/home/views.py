@@ -3,7 +3,9 @@ import csv
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse
+from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, View
 
 from .models.registry_entry import RegistryEntry, RegistryEntryInstitutionData
@@ -37,6 +39,7 @@ def _get_tags_many(request, Model, key, entries, filter_key="registryentry__in")
     return objects, selected_tuples
 
 
+@method_decorator(cache_page(60 * 15), name="dispatch")  # Cache for 5 minutes
 class HomeView(TemplateView):
     template_name = "home/home_view.html"
 
