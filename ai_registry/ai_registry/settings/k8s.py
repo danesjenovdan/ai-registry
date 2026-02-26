@@ -51,3 +51,21 @@ if sentry_url := os.getenv("DJANGO_SENTRY_URL", False):
         # django.contrib.auth) you may enable sending PII data.
         send_default_pii=True,
     )
+
+if os.getenv("DJANGO_ENABLE_MEMCACHED", False):
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.memcached.PyLibMCCache",
+            "LOCATION": os.getenv("DJANGO_MEMCACHED_LOCATION", None),
+            "TIMEOUT": None,
+            "KEY_PREFIX": os.getenv("DJANGO_MEMCACHED_KEY_PREFIX", "ai_registry_"),
+            "OPTIONS": {
+                "binary": True,
+                "username": os.getenv("DJANGO_MEMCACHED_USERNAME", ""),
+                "password": os.getenv("DJANGO_MEMCACHED_PASSWORD", ""),
+                "behaviors": {
+                    "tcp_nodelay": True,
+                },
+            },
+        }
+    }
