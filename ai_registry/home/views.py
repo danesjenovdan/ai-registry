@@ -39,7 +39,7 @@ def _get_tags_many(request, Model, key, entries, filter_key="registryentry__in")
     return objects, selected_tuples
 
 
-@method_decorator(cache_page(60 * 15), name="dispatch")  # Cache for 5 minutes
+@method_decorator(cache_page(60 * 60 * 24), name="dispatch")  # Cache for 1 day
 class HomeView(TemplateView):
     template_name = "home/home_view.html"
 
