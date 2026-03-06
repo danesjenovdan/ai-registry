@@ -68,7 +68,7 @@ stop_port_forwarding
 
 echo ""
 echo "To load the database dump run:"
-echo "  docker-compose down -v && docker-compose up -d"
-echo "  docker container exec -i \$(docker-compose ps -q db) psql -U $DATABASE_USER $DATABASE_NAME < db.dump"
+echo "  docker compose down -v && docker compose up -d"
+echo "  docker container exec -i \$(docker compose ps -q db) psql -U $DATABASE_USER $DATABASE_NAME < db.dump"
 
 exit 0

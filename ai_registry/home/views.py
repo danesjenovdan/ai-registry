@@ -51,7 +51,9 @@ class HomeView(TemplateView):
         ).prefetch_related(
             "areas",
             "tags",
+            "links",
             "registryentryinstitutiondata",
+            "registryentryinstitutiondata__institution",
         )
         all_entries_count = entries.count()
 
