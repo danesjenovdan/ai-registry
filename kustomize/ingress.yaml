@@ -1,12 +1,38 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: max-body-size
+spec:
+  buffering:
+    maxRequestBodyBytes: 10485760 # 10m
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: enable-cors
+spec:
+  headers:
+    accessControlAllowOriginList:
+      - "https://registerui.djnd.si"
+      - "https://registerui.danesjenovdan.si"
+    accessControlAllowMethods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+    accessControlAllowHeaders:
+      - "*"
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ai-registry
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
-    nginx.ingress.kubernetes.io/proxy-body-size: 10m
+    traefik.ingress.kubernetes.io/router.middlewares: ai-registry-max-body-size@kubernetescrd
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   tls:
     - hosts:
         - registerui.djnd.si
@@ -14,7 +40,7 @@ spec:
       secretName: ai-registry-tls
   rules:
     - host: registerui.djnd.si
-      http:
+      http: &http_paths
         paths:
           - path: /
             pathType: Prefix
@@ -24,15 +50,7 @@ spec:
                 port:
                   number: 8000
     - host: registerui.danesjenovdan.si
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: ai-registry
-                port:
-                  number: 8000
+      http: *http_paths
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -40,15 +58,15 @@ metadata:
   name: ai-registry-nginx
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
-    nginx.ingress.kubernetes.io/enable-cors: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: ai-registry-enable-cors@kubernetescrd
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   tls:
     - hosts:
-        - files.ai-registry.lb.djnd.si
+        - files.registerui.djnd.si
       secretName: ai-registry-nginx-tls
   rules:
-    - host: files.ai-registry.lb.djnd.si
+    - host: files.registerui.djnd.si
       http:
         paths:
           - path: /
