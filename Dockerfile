@@ -49,6 +49,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     libicu-dev \
     pkg-config \
     libmemcached-dev \
+    libsasl2-modules \
  && rm -rf /var/lib/apt/lists/*
 
 # Install the application server.
