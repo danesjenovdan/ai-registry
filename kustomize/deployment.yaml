@@ -38,11 +38,11 @@ spec:
                 name: ai-registry-secrets
           resources:
             requests:
-              memory: 400Mi
-              cpu: 100m
+              memory: 500Mi
+              cpu: 500m
             limits:
-              memory: 400Mi
-              cpu: 200m
+              memory: 500Mi
+              cpu: 1000m
         - name: migrate
           image: ai-registry
           volumeMounts:
@@ -61,11 +61,11 @@ spec:
                 name: ai-registry-secrets
           resources:
             requests:
-              memory: 400Mi
-              cpu: 100m
+              memory: 500Mi
+              cpu: 500m
             limits:
-              memory: 400Mi
-              cpu: 200m
+              memory: 500Mi
+              cpu: 1000m
       containers:
         - name: ai-registry
           image: ai-registry
@@ -82,7 +82,7 @@ spec:
             - --workers
             - "1"
             - --threads
-            - "3"
+            - "4"
             - --timeout
             - "90"
           ports:
@@ -95,11 +95,11 @@ spec:
                 name: ai-registry-secrets
           resources:
             requests:
-              memory: 400Mi
-              cpu: 100m
+              memory: 500Mi
+              cpu: 500m
             limits:
-              memory: 400Mi
-              cpu: 600m
+              memory: 500Mi
+              cpu: 1000m
         - name: ai-registry-nginx
           image: nginx:alpine
           volumeMounts:
