@@ -1,14 +1,6 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: max-body-size
-spec:
-  buffering:
-    maxRequestBodyBytes: 10485760 # 10m
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
   name: enable-cors
 spec:
   headers:
@@ -30,7 +22,6 @@ metadata:
   name: ai-registry
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
-    traefik.ingress.kubernetes.io/router.middlewares: ai-registry-max-body-size@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:
