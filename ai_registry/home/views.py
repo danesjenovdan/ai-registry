@@ -240,3 +240,36 @@ class CSVExportView(View):
                 )
 
         return response
+
+
+ROBOTS_TXT_CONTENT = """
+
+# New user agent groups must also have a user agent reference in the global (*)
+# group. See "Order of precedence" section in
+# https://goo.gle/rep#order-of-precedence-for-user-agents
+
+# By default allow all except for admin
+User-agent: *
+Allow: /
+Disallow: /admin/
+Crawl-delay: 10
+
+# -----
+# Bad bots
+# -----
+
+# This should only block facebook's ai crawler, not the regular facebook crawler
+# https://developers.facebook.com/docs/sharing/webmasters/web-crawlers
+User-agent: meta-externalagent
+Disallow: /
+
+# Baidu does not back off when the site is slow or down, so just block it
+User-agent: Baiduspider
+Disallow: /
+
+""".strip()
+
+
+class RobotsTxtView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse(ROBOTS_TXT_CONTENT, content_type="text/plain")
