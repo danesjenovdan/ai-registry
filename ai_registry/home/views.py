@@ -259,12 +259,19 @@ Crawl-delay: 10
 # -----
 
 # This should only block facebook's ai crawler, not the regular facebook crawler
+# We first blocked meta-externalagent for spamming, but then meta-webindexer replaced it
 # https://developers.facebook.com/docs/sharing/webmasters/web-crawlers
 User-agent: meta-externalagent
+User-agent: meta-webindexer
 Disallow: /
 
 # Baidu does not back off when the site is slow or down, so just block it
 User-agent: Baiduspider
+Disallow: /
+
+# This only blocks AI usage of Applebot, not the crawler in hopes they slow down
+# https://support.apple.com/en-us/119829
+User-agent: Applebot-Extended
 Disallow: /
 
 """.strip()
