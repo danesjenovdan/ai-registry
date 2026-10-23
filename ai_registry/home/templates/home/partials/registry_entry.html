@@ -71,7 +71,6 @@
         {% if entry.registryentryinstitutiondata.all|length %}
         <div class="tab-content-container">
           {% for entryinstitutiondata in entry.registryentryinstitutiondata.all %}
-          {% if not entryinstitutiondata.public_procurement %}
           <div class="tab-content" data-tab="{{ entryinstitutiondata.institution.first.slug }}">
             <table>
               {% if entryinstitutiondata.cost %}
@@ -152,7 +151,6 @@
               </tr>
             </table>
           </div>
-          {% endif %}
           {% endfor %}
         </div>
         {% endif %}

@@ -54,7 +54,7 @@ if os.getenv("DJANGO_ENABLE_MEMCACHED", False):
             "BACKEND": "django.core.cache.backends.memcached.PyLibMCCache",
             "LOCATION": os.getenv("DJANGO_MEMCACHED_LOCATION", None),
             "TIMEOUT": None,
-            "KEY_PREFIX": os.getenv("DJANGO_MEMCACHED_KEY_PREFIX", "ai_registry_"),
+            "KEY_PREFIX": os.getenv("DJANGO_MEMCACHED_KEY_PREFIX", "ai_registry_v2_"),
             "OPTIONS": {
                 "binary": True,
                 "username": os.getenv("DJANGO_MEMCACHED_USERNAME", ""),

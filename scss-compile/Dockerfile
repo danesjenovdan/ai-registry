@@ -1,10 +1,10 @@
-FROM node:24-alpine
+FROM node:26-alpine
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN yarn
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY .browserslistrc ./
 
-CMD ["yarn", "build"]
+CMD ["npm", "run", "build"]
