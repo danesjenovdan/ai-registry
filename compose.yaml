@@ -33,7 +33,7 @@ services:
 
   scss-compile:
     build: ./scss-compile
-    command: yarn dev
+    command: npm run dev
     volumes:
       - ./ai_registry/home/static/home/css:/app/static/css:delegated,rw
       - ./scss-compile/scss:/app/scss:delegated,rw

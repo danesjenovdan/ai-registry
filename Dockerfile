@@ -6,17 +6,17 @@
 # ---
 # build scss in separate image
 # ---
-FROM node:24-alpine AS scss-compile
+FROM node:26-alpine AS scss-compile
 
 WORKDIR /app
 
-COPY ./scss-compile/package.json ./scss-compile/yarn.lock ./
-RUN yarn
+COPY ./scss-compile/package.json ./scss-compile/package-lock.json ./
+RUN npm ci
 
 COPY ./scss-compile/scss ./scss
 COPY ./scss-compile/.browserslistrc ./
 
-RUN yarn build
+RUN npm run build
 
 # ---
 # django image
