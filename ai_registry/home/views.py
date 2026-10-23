@@ -59,7 +59,6 @@ class HomeView(TemplateView):
 
         inst_entries = RegistryEntryInstitutionData.objects.filter(
             registry_entry__in=entries,
-            public_procurement=False,
         ).prefetch_related(
             "institution",
             "contracting_institution",
