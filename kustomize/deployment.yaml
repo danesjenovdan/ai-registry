@@ -102,6 +102,7 @@ spec:
               cpu: 1000m
         - name: ai-registry-nginx
           image: nginx:alpine
+          imagePullPolicy: Always
           volumeMounts:
             - name: ai-registry-storage
               mountPath: /usr/share/nginx/html
